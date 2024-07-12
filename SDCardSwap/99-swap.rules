@@ -1,0 +1,2 @@
+ACTION=="change", KERNEL=="mmcblk???", RUN+="/bin/touch /opt/plcnext/change_flag_set", ENV{changed}="1",
+ACTION=="add", KERNEL=="mmcblk???", ENV{changed}=="1", RUN+="/bin/touch /opt/plcnext/env_change_detected"

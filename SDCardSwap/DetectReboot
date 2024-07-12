@@ -1,0 +1,1 @@
+@reboot /bin/touch /opt/plcnext/just_rebooted | tee -a /opt/plcnext/logs/PLCmove.log
