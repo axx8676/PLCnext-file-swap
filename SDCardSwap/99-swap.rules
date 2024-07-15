@@ -1,2 +1,5 @@
-ACTION=="change", KERNEL=="mmcblk???", RUN+="/bin/touch /opt/plcnext/change_flag_set", ENV{changed}="1",
-ACTION=="add", KERNEL=="mmcblk???", ENV{changed}=="1", RUN+="/bin/touch /opt/plcnext/env_change_detected"
+# mmcblk0p1 is the one with the latest change (and only changes after mmcblk1p1 is added)
+# so we set a flag file when it is inserted so that test only runs when the PLC is already started and the SD card is inserted
+# keep the touch command, it is not for debugging it is required
+ACTION=="change", KERNEL=="mmcblk0p1", RUN+="/bin/touch /var/volatile/tmp/change_flag_set"
+ACTION=="add", KERNEL=="mmcblk1p1", PROGRAM=="/bin/sh -c 'test -f /var/volatile/tmp/change_flag_set && echo 1'", RESULT=="1", RUN+="/bin/touch /opt/plcnext/env_change_detected", RUN+="/opt/plcnext/test.sh"
