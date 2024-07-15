@@ -11,23 +11,23 @@
 
     # rename upperdir and remove old instance on SD card
     echo "Renaming SD card upperdir"
-    cp -a /media/rfs/externalsd/upperdir /media/rfs/externalsd/upperdir1
-    rm -r /media/rfs/externalsd/upperdir
+    cp -a /media/rfs/externalsd/upperdir/opt/plcnext/projects /media/rfs/externalsd/upperdir/opt/plcnext/projects1
+    rm -r /media/rfs/externalsd/upperdir/opt/plcnext/projects
 
     # copy project from PLC to SD and remove old instance from PLC
     echo "Moving from PLC to SD"
-    cp -a /media/rfs/internalsd/upperdir /media/rfs/externalsd
-    rm -r /media/rfs/internalsd/upperdir
+    cp -a /media/rfs/internalsd/upperdir/opt/plcnext/projects /media/rfs/externalsd/upperdir/opt/plcnext/
+    rm -r /media/rfs/internalsd/upperdir/opt/plcnext/projects
 
     # copy project from SD to PLC and remove old instance from SD
     echo "Moving from SD to PLC"
-    cp -a /media/rfs/externalsd/upperdir1 /media/rfs/internalsd
-    rm -r /media/rfs/externalsd/upperdir1
+    cp -a /media/rfs/externalsd/upperdir/opt/plcnext/projects1 /media/rfs/internalsd/upperdir/opt/plcnext/
+    rm -r /media/rfs/externalsd/upperdir/opt/plcnext/projects1
 
     # rename upperdir1 on PLC back to upperdir and remove upperdir1
     echo "Renaming PLC upperdir"
-    cp -a /media/rfs/internalsd/upperdir1 /media/rfs/internalsd/upperdir
-    rm -r /media/rfs/internalsd/upperdir1
+    cp -a /media/rfs/internalsd/upperdir/opt/plcnext/projects1 /media/rfs/internalsd/upperdir/opt/plcnext/projects
+    rm -r /media/rfs/internalsd/upperdir/opt/plcnext/projects1
 
     echo "PLC and SD swapped"
     sudo reboot
@@ -40,7 +40,7 @@
     exit 0
   fi
 
-  if [ -d /media/rfs/externalsd/upperdir ]; then
+  if [ -d /media/rfs/externalsd/upperdir/opt/plcnext/projects ]; then
     echo "SD card inserted, performing swap"
     fileTransfer
     exit 0
