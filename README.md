@@ -5,8 +5,8 @@ Swaps the project files on the PLCnext Control with the project files on the ins
 
 * PLCnext Control
     * AXC F X152
-* SD Card
-    * Phoenix Contact SD card preferred, but not required. If using normal SD Card, follow additional SD Card setup instructions
+* Phoenix Contact SD Card
+    * Ensure the SD Card has not been reformatted. The Overlay Filesystem is necessary for Swap to be able to find the files
 * Computer w/ Windows OS
     * Can also be done on Linux, but instructions will be using Windows
 * WinSCP
@@ -72,21 +72,19 @@ You will see an output asking you to wait, then all the necessary files should b
 
 <h2> Performing the Swap </h2>
 
-After installing the necessary files, we need to upload an initial project to the PLC. Open your desired project in PLCnext Engineer and connect to the PLC. Upload your project as normal.
+You will need to upload your project manually to the SD card before performing the swap or else the PLC will just have an empty project assigned to it. This can also be a way to 'delete' the project from the PLC without losing it completely.
 
-In order to upload a project to the SD card, you will either need to upload a project manually or by swapping the PLC project with the (currently empty) SD Card project, then uploading to the PLC normally and swapping back.
+First, ensure the SD Card is properly formatted by checking that the following filepath exists: `/opt/plcnext/projects` . The project will be uploaded to this folder.
 
-You will first need to ensure the SD Card is properly formatted. If you are using a Phoenix Contact SD card, the formatting should already be done, so you can skip this next step. 
+In order to upload the project to the SD Card, you will first need to find the project on your computer. Depending on where/how you installed PLCnext Engineer, this could vary slightly. If you are unable to find the PLCnext Engineer folder in Documents, check the Users/your_user/Documents and Users/Public/Documents folders as well. Navigate to:
 
-If you are using a regular SD Card, you will need to ensure that the SD Card has enough space to hold a PLCnext project. You will also need to create multiple folders to mimic enough of the Overlay Filesystem that the Swap program can correctly navigate to the project files. 
+`C:\Documents\PLCnext Engineer\Binaries\your_project@binary\RES_XXXXXX\Configuration\Projects` 
 
-Open the SD card on your computer, and create the folder 'upperdir'. Within 'upperdir', create the folder 'opt'. Within 'opt', create the folder 'plcnext'. Finally, within 'plcnext', create the folder 'projects'. 
+In this folder you will see a folder called PCWE. Copy this folder to `/opt/plcnext/projects` on the SD Card. The project is now uploaded to the SD Card.
 
-In order to create the correct layout for a project and manually upload to the SD card, ...WIP
+If you do not see the `Configuration` folder for your project, you may need to open the project in PLCnext Engineer and build the project. You can do this by going to Project -> Rebuild. This can be performed without connecting to the PLC.
 
--NEED TO FIGURE OUT HOW TO UPLOAD PROJECT DIRECTLY TO SD CARD W/O UPLOADING TO PLC-
-
-After you have an SD card with the desired project uploaded to it, the swapping process is simple. With the PLC powered on and running, insert the SD Card into the SD Card slot. After approximately a minute, the PLC will reboot. After rebooting, the projects that were on the PLC and the SD card will be swapped, and the project that was previously on the SD Card will run. You can safely remove the SD Card once the new project is running. You can also leave the SD Card in the PLC if desired. If the PLC is powered on while an SD Card is already inserted, you will need to remove and reinsert the SD Card to perform the swap.
+After you have an SD card with the desired project uploaded to it, the swapping process is simple. With the PLC powered on and running, insert the SD Card into the SD Card slot. After approximately a minute, the PLC will reboot. After rebooting, the projects that were on the PLC and the SD card will be swapped, and the project now on the PLC will run. You can safely remove the SD Card once the new project is running. You can also leave the SD Card in the PLC if desired, the swap will not be performed again until the SD Card is removed and reinserted. If the PLC is powered on or rebooted while an SD Card is already inserted, you will need to remove and reinsert the SD Card to perform the swap.
 
 <h2> Removing Swap from PLC </h2>
 
