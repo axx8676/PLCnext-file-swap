@@ -2,8 +2,10 @@
 {
   export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/plcnext/appshome/bin
 
-  sdState="$(/usr/sbin/sdcard_state.sh getStatus)"
+  sd_state="$(/usr/sbin/sdcard_state.sh getStatus)"
   FLAG_FILE="/opt/plcnext/just_rebooted"
+  current_time=$(date "+%m-%d-%Y_%T")
+  archive_file_name=projects_$current_time
 
   function fileTransfer() {
     sudo /usr/sbin/sdcard_state.sh request_deactivation
@@ -12,11 +14,13 @@
     # rename upperdir and remove old instance on SD card
     echo "Renaming SD card upperdir"
     cp -a /media/rfs/externalsd/upperdir/opt/plcnext/projects /media/rfs/externalsd/upperdir/opt/plcnext/projects1
-    rm -r /media/rfs/externalsd/upperdir/opt/plcnext/projects
+    #rm -r /media/rfs/externalsd/upperdir/opt/plcnext/projects
 
     # copy project from PLC to SD and remove old instance from PLC
     echo "Moving from PLC to SD"
-    cp -a /media/rfs/internalsd/upperdir/opt/plcnext/projects /media/rfs/externalsd/upperdir/opt/plcnext/
+    #cp -a /media/rfs/internalsd/upperdir/opt/plcnext/projects /media/rfs/externalsd/upperdir/opt/plcnext/
+    mkdir -p /media/rfs/externalsd/upperdir/opt/plcnext/project_archive
+    cp -a /media/rfs/internalsd/upperdir/opt/plcnext/projects /media/rfs/externalsd/upperdir/opt/plcnext/project_archive/$archive_file_name
     rm -r /media/rfs/internalsd/upperdir/opt/plcnext/projects
 
     # copy project from SD to PLC and remove old instance from SD
