@@ -74,7 +74,7 @@ You will see an output asking you to wait, then all the necessary files should b
 
 You will need to upload your project manually to the SD card before performing the swap or else the PLC will just have an empty project assigned to it. This can also be a way to 'delete' the project from the PLC without losing it completely.
 
-If you are using Windows, you will need to download an Ext4 File System Driver in order to read and write to the SD Card. A free download for a driver can be found here: https://github.com/bobranten/Ext4Fsd/tree/master
+If you are using Windows, you will need to download an Ext4 File System Driver in order to read and write to the SD Card. A trial download for a driver can by found here: https://www.paragon-software.com/home/linuxfs-windows/ They have a 10 day free trial, but the software will continue to work after the software expires, just slower. 
 
 First, ensure the SD Card is properly formatted by checking that the following filepath exists: `/upperdir/opt/plcnext/projects` . The project will be uploaded to this folder.
 
