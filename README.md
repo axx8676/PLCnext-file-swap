@@ -1,5 +1,5 @@
 # PLCnext-file-swap
-Swaps the project files on the PLCnext Control with the project files on the inserted SD card
+Swaps the project files on the PLCnext Control with the project files on the SD Card upon insertion.
 
 <h2> Materials/Software Needed: </h2>
 
@@ -8,18 +8,17 @@ Swaps the project files on the PLCnext Control with the project files on the ins
 * Phoenix Contact SD Card
     * Ensure the SD Card has not been reformatted. The Overlay Filesystem is necessary for Swap to be able to find the files
 * Computer w/ Windows OS
-    * Can also be done on Linux, but instructions will be using Windows
+    * Can also be setup on Linux, but Windows is necessary for PLCnext Engineer projects
 * WinSCP
 * PuTTY
 * PLCnext Engineer
+* Ext4 File System Driver for Windows (with write capability)
 
 <h2> Ensure SD Card Support is Deactivated </h2>
 
 SD Card Support must be deactivated before swapping files. If it is left activated, and the SD card has a project on it when inserted, the project on the PLC will be lost. 
 
 After connecting to PLC, open Web Based Management, either through PLCnext Engineer, or directly via web browser at `0.0.0.0/wbm` (replace with your PLC's IP address)
-
-![image](https://github.com/user-attachments/assets/bea298c2-8b29-42d8-8612-8c14b7140654)
 
 Login to WBM and navigate to the SD Card window under Security. Ensure that `Support for External SD Card` is deactivated. If support is currently activated, deactivate it by pressing the `Deactivate support` button and reboot your PLC.
 
@@ -31,9 +30,11 @@ After SD card support is deactivated, login to a new session in WinSCP. Use the 
 
 ![image](https://github.com/user-attachments/assets/d2109d19-b523-492a-afb6-c2f1072121fc)
 
-After connecting, navigate to /opt/plcnext and transfer install.sh and SDCardSwap to this directory. All files needed can be found in this repo.
+After connecting, navigate to /opt/plcnext and transfer install.sh, uninstall.sh, and SDCardSwap to this directory. All files needed can be found in this repo.
 
 ![image](https://github.com/user-attachments/assets/286c876f-643f-478e-b7d9-0d7ed2e03d84)
+
+<h2> Installing Swap </h2>
 
 Now, open a new session in PuTTY and log into the PLC. Use the same IP address, user, and password as used in the WinSCP session.
 
@@ -74,21 +75,23 @@ You will see an output asking you to wait, then all the necessary files should b
 
 You will need to upload your project manually to the SD card before performing the swap or else the PLC will just have an empty project assigned to it. This can also be a way to 'delete' the project from the PLC without losing it completely.
 
-If you are using Windows, you will need to download an Ext4 File System Driver in order to read and write to the SD Card. A trial download for a driver can by found here: https://www.paragon-software.com/home/linuxfs-windows/ They have a 10 day free trial, but the software will continue to work after the software expires, just slower. 
+If you are using Windows, you will need to download an Ext4 File System Driver in order to read and write to the SD Card. A trial download for a driver can be found here: https://www.paragon-software.com/home/linuxfs-windows/ They have a 10 day free trial, but the software will continue to work after the software expires, just slower. There is also the option to upload the PCWE folder to a Linux computer, and then you should be able to read and write to the SD Card directly.
 
 First, ensure the SD Card is properly formatted by checking that the following filepath exists: `/upperdir/opt/plcnext/projects` . The project will be uploaded to this folder.
 
-In order to upload the project to the SD Card, you will first need to find the project on your computer. Depending on where/how you installed PLCnext Engineer, this could vary slightly. If you are unable to find the PLCnext Engineer folder in Documents, check the Users/your_user/Documents and Users/Public/Documents folders as well. Navigate to:
+In order to upload the project to the SD Card, you will first need to find the project on your computer. Depending on where/how you installed PLCnext Engineer, this could vary slightly. If you are unable to find the PLCnext Engineer folder in Documents, check the Users\your_user\Documents and Users\Public\Documents folders as well. Navigate to:
 
 `C:\Documents\PLCnext Engineer\Binaries\your_project@binary\RES_XXXXXX\Configuration\Projects` 
 
 In this folder you will see a folder called PCWE. Copy this folder to `/upperdir/opt/plcnext/projects` on the SD Card. The project is now uploaded to the SD Card.
 
+![image](https://github.com/user-attachments/assets/d548c1f9-95cf-40b2-9342-b21a42b22573)
+
 If you do not see the `Configuration` folder for your project, you may need to open the project in PLCnext Engineer and build the project. You can do this by going to Project -> Rebuild. This can be performed without connecting to the PLC.
 
 After you have an SD card with the desired project uploaded to it, the swapping process is simple. With the PLC powered on and running, insert the SD Card into the SD Card slot. After approximately a minute, the PLC will reboot. After rebooting, the projects that were on the PLC and the SD card will be swapped, and the project now on the PLC will run. You can safely remove the SD Card once the new project is running. You can also leave the SD Card in the PLC if desired, the swap will not be performed again until the SD Card is removed and reinserted. If the PLC is powered on or rebooted while an SD Card is already inserted, you will need to remove and reinsert the SD Card to perform the swap.
 
-<h2> Removing Swap from PLC </h2>
+<h2> Uninstalling Swap </h2>
 
 In order to remove the Swap program from the PLC so that you may use the SD Card support normally, you will perform a similar process to installation. 
 
