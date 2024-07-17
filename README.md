@@ -74,13 +74,15 @@ You will see an output asking you to wait, then all the necessary files should b
 
 You will need to upload your project manually to the SD card before performing the swap or else the PLC will just have an empty project assigned to it. This can also be a way to 'delete' the project from the PLC without losing it completely.
 
-First, ensure the SD Card is properly formatted by checking that the following filepath exists: `/opt/plcnext/projects` . The project will be uploaded to this folder.
+If you are using Windows, you will need to download an Ext4 File System Driver in order to read and write to the SD Card. A free download for a driver can be found here: https://github.com/bobranten/Ext4Fsd/tree/master
+
+First, ensure the SD Card is properly formatted by checking that the following filepath exists: `/upperdir/opt/plcnext/projects` . The project will be uploaded to this folder.
 
 In order to upload the project to the SD Card, you will first need to find the project on your computer. Depending on where/how you installed PLCnext Engineer, this could vary slightly. If you are unable to find the PLCnext Engineer folder in Documents, check the Users/your_user/Documents and Users/Public/Documents folders as well. Navigate to:
 
 `C:\Documents\PLCnext Engineer\Binaries\your_project@binary\RES_XXXXXX\Configuration\Projects` 
 
-In this folder you will see a folder called PCWE. Copy this folder to `/opt/plcnext/projects` on the SD Card. The project is now uploaded to the SD Card.
+In this folder you will see a folder called PCWE. Copy this folder to `/upperdir/opt/plcnext/projects` on the SD Card. The project is now uploaded to the SD Card.
 
 If you do not see the `Configuration` folder for your project, you may need to open the project in PLCnext Engineer and build the project. You can do this by going to Project -> Rebuild. This can be performed without connecting to the PLC.
 
