@@ -1,5 +1,5 @@
 # PLCnext-file-swap
-Swaps the project files on the PLCnext Control with the project files on the SD Card upon insertion.
+Loads the project from the SD Card onto the PLC and archives the project from the PLC on the SD Card.
 
 <h2> Materials/Software Needed: </h2>
 
@@ -89,7 +89,7 @@ In this folder you will see a folder called PCWE. Copy this folder to `/upperdir
 
 If you do not see the `Configuration` folder for your project, you may need to open the project in PLCnext Engineer and build the project. You can do this by going to Project -> Rebuild. This can be performed without connecting to the PLC.
 
-After you have an SD card with the desired project uploaded to it, the swapping process is simple. With the PLC powered on and running, insert the SD Card into the SD Card slot. After approximately a minute, the PLC will reboot. After rebooting, the projects that were on the PLC and the SD card will be swapped, and the project now on the PLC will run. You can safely remove the SD Card once the new project is running. You can also leave the SD Card in the PLC if desired, the swap will not be performed again until the SD Card is removed and reinserted. If the PLC is powered on or rebooted while an SD Card is already inserted, you will need to remove and reinsert the SD Card to perform the swap.
+After you have an SD card with the desired project uploaded to it, the swapping process is simple. With the PLC powered on and running, insert the SD Card into the SD Card slot. After approximately a minute, the PLC will reboot. After rebooting, the projects that was uploaded to the SD Card will be copied to the PLC, the project that was on the PLC will be archived in /opt/plcnext/project_archives on the SD Card, and the project now on the PLC will run. You can safely remove the SD Card once the new project is running. You can also leave the SD Card in the PLC if desired, the swap will not be performed again until the SD Card is removed and reinserted. If the PLC is powered on or rebooted while an SD Card is already inserted, you will need to remove and reinsert the SD Card to perform the swap.
 
 <h2> Uninstalling Swap </h2>
 
