@@ -79,6 +79,8 @@ If you are using Windows, you will need to download an Ext4 File System Driver i
 
 First, ensure the SD Card is properly formatted by checking that the following filepath exists: `/upperdir/opt/plcnext/projects` . The project will be uploaded to this folder.
 
+Then, open your project in PLCnext Engineer and rebuild the project. Go to `Project` then hit `Rebuild`. You do not need to connect to your PLC to rebuild the project. This is to make sure all of the configs are correct and all the right files are generated. 
+
 In order to upload the project to the SD Card, you will first need to find the project on your computer. Depending on where/how you installed PLCnext Engineer, this could vary slightly. If you are unable to find the PLCnext Engineer folder in Documents, check the Users\your_user\Documents and Users\Public\Documents folders as well. Navigate to:
 
 `C:\Documents\PLCnext Engineer\Binaries\your_project@binary\RES_XXXXXX\Configuration\Projects` 
@@ -87,9 +89,17 @@ In this folder you will see a folder called PCWE. Copy this folder to `/upperdir
 
 ![image](https://github.com/user-attachments/assets/d548c1f9-95cf-40b2-9342-b21a42b22573)
 
-If you do not see the `Configuration` folder for your project, you may need to open the project in PLCnext Engineer and build the project. You can do this by going to Project -> Rebuild. This can be performed without connecting to the PLC.
+After you have an SD card with the desired project uploaded to it, the swapping process is simple. With the PLC powered on and running, insert the SD Card into the SD Card slot. 
 
-After you have an SD card with the desired project uploaded to it, the swapping process is simple. With the PLC powered on and running, insert the SD Card into the SD Card slot. After approximately a minute, the PLC will reboot. After rebooting, the projects that was uploaded to the SD Card will be copied to the PLC, the project that was on the PLC will be archived in /opt/plcnext/project_archives on the SD Card, and the project now on the PLC will run. You can safely remove the SD Card once the new project is running. You can also leave the SD Card in the PLC if desired, the swap will not be performed again until the SD Card is removed and reinserted. If the PLC is powered on or rebooted while an SD Card is already inserted, you will need to remove and reinsert the SD Card to perform the swap.
+After approximately a minute, the PLC will reboot. After rebooting, the projects that was uploaded to the SD Card will be copied to the PLC, the project that was on the PLC will be archived in /opt/plcnext/project_archives on the SD Card, and the project now on the PLC will run. 
+
+You can safely remove the SD Card once the new project is running. You can also leave the SD Card in the PLC if desired, the swap will not be performed again until the SD Card is removed and reinserted. If the PLC is powered on or rebooted while an SD Card is already inserted, you will need to remove and reinsert the SD Card to perform the swap.
+
+Another way to upload the project to the SD Card is through the PLC using WinSCP. In this case, you will likely want to upload the project before performing the swap, so turn off the PLC, then insert the SD Card and turn it back on. This will ensure the swap does not occur before you upload the project.
+
+Connect to the PLC as normal, then navigate to `/media/rfs/externalsd/upperdir/opt/plcnext/projects/`. You can upload the PCWE folder directly to here, but make sure that are in `externalsd`, not `internalsd`, or you risk overwriting the project on the PLC. 
+
+Now, to perform the swap, remove and reinsert the SD Card while the PLC is still running.
 
 <h2> Uninstalling Swap </h2>
 
