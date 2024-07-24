@@ -5,8 +5,8 @@ Loads the project from the SD card onto the PLC and archives the project from th
 
 * PLCnext Control
     * AXC F X152
-* Phoenix Contact SD card
-    * Ensure the SD card has not been reformatted. The Overlay Filesystem is necessary for Swap to be able to find the files
+* SD card
+    * Phoenix Contact SD Card preferred, but a normal SD Card can be configured to work
 * Computer w/ Windows OS
     * Can also be set up on Linux, but Windows is necessary for PLCnext Engineer projects
 * SFTP client (e.g. WinSCP)
@@ -77,7 +77,11 @@ You will need to upload your project manually to the SD card before performing t
 
 If you are using Windows, you will need to download an Ext4 File System Driver to read and write to the SD card. A trial download for a driver can be found here: https://www.paragon-software.com/home/linuxfs-windows/ They offer a 10-day free trial, but the software will continue to work after the software expires, albeit slower. There is also the option to upload the PCWE folder to a Linux computer, and then you should be able to read and write to the SD card directly with no driver necessary.
 
-First, ensure the SD card is properly formatted by checking that the following filepath exists: `/upperdir/opt/plcnext/projects` . The project will be uploaded to this folder.
+If you are using a normal SD card, you will need to create some of the file structure that exists on the Phoenix Contact SD cards. First, you will need to format the SD card as Ext4. You can do this in the same driver that was suggested for reading and writing to Ext4 file systems. To do this in Linux File Systems for Windows, click the three dots icon, then click `Format new volume`. Select your SD card, the Ext4 format, and then click Format. 
+
+After you have formatted the SD card,create the folders upperdir and work. Then, create the folders in this filepath: `upperdir/opt/plcnext/projects`. After uploading the PCWE folder, you will need to create a symlink called current that links to the PCWE. Please note that while this SD card can be used for storage and uploading projects to the PLC, it cannot be used to run the PLC itself like a Phoenix Contact SD card.
+
+Ensure the SD card is properly formatted by checking that the following filepath exists: `/upperdir/opt/plcnext/projects` . The project will be uploaded to this folder.
 
 Then, open your project in PLCnext Engineer and rebuild the project. Go to `Project` then hit `Rebuild`. You do not need to connect to your PLC to rebuild the project. This is to make sure all of the configs are correct and all the right files are generated. 
 
