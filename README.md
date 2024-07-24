@@ -79,7 +79,7 @@ If you are using Windows, you will need to download an Ext4 File System Driver t
 
 If you are using a normal SD card, you will need to create some of the file structure that exists on the Phoenix Contact SD cards. First, you will need to format the SD card as Ext4. You can do this in the same driver that was suggested for reading and writing to Ext4 file systems. To do this in Linux File Systems for Windows, click the three dots icon, then click `Format new volume`. Select your SD card, the Ext4 format, and then click Format. 
 
-After you have formatted the SD card,create the folders upperdir and work. Then, create the folders in this filepath: `upperdir/opt/plcnext/projects`. After uploading the PCWE folder, you will need to create a symlink called current that links to the PCWE. Please note that while this SD card can be used for storage and uploading projects to the PLC, it cannot be used to run the PLC itself like a Phoenix Contact SD card.
+After you have formatted the SD card, create the folders upperdir and work. Then, create the folders in this filepath: `upperdir/opt/plcnext/projects`. After uploading the PCWE folder, you will need to create a symlink called current that links to the PCWE. Please note that while this SD card can be used for storage and uploading projects to the PLC, it cannot be used to run the PLC itself like a Phoenix Contact SD card.
 
 Ensure the SD card is properly formatted by checking that the following filepath exists: `/upperdir/opt/plcnext/projects` . The project will be uploaded to this folder.
 
