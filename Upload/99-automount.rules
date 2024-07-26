@@ -1,0 +1,2 @@
+ACTION=="add", KERNEL=="mmcblk1p1", RUN+="/bin/mount -t ext4 -o rw,relatime /dev/mmcblk1p1 /media/rfs/externalsd", RUN+="/bin/rm -f /opt/plcnext/just_rebooted"
+ACTION=="remove", KERNEL=="mmcblk1p1", RUN+="/bin/umount /media/rfs/externalsd", RUN+="/bin/rm -f /opt/plcnext/just_rebooted"

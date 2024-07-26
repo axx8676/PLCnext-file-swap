@@ -15,6 +15,7 @@ if [ -d /opt/plcnext/SDCardSwap ]; then
 	cd /opt/plcnext
 	fwVersion="$(head -n 1 /etc/plcnext/arpversion)"
 	echo "$fwVersion" > /opt/plcnext/.fwVersion.txt
+	
 	echo "Installation complete"
 else
 	echo "No files found, please upload SDCardSwap directory."
