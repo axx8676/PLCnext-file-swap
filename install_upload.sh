@@ -9,19 +9,16 @@ if [ -d /opt/plcnext/Upload ]; then
 	chmod 777 /opt/plcnext/Upload.sh
 	cp -a /opt/plcnext/Upload/inotify.sh /opt/plcnext
 	chmod 777 /opt/plcnext/inotify.sh
-	cp -a /opt/plcnext/Upload/DetectReboot /var/spool/cron/
-	sudo crontab /var/spool/cron/DetectReboot
+	cp -a /opt/plcnext/Upload/DetectReboot_Upload /var/spool/cron/
+	sudo crontab /var/spool/cron/DetectReboot_Upload
 	cp -a /opt/plcnext/Upload/99-automount.rules /etc/udev/rules.d/
 	sudo udevadm control --reload-rules
 
 	cd /opt/plcnext/Upload/packages
 	dpkg -i --force-all *.deb
-
-	cd /opt/plcnext
-	fwVersion="$(head -n 1 /etc/plcnext/arpversion)"
-	echo "$fwVersion" > /opt/plcnext/.fwVersion.txt
 	
-	echo "Installation complete"
+	echo "Installation complete, rebooting to apply changes"
+	sudo reboot
 else
 	echo "No files found, please upload Upload directory."
 fi

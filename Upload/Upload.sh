@@ -2,7 +2,7 @@
 {
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/plcnext/appshome/bin
 
-exec > >(tee -i -a /opt/plcnext/logs/Swap.log)
+exec > >(tee -i -a /opt/plcnext/logs/Upload.log)
 exec 2>&1
 
 FLAG_FILE="/opt/plcnext/just_rebooted"
@@ -19,13 +19,11 @@ if [ -f $active_dir/projects/PCWE/PCWE.software-package-manifest.json ]; then
   old_project_name=$(get_project_name "$active_dir/projects/PCWE/PCWE.software-package-manifest.json")
 else
   echo "$(date "+%d.%m.%y %T") No project on PLC, uploading new project without archiving"
-  old_project_name="empty"
+  old_project_name=empty
 fi
 
 new_project_name=$(get_project_name "$active_dir/PCWE/PCWE.software-package-manifest.json")
 archive_filename=$old_project_name'_'$current_time
-
-
 
 function fileTransfer() {
   sudo /usr/sbin/sdcard_state.sh request_deactivation
@@ -35,13 +33,14 @@ function fileTransfer() {
   echo "$(date "+%d.%m.%y %T") Project to upload: $new_project_name"
 
   # copy project from PLC to SD archive
-  if [ "$old_project_name" != "empty"]; then
+  if [ "$old_project_name" != "empty" ]; then
     echo "$(date "+%d.%m.%y %T") Archiving $old_project_name as $archive_filename"
     mkdir -p $archive_dir
     cp -a $active_dir/projects $archive_dir/$archive_filename
+    sleep 1
   
     # remove project from PLC if it was successfully archived, exit if not
-    if [ -f $archive_dir/$archive_filename ]; then
+    if [ -d $archive_dir/$archive_filename ]; then
       echo "$(date "+%d.%m.%y %T") Successfully archived, removing $old_project_name from PLC"
       rm -r $active_dir/projects/PCWE
     else
@@ -49,7 +48,7 @@ function fileTransfer() {
       exit 1
     fi
   else
-    echo "$(date "+%d.%m.%y %T") Project on PLC empty, deleting..."
+    echo "$(date "+%d.%m.%y %T") Project on PLC empty, deleting"
     rm -r $active_dir/projects/PCWE
   fi
 
@@ -59,31 +58,39 @@ function fileTransfer() {
   rm -r $active_dir/PCWE
 
   new_uploaded_project=$(get_project_name "$active_dir/projects/PCWE/PCWE.software-package-manifest.json")
-
-  old_archived_project=$(get_project_name "$archive_dir/$archive_filename/PCWE/PCWE.software-package-manifest.json")
-
   echo "$(date "+%d.%m.%y %T") Project on PLC: $new_uploaded_project"
-  echo "$(date "+%d.%m.%y %T") Archived project: $old_archived_project"
+  
+  if [ "$old_project_name" != "empty" ]; then
+    old_archived_project=$(get_project_name "$archive_dir/$archive_filename/PCWE/PCWE.software-package-manifest.json")
+    echo "$(date "+%d.%m.%y %T") Archived project: $old_archived_project"
+  else
+    echo "$(date "+%d.%m.%y %T") Project was empty, nothing to archive"
+  fi
 
-  #echo "$(date "+%d.%m.%y %T") Rebooting ..."
-  #sudo reboot
+  echo "$(date "+%d.%m.%y %T") Rebooting..."
+  sudo reboot
 }
-# use systemd systemctl or entr to create a rule to run a script to organize files correctly when a PCWE folder is uploaded
-# and then runs swap
 
-echo "$(date "+%d.%m.%y %T") "
+echo "$(date "+%d.%m.%y %T")"
 sleep 45
 
-if [ -f "$FLAG_FILE" ]; then
-  echo "$(date "+%d.%m.%y %T") Reboot detected, not performing swap"
-  exit 0
-fi
+# shouldn't need to check because a PCWE folder isn't added or changed in /opt/plcnext/ during reboot
+# so Upload.sh won't be called unless we want it to be called (via uploading a project)
+#if [ -f "$FLAG_FILE" ]; then
+#  echo "$(date "+%d.%m.%y %T") Reboot detected, not performing upload"
+#  exit 0
+#fi
 
 if [ -d /media/rfs/externalsd/upperdir/opt/plcnext/projects ]; then
-  echo "$(date "+%d.%m.%y %T") SD card inserted, performing swap"
-  sudo /etc/init.d/plcnext stop
-  fileTransfer
-  exit 0
+  if [ -d /media/rfs/internalsd/upperdir/opt/plcnext/PCWE ]; then
+    echo "$(date "+%d.%m.%y %T") SD card inserted, performing upload"
+    sudo /etc/init.d/plcnext stop
+    fileTransfer
+    exit 0
+  else
+    echo "Project not uploaded, exiting"
+    exit 0
+  fi
 else
   echo "$(date "+%d.%m.%y %T") SD Card not properly mounted"
   echo "$(date "+%d.%m.%y %T") Insert SD card to archive projects"
