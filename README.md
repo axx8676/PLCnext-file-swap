@@ -1,4 +1,6 @@
 # PLCnext-file-swap
+This is the README for the Swap function, see README_upload for instructions on setting up and using the Upload function.
+
 Loads the project from the SD card onto the PLC and archives the project from the PLC on the SD card.
 
 <h2> Materials/Software needed: </h2>
