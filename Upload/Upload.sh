@@ -81,20 +81,29 @@ sleep 45
 #  exit 0
 #fi
 
-if [ -d /media/rfs/externalsd/upperdir/opt/plcnext/projects ]; then
+# check that a properly formatted SD card is inserted
+if [ -d /media/rfs/externalsd/upperdir/opt/plcnext ]; then
+  # check that the file that triggered inotify is a project
   if [ -d /media/rfs/internalsd/upperdir/opt/plcnext/PCWE ]; then
     echo "$(date "+%d.%m.%y %T") SD card inserted, performing upload"
     sudo /etc/init.d/plcnext stop
     fileTransfer
     exit 0
   else
+    # uploaded file is not a project, don't try to upload
     echo "Project not uploaded, exiting"
     exit 0
   fi
 else
-  echo "$(date "+%d.%m.%y %T") SD Card not properly mounted"
-  echo "$(date "+%d.%m.%y %T") Insert SD card to archive projects"
-  exit 0
+  if [ -d /media/rfs/externalsd/upperdir ]; then
+    echo "$(date "+%d.%m.%y %T") SD Card not properly formatted"
+    echo "$(date "+%d.%m.%y %T") Ensure SD card contains /upperdir/opt/plcnext/"
+    exit 0
+  else
+    echo "$(date "+%d.%m.%y %T") SD Card not inserted"
+    echo "$(date "+%d.%m.%y %T") Insert SD card to archive projects."
+    exit 0
+  fi
 fi
 } & disown
 
