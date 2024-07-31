@@ -77,7 +77,7 @@ You will see an output asking you to wait, then all the necessary files should b
 
 You will need to upload your project manually to the SD card before performing the swap, or the PLC will just have an empty project assigned to it. This can also be a way to clear the PLC without losing the project.
 
-There are multiple ways to do this, including using SCP to transfer the files, uploading through the PLC, and manually uploading to the SD card directly. If you do not have a Phoenix Contact SD card, you will need to upload manually at 
+There are multiple ways to do this, including using SCP to transfer the files, uploading through the PLC, and manually uploading to the SD card directly. If you do not have a Phoenix Contact SD card, you will need to upload manually for the first time to format the SD card correctly.
 
 To upload the project to the SD card, you will first need to find the project on your computer. Depending on where/how you installed PLCnext Engineer, this could vary slightly. To find where the project is stored, in PLCnext Engineer go to Extras, then open the Options. Open the `Directories` tab under `Tools`.
 
@@ -89,7 +89,7 @@ Navigate to the folder labeled `Binaries` in your file explorer. Then, navigate 
 
 `\Binaries\your_project@binary\RES_XXXXXX\Configuration\Projects` 
 
-In this file, there will be a folder labelled `PCWE`. This will be the folder adn filepath this document refers to when it says `PCWE`.
+In this file, there will be a folder labeled `PCWE`. This will be the folder and filepath this document refers to when it says `PCWE`.
 
 <h3> Uploading via SCP </h3>
 
@@ -102,9 +102,9 @@ You will need to fill in the your_user, project_name@binary, and RES_XXXXXX fiel
 
 After you enter this command, a password will be requested. Enter the password for admin, found on the front of the PLC. The progress of the transfer will be shown. Once it is complete, you can move on to the `Performing the Swap` step.
 
-<h3> Uploading manually via SFTP </h3>
+<h3> Uploading via SFTP </h3>
 
-Open your SFTP client and connect to the PLC. Ensure the SD card is in the PLC. navigate to the `PCWE` folder on your local machine. Then, open `/media/rfs/externalsd/upperdir/opt/plcnext/projects` on the PLC. Copy the `PCWE` folder on your local machine to the PLC.
+Open your SFTP client and connect to the PLC. Ensure the SD card is in the PLC. Navigate to the `PCWE` folder on your local machine. Then, open `/media/rfs/externalsd/upperdir/opt/plcnext/projects` on the PLC. Copy the `PCWE` folder on your local machine to the PLC.
 
 ![image](https://github.com/user-attachments/assets/2160f333-6976-415b-9ce3-d31bd278ab79)
 
@@ -140,7 +140,7 @@ To remove the Swap program from the PLC so that you may use the SD card support 
 
 Using the same SFTP client procedure as before, check to make sure uninstall.sh is present in /opt/plcnext on the PLC. 
 
-Open a session in your SSH client, login to your user, and then root following the same procedure as installation.
+Open a session in your SSH client, log in to your user, and then root following the same procedure as installation.
 
 You should be in the /opt/plcnext/ directory. If you are not, navigate there by using `cd /opt/plcnext`. Enter the following command, which will give the script the necessary read/write permissions:
 ```
