@@ -94,7 +94,7 @@ Navigate to the folder labeled `Binaries` in your file explorer. Then, navigate 
 
 `\Binaries\your_project@binary\RES_XXXXXX\Configuration\Projects` 
 
-In this file, there will be a folder labelled `PCWE`. This will be the folder and filepath this document refers to when it says `PCWE`.
+In this file, there will be a folder labeled `PCWE`. This will be the folder and filepath this document refers to when it says `PCWE`.
 
 <h3> Uploading via SCP </h3>
 
