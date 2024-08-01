@@ -5,27 +5,35 @@ export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/
 exec > >(tee -i -a /opt/plcnext/logs/Upload.log)
 exec 2>&1
 
-FLAG_FILE="/opt/plcnext/just_rebooted"
-current_time=$(date "+%m-%d-%Y_%T")
-active_dir="/media/rfs/internalsd/upperdir/opt/plcnext"
-archive_dir="/media/rfs/externalsd/upperdir/opt/plcnext/project_archive"
-
+# parse json to retrieve project name
 function get_project_name() {
   local json_file=$1
   python3 -c "import sys, json; print(json.load(open('${json_file}'))['identification']['name'])"
 }
 
-if [ -f $active_dir/projects/PCWE/PCWE.software-package-manifest.json ]; then
-  old_project_name=$(get_project_name "$active_dir/projects/PCWE/PCWE.software-package-manifest.json")
-else
-  echo "$(date "+%d.%m.%y %T") No project on PLC, uploading new project without archiving"
-  old_project_name=empty
-fi
+# initialize variables
+function init() {
+  # time for archive file
+  current_time=$(date "+%m-%d-%Y_%T")
 
-new_project_name=$(get_project_name "$active_dir/PCWE/PCWE.software-package-manifest.json")
-archive_filename=$old_project_name'_'$current_time
+  # filepaths
+  active_dir="/media/rfs/internalsd/upperdir/opt/plcnext"
+  archive_dir="/media/rfs/externalsd/upperdir/opt/plcnext/project_archive"
 
+  # project names
+  if [ -f $active_dir/projects/PCWE/PCWE.software-package-manifest.json ]; then
+    old_project_name=$(get_project_name "$active_dir/projects/PCWE/PCWE.software-package-manifest.json")
+  else
+    echo "$(date "+%d.%m.%y %T") No project on PLC, uploading new project without archiving"
+    old_project_name=empty
+  fi
+  new_project_name=$(get_project_name "$active_dir/PCWE/PCWE.software-package-manifest.json")
+  archive_filename=$old_project_name'_'$current_time
+}
+
+# archive PLC project on SD, then upload new project to PLC
 function fileTransfer() {
+  # ensure sd card deactivated (probably unnecessary)
   sudo /usr/sbin/sdcard_state.sh request_deactivation
   echo "$(date "+%d.%m.%y %T") SD card deactivated"
 
@@ -39,7 +47,7 @@ function fileTransfer() {
     cp -a $active_dir/projects $archive_dir/$archive_filename
     sleep 1
   
-    # remove project from PLC if it was successfully archived, exit if not
+    # continue uploading only if project was successfully archived
     if [ -d $archive_dir/$archive_filename ]; then
       echo "$(date "+%d.%m.%y %T") Successfully archived, removing $old_project_name from PLC"
       rm -r $active_dir/projects/PCWE
@@ -56,6 +64,7 @@ function fileTransfer() {
   echo "$(date "+%d.%m.%y %T") Uploading $new_project_name to PLC"
   cp -a $active_dir/PCWE $active_dir/projects
   rm -r $active_dir/PCWE
+  rm -r $active_dir/PCWE.zip
 
   new_uploaded_project=$(get_project_name "$active_dir/projects/PCWE/PCWE.software-package-manifest.json")
   echo "$(date "+%d.%m.%y %T") Project on PLC: $new_uploaded_project"
@@ -71,22 +80,19 @@ function fileTransfer() {
   sudo reboot
 }
 
+# sleep to ensure project is fully uploaded before performing actions on it
 echo "$(date "+%d.%m.%y %T")"
 sleep 45
 
-# shouldn't need to check because a PCWE folder isn't added or changed in /opt/plcnext/ during reboot
-# so Upload.sh won't be called unless we want it to be called (via uploading a project)
-#if [ -f "$FLAG_FILE" ]; then
-#  echo "$(date "+%d.%m.%y %T") Reboot detected, not performing upload"
-#  exit 0
-#fi
-
 # check that a properly formatted SD card is inserted
 if [ -d /media/rfs/externalsd/upperdir/opt/plcnext ]; then
+  unzip -o /media/rfs/internalsd/upperdir/opt/plcnext/PCWE.zip
+  sleep 5
   # check that the file that triggered inotify is a project
   if [ -d /media/rfs/internalsd/upperdir/opt/plcnext/PCWE ]; then
     echo "$(date "+%d.%m.%y %T") SD card inserted, performing upload"
     sudo /etc/init.d/plcnext stop
+    init
     fileTransfer
     exit 0
   else
