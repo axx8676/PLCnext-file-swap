@@ -1,0 +1,32 @@
+var oTxt_SecurityProfile_Content =
+{
+    /********************* Security - Security Profile ***********************/
+    "c_security_profile_info":"Security-Profil",
+    
+    "c_secprofile_status"              :"Aktueller Aktivierungsstatus",
+    "c_secprofile_status_activated"    :"Aktiviert",
+    "c_secprofile_status_deactivated"  :"Deaktiviert",
+    "c_secprofile_status_activating"   :"Wird aktiviert ...",
+    "c_secprofile_status_deactivating" :"Wird deaktiviert ...",
+    "c_secprofile_activation"          :"Aktivierung des Security-Profils",
+    
+    "c_secprofile_activated_main"    :"&nbsp;Security-Profil aktiviert",
+    "c_secprofile_deactivated_main"  :"&nbsp;Security-Profil deaktiviert",
+    
+    "c_secprofile_activation_info_text"   : "Aktiviert: Der Controller startet mit geringster Funktionalität entsprechend der Security-Anforderungen.",
+    "c_secprofile_deactivation_info_text" : "Deaktiviert: Der Controller unterstützt die Konfiguration aller offenen Schnittstellen.",
+    "c_secprofile_suitable_info_text"     : " - Bitte prüfen Sie, ob diese Konfiguration für Ihre Anwendung geeignet ist.",
+    "c_secprofile_riskanalysis_info_text" : " - Es wird empfohlen eine Security-Risikoanalyse durchzuführen.",
+    "c_secprofile_additional_info_text"   : " - Beim Aktivieren oder Deaktivieren des Security-Profils wird der Controller auf Werkseinstellungen (Typ 1) zurückgesetzt.",
+    
+    "c_secprofile_sm_act_factoryreset_req_info"   : "Achtung: Beim Aktivieren des Security-Profils wird der Controller auf Werkseinstellungen (Typ 1) zurückgesetzt und anschließend neu gestartet. Möchten Sie mit der Aktivierung des Security-Profils fortfahren?",
+    "c_secprofile_sm_deact_factoryreset_req_info" : "Achtung: Beim Deaktivieren des Security-Profils wird der Controller auf Werkseinstellungen (Typ 1) zurückgesetzt und anschließend neu gestartet. Möchten Sie mit der Deaktivierung des Security-Profils fortfahren?",
+    "c_secprofile_sm_status_read_failed"          : "Ein Fehler ist beim Lesen des Security-Profilstatus aufgetreten.",
+    
+    "c_secprofile_activate_security_profile"   : "Security-Profil aktivieren",
+    "c_secprofile_deactivate_security_profile" : "Security-Profil deaktivieren",
+    "c_secprofile_cancle_text"                 : "Abbrechen",
+    
+    "c_secprofile_activation_error"   : "Aktivierung des Security-Profils fehlgeschlagen mit Fehlercode: ",
+    "c_secprofile_deactivation_error" : "Deaktivierung des Security-Profils fehlgeschlagen mit Fehlercode: ",
+};

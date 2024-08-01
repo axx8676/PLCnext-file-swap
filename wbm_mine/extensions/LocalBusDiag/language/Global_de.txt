@@ -1,0 +1,5 @@
+var oTxt_Global_Content =
+{
+    /********************* Local Bus ***********************/
+    "id_menu_subitem_localbusdiag_localbusdiagnostics"        :"Lokalbus",
+};

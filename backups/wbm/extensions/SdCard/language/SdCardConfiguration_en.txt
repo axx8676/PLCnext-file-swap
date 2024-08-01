@@ -1,0 +1,88 @@
+﻿var oTxt_SdCardConfiguration_Content =
+{
+    /********************* Security - SD Card ***********************/
+    "c_proficloud_sdcard_info":"SD card",
+    
+    /* Status */
+    "c_sdcard_current_storage"           : "Current device file storage (overlay file system)",
+    "c_sdcard_internal_sdcard_storage"   : "Internal SD card",
+    "c_sdcard_external_sdcard_storage"   : "External SD card",
+    "c_sdcard_system_message"            : "system message",
+    "c_sdcard_ext_not_available"         : "External SD card not inserted",
+    "c_sdcard_ext_not_encrypted"         : "Inserted SD card not encrypted",
+    "c_sdcard_ext_encrypted"             : "Inserted SD card encrypted",
+    "c_sdcard_ext_no_encryption_support" : "Inserted SD card has no encryption support",
+    "c_sdcard_ext_no_encryption_unknown" : "Encryption status of inserted SD card is unknown",
+    "c_sdcard_ext_encryption_request"    : "Encryption request present",
+    "c_sdcard_ext_decryption_request"    : "Decryption request present",
+    "c_sdcard_activate_encryption"       : "Activate encryption",
+    "c_sdcard_deactivate_encryption"     : "Deactivate encryption",
+    "c_sdcard_activate_support"          : "Activate support",
+    "c_sdcard_deactivate_support"        : "Deactivate support",
+    "c_sdcard_set_recovery_password"     : "Set recovery password",
+    "c_sdcard_del_recovery_password"     : "Delete recovery password",
+    "c_sdcard_sd_card_encryption"        : "SD card encryption",
+    "c_sdcard_recovery_password"         : "Recovery password",
+    "c_sdcard_encryption_password"       : "Encryption password",
+    "c_sdcard_encryption_password_confirm" : "Confirm encryption password",
+    "c_sdcard_password"                  : "Password",
+    "c_sdcard_recovery_password_confirm" : "Confirm recovery password",
+    "c_sdcard_password_confirm"          : "Confirm password",
+    "c_sdcard_show_password"             : "Show password",
+    "c_sdcard_recovery_passwort_set"     : "Password is set",
+    "c_sdcard_activated"                 : "Activated",
+    "c_sdcard_deactivated"               : "Deactivated",
+    "c_sdcard_activation_request"        : "Activation request present",
+    "c_sdcard_deactivation_request"      : "Deactivation request present",
+    "c_sdcard_recovery_passwort_unset"   : "Password is not set",
+    "c_sdcard_password_input"            : "Password creation",
+    "c_sdcard_copy_password_clipboaed"   : "Copy password to clipboard",
+    
+    /* Configuration */
+    "c_sdcard_support_external_sdcard"          : "Support for external SD card",
+    "c_sdcard_set_password_for_data_protection" : "Set password",
+    "c_sdcard_data_protection_config"           : "Data protection",
+    
+    "id_sdcard_form_set_encryption_password_title" : "Set password for SD card encryption",
+    "id_sdcard_form_set_recovery_password_title"   : "Set recovery password to unlock protected SD card",
+    "c_sdcard_set_ext_card_recovery_passwd"        : "Recovery password to unlock the protected SD card",
+    
+    "c_sdcard_input_enter"    : "Enter", 
+    "c_sdcard_input_generate" : "Generate", 
+    
+    /* System messages */
+    "c_sdcard_sm_sd_card_activated"          : "SD card support is activated",
+    "c_sdcard_sm_sd_card_deactivated"        : "SD card support is deactivated",
+	"c_sdcard_sm_sd_card_notsupported"       : "External SD card not supported",
+    "c_sdcard_sm_reboot_after_deactivation"  : "Attention: The support for the external SD card has been disabled. The full deactivation requires a system reboot",
+    "c_sdcard_sm_reboot_after_activation"    : "Attention: The support for the external SD card has been enabled. The full activation requires a system reboot",
+    "c_sdcard_sm_reboot_after_encryption"    : "Attention: An encryption request is present for the external SD card. The full encryption requires a system reboot",
+    "c_sdcard_sm_reboot_after_decryption"    : "Attention: A decryption request is present for the external SD card. The full decryption requires a system reboot",
+    "c_sdcard_sm_reset_local_modification"   : "Unsaved configuration changes are being discarded!",
+    "c_sdcard_sm_local_modification_reseted" : "Unsaved configuration changes are discarded!",
+    "c_sdcard_sm_apply_local_modification"   : "Applying SD card configurations...",
+    "c_sdcard_sm_no_changes_detected"        : "No unsaved configuration changes detected",
+    "c_sdcard_sm_changes_detected"           : "The page has unsaved configuration changes!",
+    "c_sdcard_sm_undefined_sys_message"      : "Undefined system message!",
+    "c_sdcard_sm_config_error_occured"       : "Configuration error occurred!",
+    "c_sdcard_sm_comm_error_occured"         : "Communication error occurred!",
+    "c_sdcard_sm_function_not_supported"     : "Function is not supported for this controller",
+    "c_sdcard_sm_factory_reset_reactivation" : "Reactivation after Factory Reset",
+    "c_sdcard_sm_factory_reset_reactivation_1" : "If enabled, the external SD card will be activated after a factory reset.",
+    "c_sdcard_sm_factory_reset_reactivation_2" : "If disabled and the support for external SD card is active, the external SD card remains activated after a factory reset.",
+    "c_sdcard_sm_factory_reset_reactivation_3" : "If disabled and the support for external SD card is deactivated, the external SD card remains deactivated after a factory reset.",
+
+    "c_sdcard_sm_factory_reset_reactivation_enabled" : "Reactivation after Factory Reset is enabled.",
+    "c_sdcard_sm_factory_reset_reactivation_disabled" : "Reactivation after Factory Reset is disabled.",
+
+    "c_sdcard_del_recovery_password_warning_info" : "Attention: The recovery password to unlock the protected SD card will be deleted. Do you want to proceed with deleting the recovery password?",
+    "c_sdcard_deactivate_encryption_warning_info" : "Attention: During the next system reboot, the external SD card is decrypted and the controller is reset to default setting type 1. Do you want to continue with the decryption?",
+    "c_sdcard_activate_encryption_warning_info"   : "Attention: During the next system reboot, the external SD card is encrypted and the controller is reset to default setting type 1. Do you want to continue with the encryption?",
+
+    /* System warning messages */
+    "c_sdcard_sm_warning" : "Warning",
+    "c_sdcard_sm_activation_warning_1" : "Use of external SD card requires physical protection of the device!",
+    "c_sdcard_sm_activation_warning_2" : "Ensure that only authorized personal has access to the SD card!",
+    "c_sdcard_sm_activation_warning_3" : "SD card contains sensitive private data which might be readable by persons accessing it.",
+
+};

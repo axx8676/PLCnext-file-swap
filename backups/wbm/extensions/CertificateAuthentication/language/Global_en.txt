@@ -1,0 +1,5 @@
+﻿var oTxt_Global_Content =
+{
+    /********************* Certificates *********************/
+    "id_menu_subitem_certificateauthentication_certificates":"Certificate Authentication",
+};

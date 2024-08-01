@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - Date and Time</title>
+<meta charset="UTF-8">
+<script src="HelpFunctions.js"></script>
+<script src="Utilities.js"></script>
+<script src="Language.js"></script>
+<script src="extensions/RealTimeClock/DateTime.js"></script>
+<script src="validation_rules.js"></script>
+<link rel="stylesheet" type="text/css" href="extensions/RealTimeClock/DateTime.css">
+<style>
+</style>
+</head>
+<body>
+    <h1 id="id_demopage1_pagetitle_info"><span class="c_menu_title_config"></span></h1>
+    <div class="pxc-plt-ctrl">
+        <div class="pxc-p-plain">
+            <h3 id="id_subpagetitle_datetime" class="c_datetime_subtitle_info">Date and Time</h3>
+            <hr>
+        </div>
+        <div id="id_realtimeclock_div_content" class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+            <table id="id_realtimeclock_table_current_timestamp" class="pxc-tbl-zebra pxc-rd-align-middle" style="width:100%">
+                <colgroup>
+                    <col style="width: 300px">
+                    <col style="width: 200px">
+                    <col style="width: 0%">
+                </colgroup>
+                <tr class="c_realtimeclock_table_synchronization_header">
+                    <th class="c_realtimeclock_table_header_realtimeclock" colspan="3">Real Time Clock</th>
+                </tr>
+                <tr>
+                    <td><span class="c_realtimeclock_current_timestamp">Current timestamp (DD.MM.YYYY hh:mm:ss)</span></td>
+                    <td><span id="id_realtimeclock_span_current_timestamp_value">n/a</span></td>
+                    <td>
+                        <div class="pxc-btm-btn-align" style="margin: 5px">
+                            <button id="id_button_realtimeclock_timestamp_refresh" class="pxc-btn-pa"><span class="c_glb_btn_refresh">Refresh</span></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <br>
+        <h3 class="c_ntpconfig_client_configuration">NTP Client Configuration</h3>
+        <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+            <table id="id_ntpconfig_table" class="pxc-tbl-zebra pxc-tbl-ntp-config" style="width:100%">
+                <colgroup>
+                    <col style="width: 5%">
+                    <col style="width: 45%">
+                    <col style="width: 45%">
+                    <col style="width: 5%">
+                </colgroup>
+                <tbody>
+                    <tr class="c_ntpconfig_table_header even">
+                         <th class="c_ntpconfig_server_number_header">No.</th>
+                         <th class="c_ntpconfig_server_hostname_header">Server Hostname</th>
+                         <th class="c_ntpconfig_server_comment_header" style=" word-wrap: break-word;">Comment</th>
+                         <th></th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="exclude">
+                        <td colspan="1">
+                            <div class="pxc-div-css-table-vm-align" style="display: inline;">
+                                <div>
+                                <button id="id_button_ntpconfig_add_entry" class="pxc-btn-plus tooltip">
+                                    <span class="tooltip-text-top c_ntpconfig_server_add_entry">Add NTP server entry</span>
+                                </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                 </tbody>
+             </table>
+          </div>
+                <button id="id_button_ntpconfig_apply_changes" class="pxc-btn-pa sticky-button-bottom" style="float: right;"><span class="c_glb_th_config_apply">Apply</span></button>
+                <button id="id_button_ntpconfig_discard_changes" class="pxc-btn sticky-button-bottom" style="float: right; margin: 0px 5px;"><span class="c_glb_th_config_discard">Discard</span></button>
+    </div>
+    <div id="id_ntpconfig_div_modal_addedit_server" class="modal">
+        <div class="modal-content">
+            <div class="container">
+                <h1 id="id_ntpconfig_form_add_server_title" class="c_ntpconfig_server_add_entry">Add NTP server entry</h1>
+                <h1 id="id_ntpconfig_form_edit_server_title" class="c_ntpconfig_server_edit_entry">Edit NTP server entry</h1>
+                <form id="id_form_ntpconfig_add_edit_entry" >
+                    <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                        <table class="pxc-tbl-zebra" id="id_table_ntpconfig_server_add_entry" style="width:100%">
+                            <thead>
+                                </thead><colgroup>
+                                    <col style="width: 40%">
+                                    <col style="width: 60%">
+                                </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th colspan="2" class="c_ntpconfig_server_configuration_header">Server Configuration</th>
+                                </tr>
+                                <input id="id_input_ntpconfig_id" type="text" name="id" readonly="" style="visibility: hidden;">
+                                <tr class="c_ntpconfig_server_number odd">
+                                    <td>
+                                        <span class="c_ntpconfig_server_number_header">No.</span>
+                                    </td>
+                                    <td>
+                                        <input id="id_input_ntpconfig_server_number" type="text" name="number" readonly="">
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                        <span class="c_ntpconfig_server_status_header">Status</span>
+                                    </td>
+                                    <td>
+                                        <select id="id_select_ntpconfig_server_status" name="status" style="float: left; width: 100%">
+                                            <option class="c_ntpconfig_server_active" value="active" selected>Active</option>
+                                            <option class="c_ntpconfig_server_inactive" value="inactive">Inactive</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                        <span class="c_ntpconfig_server_hostname_header">Hostname</span>
+                                    </td>
+                                    <td>
+                                        <input id="id_input_ntpconfig_server_host_name" class="hostname" type="text" name="hostName">
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                        <span class="c_ntpconfig_server_min_poll_header">Min. polling time </span>
+                                    </td>
+                                    <td>
+                                        <select id="id_select_ntpconfig_server_min_poll" name="minPoll" style="float: left; width: 100%">
+                                            <option value=""></option>
+                                            <option value="4">16 sec</option>
+                                            <option value="5">32 sec</option>
+                                            <option value="6" selected="selected">1 min 4 sec</option>
+                                            <option value="7">2 min 8 sec</option>
+                                            <option value="8">4 min 16 sec</option>
+                                            <option value="9">8 min 32 sec</option>
+                                            <option value="10">17 min 4 sec</option>
+                                            <option value="11">34 min 8 sec</option>
+                                            <option value="12">1 hrs 8 min 16 sec</option>
+                                            <option value="13">2 hrs 16 min 32 sec</option>
+                                            <option value="14">4 hrs 33 min 4 sec</option>
+                                            <option value="15">9 hrs 6 min 8 sec</option>
+                                            <option value="16">18 hrs 12 min 16 sec</option>
+                                            <option value="17">36 hrs 24 min 32 sec</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                        <span class="c_ntpconfig_server_max_poll_header">Max. polling time </span>
+                                    </td>
+                                    <td>
+                                        <select id="id_select_ntpconfig_server_max_poll" name="maxPoll" style="float: left; width: 100%">
+                                            <option value=""></option>
+                                            <option value="4">16 sec</option>
+                                            <option value="5">32 sec</option>
+                                            <option value="6">1 min 4 sec</option>
+                                            <option value="7">2 min 8 sec</option>
+                                            <option value="8">4 min 16 sec</option>
+                                            <option value="9">8 min 32 sec</option>
+                                            <option value="10" selected="selected">17 min 4 sec</option>
+                                            <option value="11">34 min 8 sec</option>
+                                            <option value="12">1 hrs 8 min 16 sec</option>
+                                            <option value="13">2 hrs 16 min 32 sec</option>
+                                            <option value="14">4 hrs 33 min 4 sec</option>
+                                            <option value="15">9 hrs 6 min 8 sec</option>
+                                            <option value="16">18 hrs 12 min 16 sec</option>
+                                            <option value="17">36 hrs 24 min 32 sec</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>
+                                        <span class="c_ntpconfig_server_comment_header">Comment</span>
+                                    </td>
+                                    <td>
+                                        <input id="id_input_ntpconfig_server_comment" type="text" class="ntp-server-comment" name="comment">
+                                    </td>
+                                </tr>
+                             </tbody>
+                        </table>
+                    </div>
+                    <div class="centered">
+                        <button type="submit" id="id_button_ntpconfig_add_edit_ok" class="pxc-btn-pa" used-option="none"><span class="c_glb_btn_ok">Ok<span></button>
+                        <button type="button" id="id_button_ntpconfig_cancel" class="pxc-btn"><span class="c_glb_btn_cancel">Cancel</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Storage reset modal-->
+    <div class="modal" id="id_div_ntpconfig_modal_set_entries">
+        <div class="modal-content">
+            <div class="container">
+                <div class="pxc-f-gradbox" style="margin-top: 14px;">
+                    <span class="c_ntpconfig_modal_set_entries_description" style="color:red;font-weight: bold">Attention: Applying the new NTP daemon's configuration requires a restart of the NTP daemon in order to take effect. However, a restart of the NTP daemon may result in a real-time violation.</span>
+                </div>
+                <br>
+                <div class="centered">
+                    <button id="id_rtc_ntpconfig_button_set_ok" class="pxc-btn-pa"><span class="c_glb_btn_confirm">OK</span></button>
+                    <button id="id_rtc_ntpconfig_button_set_cancel" class="pxc-btn"><span class="c_glb_btn_cancel">Cancel</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Discard confirm -->
+    <div class="modal" id="id_rtc_discard_modal">
+        <div class="modal-content">
+            <div class="container">
+                <div id="id_rtc_discard_warning_div" class="pxc-f-gradbox">
+                    <span id="id_rtc_discard_config_info" class="c_glb_discard_config_warning" style="color:red;font-weight: bold;"></span>
+                </div>
+                <br>
+                <div style="display: flex;justify-content: center;">
+                    <button class="pxc-btn-pa" id="id_rtc_discard_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                    <span>&nbsp; </span>
+                    <button class="pxc-btn" id="id_rtc_discard_cancle_btn"><span class="c_glb_th_config_cancel"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+﻿var oTxt_Global_Content =
+{
+    /********************* Network Configuration ***********************/
+    "id_menu_subitem_netconf_networkconfiguration": "Network",
+};

@@ -1,0 +1,6 @@
+﻿var oTxt_Global_Content =
+{
+    /********************* Cockpit Page *********************/
+    "id_menu_subitem_systemcockpit_cockpit":"Cockpit",
+
+};

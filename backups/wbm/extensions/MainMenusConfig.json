@@ -1,0 +1,150 @@
+{
+    "MainMenusConfig": [
+        {
+            "MenuTitle": "overview",
+            "IsInternal": true,
+            "MenuItems": [
+                {
+                    "PageName": "GeneralData",
+                    "ModuleName": "Di",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "Cockpit",
+                    "ModuleName": "SystemCockpit",
+                    "PageFolder": ""
+                }
+            ]
+        },
+        {
+            "MenuTitle": "config",
+            "IsInternal": true,
+            "MenuItems": [
+                {
+                    "PageName": "FanControlConfiguration",
+                    "ModuleName": "FanControl",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "NetworkConfiguration",
+                    "ModuleName": "NetConf",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "PLCnextStore",
+                    "ModuleName": "PLCnextStore",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "ProficloudServices",
+                    "ModuleName": "ProfiCloudV3",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "DateTime",
+                    "ModuleName": "RealTimeClock",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "SystemServices",
+                    "ModuleName": "Scm",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "WebConfiguration",
+                    "ModuleName": "Wcm",
+                    "PageFolder": ""
+                }
+            ]
+        },
+        {
+            "MenuTitle": "diagnostics",
+            "IsInternal": true,
+            "MenuItems": [
+                {
+                    "PageName": "LocalBusDiagnostics",
+                    "ModuleName": "LocalBusDiag",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "NotificationLog",
+                    "ModuleName": "NotificationLog",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "ProfinetDiagnostics",
+                    "ModuleName": "Profinet",
+                    "PageFolder": ""
+                }
+            ]
+        },
+        {
+            "MenuTitle": "security",
+            "IsInternal": true,
+            "MenuItems": [
+                {
+                    "PageName": "Certificates",
+                    "ModuleName": "CertificateAuthentication",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "Firewall",
+                    "ModuleName": "Fwm",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "SdCardConfiguration",
+                    "ModuleName": "SdCard",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "SecurityProfile",
+                    "ModuleName": "Spm",
+                    "PageFolder": ""
+                }
+            ]
+        },
+        {
+            "MenuTitle": "administration",
+            "IsInternal": true,
+            "MenuItems": [
+                {
+                    "PageName": "PLCnextApps",
+                    "ModuleName": "AppManager",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "FirmwareUpdate",
+                    "ModuleName": "FirmwareUpdater",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "LicenseManager",
+                    "ModuleName": "Lm",
+                    "PageFolder": ""
+                }
+            ]
+        },
+        {
+            "MenuTitle": "Security",
+            "IsInternal": false,
+            "MenuItems": [
+                {
+                    "PageName": "SyslogConfiguration",
+                    "ModuleName": "Syslog",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "UserManager",
+                    "ModuleName": "Um",
+                    "PageFolder": ""
+                },
+                {
+                    "PageName": "LdapConfiguration",
+                    "ModuleName": "Um",
+                    "PageFolder": ""
+                }
+            ]
+        }
+    ]
+}

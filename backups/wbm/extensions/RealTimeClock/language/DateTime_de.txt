@@ -1,0 +1,28 @@
+var oTxt_DateTime_Content =
+{
+    /********************* Page 1 ***********************/
+    "c_datetime_subtitle_info"                      :   "Datum und Uhrzeit",
+    "c_realtimeclock_table_header_realtimeclock"    :   "Echtzeituhr",
+    "c_realtimeclock_current_timestamp"             :   "Aktueller Zeitstempel (DD.MM.YYYY hh:mm:ss)",
+    "c_ntpconfig_client_configuration"              :   "NTP-Client-Konfiguration",
+    "c_ntpconfig_server_number_header"              :   "Nr.",
+    "c_ntpconfig_server_hostname_header"            :   "Server-Hostname",
+    "c_ntpconfig_server_comment_header"             :   "Kommentar",
+    "c_ntpconfig_server_status_header"              :   "Status",
+    "c_ntpconfig_server_active"                     :   "Aktiv",
+    "c_ntpconfig_server_inactive"                   :   "Inaktiv",
+    "c_ntpconfig_server_min_poll_header"            :   "Min. Aktualisierungszeit",
+    "c_ntpconfig_server_max_poll_header"            :   "Max. Aktualisierungszeit",
+    "c_ntpconfig_server_add_entry"                  :   "NTP-Servereintrag hinzufügen",
+    "c_ntpconfig_server_edit_entry"                 :   "NTP-Servereintrag bearbeiten",
+    "c_ntpconfig_server_remove_entry"               :   "NTP-Servereintrag entfernen",
+    "c_ntpconfig_server_configuration_header"       :   "Serverkonfiguration",
+    "c_ntpconfig_modal_set_entries_warning_header"  :   "Warnung",
+    "c_realtimeclock_error_message_gettingcurrenttimestampfailed" : "Abruf des aktuellen Zeitstempels fehlgeschlagen.",
+    "c_realtimeclock_error_message_gettingntpconfigentriesfailed" : "Abruf der Einträge der NTP-Konfiguration fehlgeschlagen.",
+    "c_realtimeclock_error_message_settingntpconfigentriesfailed" : "Setzen der Einträge der NTP-Konfiguration fehlgeschlagen.",
+    "c_realtimeclock_info_message_settingntpconfigentriessucceeded" : "Setzen der Einträge der NTP-Konfiguration erfolgreich. NTP-Daemon wurde neu gestartet.",
+    "c_ntpconfig_modal_set_entries_description" : "Achtung: Das Anwenden der neuen NTP-Daemon-Konfiguration erfordert einen Neustart des NTP-Daemons um aktiv zu werden. Der Neustart kann zu Verletzungen der Echtzeit führen.",
+    "c_realtimeclock_info_message_discardingntpconfigchangessucceeded": "Verwerfen der Änderungen der NTP-Konfiguration erfolgreich.",
+    "c_realtimeclock_info_message_discardingntpconfigchangesfailed" : "Verwerfen der Änderungen der NTP-Konfiguration fehlgeschlagen."
+};

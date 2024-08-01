@@ -1,0 +1,5 @@
+var oTxt_Global_Content =
+{
+    /*** License Management ***/
+    "id_menu_subitem_lm_licensemanager":"Lizenzmanagement",
+};

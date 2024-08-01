@@ -1,0 +1,24 @@
+var oTxt_SplcConfiguration_Content =
+{
+    /***** PROFIsafe / SPLC Configuration ****/
+    "c_splc_subtitle_info"            : "SPLC",
+    "c_splc_notifications_activation" : "Benachrichtigungen Aktivieren/Deaktivieren",
+    
+    /* Notifications activation table */
+    "c_splc_notifications"           : "SPLC-Benachrichtigungen",
+    "c_splc_notification_activation" : "Aktivierung",
+    
+    /* Notifications F-Address Ranges */
+    "c_splc_notifications_f_address_ranges"  : "F-Adressbereiche der Benachrichtigungen",
+    "c_splc_notifications_f_address_info"    : "(Nur SPLC-Benachrichtigungen innerhalb dieser F-Adressbereiche sind aktiviert)",
+    "c_splc_notifications_f_start_address"   : "Startadresse",
+    "c_splc_notifications_f_end_address"     : "Endadresse",
+    "c_splc_add_f_addr_range_button_text"    : "F-Addressbereich hinzufügen",
+    "c_splc_delete_f_addrrange_button_text"  : "F-Adressbereich entfernen",
+    
+    /* Messages */
+    "c_splc_no_entries_available"          : "Keine Einträge vorhanden!",
+    "c_splc_invalid_f_addrrange_format"    : "Ungültiger F-Adressbereich verwendet. Definierter F-Addressbereich ist 1 - 65535!",
+    "c_splc_status_text_internal_error"    : "Ein interner Fehler ist beim aufgetreten: ",
+  
+};

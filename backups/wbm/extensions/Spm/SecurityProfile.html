@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - Security Profile</title>
+<meta charset="UTF-8">
+<script src="Session.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="Language.js"></script>
+<script src="extensions/Spm/SecurityProfile.js"></script>
+<style>
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 600px;
+}
+
+.container {
+    padding: 16px;
+}
+</style>
+</head>
+<body>
+    <h1 id="id_pagetitle_security" class="c_menu_title_security">Security</h1>
+  
+    <div class="pxc-plt-ctrl">
+        <div class="pxc-p-plain">
+            <h3 id="id_subpagetitle_security_profile" class="c_security_profile_info"></h3>
+                
+            <hr></hr>
+                
+            <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                <table class="pxc-tbl-zebra" style="width:100%">
+                    <colgroup>
+                        <col style="width: 30%">
+                        <col style="width: 70%">
+                    </colgroup>
+                    <tr>
+                        <th colspan="2" class="c_glb_th_status" scope="row"></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="c_secprofile_status"></span>
+                        </td>
+                        <td>
+                             <span id="id_secprofile_status_activated"      hidden class="c_secprofile_status_activated"></span>
+                             <span id="id_secprofile_status_deactivated"    hidden class="c_secprofile_status_deactivated"></span>
+                             <span id="id_secprofile_status_activating"     hidden class="c_secprofile_status_activating"></span>
+                             <span id="id_secprofile_status_deactivating"   hidden class="c_secprofile_status_deactivating"></span>
+                             <span id="id_secprofile_sm_status_read_failed" hidden class="c_secprofile_sm_status_read_failed" style="color: red;">An error occurred while reading the Security Profile status: </span>
+                             <span id="id_secprofile_status_add_info"       hidden style="color:red; "></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>   
+            <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                <form id="id_secprofile_configs_table_form">
+                    <table class="pxc-tbl-zebra" style="width:100%">
+                        <colgroup>
+                            <col style="width: 30%">
+                            <col style="width: 70%">
+                        </colgroup>
+                        <tr>
+                            <th colspan="2" class="c_glb_th_configuration" scope="row"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="c_secprofile_activation"></span>
+                            </td>
+                            <td>
+                                 <input type="checkbox" id="id_secprofile_profile_enabled_cb" >
+                                 <hr></hr>
+                                 <span class="c_secprofile_activation_info_text"></span>
+                                 <br>
+                                 <span class="c_secprofile_deactivation_info_text"></span>
+                                 <br></br>
+                                 <span class="c_secprofile_suitable_info_text"></span>
+                                 <br>
+                                 <span class="c_secprofile_riskanalysis_info_text"></span>
+                                 <br>
+                                 <span class="c_secprofile_additional_info_text"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <br>
+            <button class="pxc-btn-pa sticky-button-bottom" id="id_secprofile_apply_config_button" style="float: right;"><span class="c_glb_th_config_apply_restart"></span></button>
+            <button class="pxc-btn sticky-button-bottom" id="id_secprofile_discard_config_button" style="float: right; margin: 0px 5px;"><span class="c_glb_th_config_discard"></span></button>
+        </div>
+    </div>
+    <!-- Factory reset type 1 Modal -->
+    <div class="modal" id="id_div_secprofile_apply_confirm">
+        <div class="modal-content">
+            <div class="container">
+                <div hidden id="id_secprofile_activation_warning_div" class="pxc-f-gradbox">
+                    <span id="id_secprofile_sm_act_factoryreset_req_info"   class="c_secprofile_sm_act_factoryreset_req_info"   style="color:red;font-weight: bold;"></span>
+                </div>
+                <div hidden id="id_secprofile_deactivation_warning_div" class="pxc-f-gradbox">
+                    <span id="id_secprofile_sm_deact_factoryreset_req_info"   class="c_secprofile_sm_deact_factoryreset_req_info"   style="color:red;font-weight: bold;"></span>
+                </div>
+                <br>
+                <div style="display: flex;justify-content: center;">
+                    <button hidden class="pxc-btn-pa" id="id_secprofile_activation_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                    <button hidden class="pxc-btn-pa" id="id_secprofile_deactivation_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                    <span>&nbsp; </span>
+                    <button class="pxc-btn" id="id_secprofile_operation_cancel_btn"><span class="c_secprofile_cancle_text"></span></button>   
+                </div>
+                <span hidden id="id_plcnextapps_sm_restart_appname"></span>
+            </div>
+            <span id="id_plcnextapps_conf_modal_id" hidden></span>
+        </div>
+    </div>
+    <div hidden>
+        <span id="id_secprofile_activation_error" class="c_secprofile_activation_error"></span>
+        <span id="id_secprofile_deactivation_error" class="c_secprofile_deactivation_error"></span>
+        <span id="id_secprofile_connection_error" class="c_glb_connection_error"></span>
+    </div>
+    <div class="modal" id="id_secprofile_discard_modal" ifacenumber="0">
+        <div class="modal-content">
+            <div class="container">
+                <div id="id_secprofile_discard_warning_div" class="pxc-f-gradbox">
+                    <span id="id_secprofile_discard_config_info"   class="c_glb_discard_config_warning"   style="color:red;font-weight: bold;"></span>
+                </div>
+                <br>
+                <div style="display: flex;justify-content: center;">
+                    <button class="pxc-btn-pa" id="id_secprofile_discard_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                    <span>&nbsp; </span>
+                    <button class="pxc-btn" id="id_secprofile_discard_cancle_btn"><span class="c_glb_th_config_cancel"></span></button>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pxc-loader-ico modal" id="id_div_loader"></div>
+</body>
+</html>

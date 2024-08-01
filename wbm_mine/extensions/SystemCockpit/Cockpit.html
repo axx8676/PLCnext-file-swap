@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - Cockpit</title>
+<title id="id_home_artname"></title>
+<meta charset="UTF-8">
+<link href="extensions/SystemCockpit/Cockpit.css" rel="styleSheet">
+<script src="Session.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="Language.js"></script>
+<script src="validation_rules.js"></script>
+<script src="extensions/SystemCockpit/PlcRuntime.js"></script>
+<script src="extensions/SystemCockpit/DeviceInterface.js"></script>
+<script src="extensions/SystemCockpit/Cockpit.js"></script>
+<script src="extensions/SystemCockpit/UserManagement.js"></script>
+<script src="extensions/SystemCockpit/UploadProject.js"></script>
+</head>
+<style>
+
+
+</style>
+<body>
+<h1 id="id_pagetitle_config"><span class="c_menu_title_overview">Overview</span></h1>
+<div class="pxc-p-plain">
+    <h3 id="id_subpagetitle_cockpit" class="c_cockpit_subtitle_info">Cockpit</h3>
+<hr>    
+  <div hidden id="id_cockpit_content">
+    <div id="id_cockpit_global_messages_div"></div>  
+    <div style="width: 100%">
+    <div id="id_cockpit_control_box" class="pxc-f-gradbox cockpit-control-box">
+      <div class="cockpit-control">
+        <div id="id_cockpit_control_plc_content_div" style="display: none;">
+          <!-- PLC STOP  -->
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_control_controller_stop">Stop the controller</span>
+            <button id="id_cockpit_control_controller_stop_btn" class="pxc-btn-stop cockpit-control-btn disabled"></button>
+          </div>
+          
+          <div class="cockpit-line-box"><div class="cockpit-vertical-line"></div></div>
+          
+          <!-- PLC START  -->
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_execute_hot_start">Execute a hot start. All data except will be initialized</span>
+            <button id="id_cockpit_control_execute_hotstart_btn" class="pxc-btn-hot-start cockpit-control-btn disabled"></button>
+          </div>
+          
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_execute_warm_start">Execute a warm start. All data except will be initialized</span>
+            <button id="id_cockpit_control_execute_warmstart_btn" class="pxc-btn-warm-start cockpit-control-btn disabled"></button>
+          </div>
+          
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_execute_cold_start">Execute a cold start. During a cold start all data is initialized</span>
+            <button id="id_cockpit_control_execute_coldstart_btn" class="pxc-btn-cold-start cockpit-control-btn disabled"></button>
+          </div>
+          
+          <div class="cockpit-line-box"><div class="cockpit-vertical-line"></div></div>
+          <!-- Retain Data  -->
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_save_retain_data">Save the Retain Data</span>
+            <button id="id_cockpit_save_retain_data_btn" class="pxc-btn-save-data cockpit-control-btn disabled"></button>
+          </div>
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_restore_last_retain_data">Restore last saved Retain Data</span>
+            <button id="id_cockpit_restore_last_retain_data_btn" class="pxc-btn-restore-data cockpit-control-btn disabled"></button>
+          </div>
+          <div class="cockpit-line-box"><div class="cockpit-vertical-line"></div></div>
+        </div>
+        <div id="id_cockpit_control_di_content_div" style="display: none;">
+         <!-- Controller Reboot & Factory Reset -->
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_reboot_controller">Reboot the controller</span>
+            <button id="id_cockpit_reboot_controller_btn" class="pxc-btn-restart cockpit-control-btn disabled">
+            </button>
+          </div>
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_reset_factory_defaults">Reset the Controller to factory defaults (type 1)</span>
+            <button id="id_cockpit_reset_factory_default_btn" class="pxc-btn-factory-reset cockpit-control-btn disabled"></button>
+          </div>
+        </div>
+        <div id="id_cockpit_control_um_content_div" style="display: none">
+          <div class="cockpit-line-box"><div class="cockpit-vertical-line" id="id_cockpit_control_um_content_preline"></div></div>
+          <!-- Change User Password -->
+          <div class="cockpit-control-container tooltip">
+            <span class="cockpit-tooltip-text c_cockpit_change_user_password">Change Password of current User</span>
+            <button id="id_cockpit_change_passwd_btn" class="pxc-btn-change-passwd cockpit-control-btn">
+            </button>
+          </div>
+        </div>
+        <div id="id_cockpit_control_up_content_div" style="display: inline-block">
+          <div class="cockpit-line-box"><div class="cockpit-vertical-line" id="id_cockpit_control_up_content_preline"></div></div>
+          <!-- Upload Project -->
+          <div class="cockpit-control-container tooltip">
+            <input hidden type="file" name="project_file" id="id_project_file_input" onchange="fileSelected();" ></input>
+            <span class="cockpit-tooltip-text c_cockpit_upload_project">Upload Project</span>
+            <button id="id_cockpit_upload_project_btn" class="pxc-btn-upload-project cockpit-control-btn"  onclick="handleFileInputClick('id_project_file_input')" ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- Left Half -->
+    <div class="split left-half">
+      <div id="id_cockpit_status_leds_box_div">
+        <div id="id_cockpit_status_leds_box" class="pxc-f-gradbox cockpit-container">
+           <div class="container-header">
+             <button class="pxc-btn-minus collapsible" style="float: left;"></button>
+             <span class="c_cockpit_diagnoctics_status_indicators">Diagnostics and Status Indicators</span>
+           </div>
+           <div id="id_cockpit_status_leds_content_div" class="container-content"></div> 
+         </div>
+         <br></br>
+      </div>
+      <div id="id_cockpit_health_box_div">
+        <div id="id_cockpit_health_box" class="pxc-f-gradbox cockpit-container">
+          <div class="container-header">
+              <button class="pxc-btn-minus collapsible" style="float: left;"></button>
+              <span class="c_cockpit_health">Health</span>
+          </div>
+          <div class="container-content">
+            <hr>
+            <div style="display: inline-block; width: 100%; margin-left: 5%;">
+                <span class="cockpit-element-header c_cockpit_board_temperature_val">Board Temperature:</span>
+                <div id="id_cockpit_health_board_temperature_progress_div" class="cockpit-progress">
+                    <div id="id_cockpit_health_board_temperature_bar_div" style="width: 0%;" class="cockpit-progress-container">N/A</div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <br></br>
+      </div>
+      <div id="id_cockpit_datetime_box_div">
+        <div id="id_cockpit_datetime_box" class="pxc-f-gradbox cockpit-container">
+          <div class="container-header">
+            <button class="pxc-btn-minus collapsible" style="float: left;"></button>
+            <span class="c_cockpit_datentime">Date and Time</span>
+          </div>
+          <div class="container-content">
+            <hr>
+            <div style="margin-left: 5%;">
+                <span style="display:inline-block; width: 280px; white-space: pre-wrap" class="c_cockpit_current_timestamp_val">Current Timestamp (DD.MM.YYYY HH:mm:ss):</span>
+                <input type="text" id="id_cockpit_datetime_timestamp_input" class="cockpit-value-input" style="width: 200px !important;" disabled></input>
+            </div>  
+            </br>
+            <div style="margin-left: 5%;">
+                <span style="display:inline-block; width: 280px; white-space: pre-wrap" class="c_cockpit_system_uptime_val">System Uptime ([DD:][HH:]mm:ss):</span>
+                <input type="text" id="id_cockpit_datetime_system_uptime_input"  class="cockpit-value-input" style="width: 200px !important;" disabled></input>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right half-->
+    <div class="split right-half">
+      <div id="id_cockpit_utilitation_box_div">
+        <div id="id_cockpit_utilitation_box" class="pxc-f-gradbox cockpit-container" style="margin-left: 3px;">
+          <div class="container-header">
+            <button class="pxc-btn-minus collapsible" style="float: left;"></button>
+            <span class="c_cockpit_utilization">Utilization</span>
+          </div>
+          <div class="container-content">
+            <hr>
+            <div style="display: inline-block; width: 100%; margin-left: 5%;">
+                <span class="cockpit-element-header c_cockpit_memory_val">Memory:</span>
+                <div id="id_cockpit_utilitation_memory_progress_div" class="cockpit-progress">
+                    <div id="id_cockpit_utilitation_memory_bar_div" style="width: 0%;" class="cockpit-progress-container">N/A</div>
+                </div>
+            </div>
+            <br></br>
+            <div style="display: inline-block; width: 100%; margin-left: 5%; position: relative;">
+                <span class="cockpit-element-header c_cockpit_user_partition_val">User Partition:</span>
+                <div id="id_cockpit_utilitation_user_partition_progress_div" class="cockpit-progress">
+                    <div id="id_cockpit_utilitation_user_partition_bar_div" style="width: 0%;" class="cockpit-progress-container">N/A</div>
+                    <div id="id_cockpit_utilitation_user_partition_bar_val_div" class="progress-value">&nbsp;<span id="id_cockpit_utilitation_user_partition_bar_val_span">N/A</span>&nbsp;</div>
+                </div>
+            </div>
+            <br></br>
+            <div style="display: inline-block; width: 100%; margin-left: 5%;">
+                <span class="cockpit-element-header c_cockpit_cpu_load_total_val">CPU Load (total):</span>
+                <div id="id_cockpit_utilitation_cpu_load_total_progress_div" class="cockpit-progress">
+                    <div id="id_cockpit_utilitation_cpu_load_total_bar_div" style="width: 0%;" class="cockpit-progress-container">N/A</div>
+                </div>
+            </div>
+            <br></br>
+            <div id="id_cockpit_utilitation_cpu_cores_div"></div>
+          </div>
+        </div>
+        <br></br>
+      </div>
+      <div id="id_cockpit_plcruntime_box_div" style="margin-left: 3px;" hidden>
+        <div id="id_cockpit_plcruntime_box" class="pxc-f-gradbox cockpit-container">
+          <div class="container-header">
+            <button class="pxc-btn-minus collapsible" style="float: left;"></button>
+            <span class="c_cockpit_plc_runtime">PLC Runtime</span>
+          </div>
+          <div class="container-content">
+            <hr>
+            <div style="display: inline-block; width: 100%; margin-left: 5%;">
+                <span class="cockpit-element-header c_cockpit_plc_state_val">PLC State:</span>
+                <input id="id_cockpit_plcruntime_status_input" type="text" value="N/A" class="cockpit-value-input" disabled></input>
+            </div>
+            <br></br>
+            <div style="display: inline-block; width: 100%; margin-left: 5%;">
+                <span class="cockpit-element-header c_cockpit_program_memory_val">Program Memory:</span>
+                <div id="id_cockpit_plcruntime_prog_memory_progress_div" class="cockpit-progress">
+                    <div id="id_cockpit_plcruntime_prog_memory_bar_div" style="width: 0%;" class="cockpit-progress-container">N/A</div>
+                    <div id="id_cockpit_plcruntime_prog_memory_val_span" class="progress-value">&nbsp;<span> N/A </span>&nbsp;</div>
+                </div>
+            </div>
+            <br></br>
+            <div style="display: inline-block; width: 100%; margin-left: 5%;">
+                <span class="cockpit-element-header c_cockpit_data_memory_val">Data Memory:</span>
+                <div id="id_cockpit_plcruntime_data_memory_progress_div" class="cockpit-progress">
+                    <div id="id_cockpit_plcruntime_data_memory_bar_div" style="width: 0%;" class="cockpit-progress-container">N/A</div>
+                    <div id="id_cockpit_plcruntime_data_memory_val_span" class="progress-value">&nbsp;<span> N/A </span>&nbsp;</div>
+                </div>
+            </div> 
+            <br></br>
+            <div style="display: inline-block; width: 100%; margin-left: 5%;">
+                <span class="cockpit-element-header c_cockpit_retain_memory_val">Retain Memory:</span>
+                <div id="id_cockpit_plcruntime_retain_memory_progress_div" class="cockpit-progress">
+                    <div id="id_cockpit_plcruntime_retain_memory_bar_div" style="width: 0%;" class="cockpit-progress-container">N/A</div>
+                    <div id="id_cockpit_plcruntime_retain_memory_val_span" class="progress-value">&nbsp;<span> N/A Byte </span>&nbsp;</div>
+                </div>
+            </div>
+                        
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Device Reboot Modal -->
+    <div class="modal" id="id_div_cockpit_reboot_confirm">
+        <div class="modal-content">
+            <div class="container">
+                <div id="id_cockpit_reboot_warning_div" class="pxc-f-gradbox">
+                    <span id="id_cockpit_reboot_warning_span" class="c_cockpit_reboot_warning" style="color:red;font-weight: bold;"></span>
+                </div>
+                <br>
+                <div style="display: flex;justify-content: center;">
+                    <button class="pxc-btn-pa" id="id_cockpit_reboot_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                    <button class="pxc-btn" id="id_cockpit_reboot_cancel_btn" style="padding-left: 5px;"><span class="c_glb_th_config_cancel"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Device Factory Reset Modal -->
+    <div class="modal" id="id_div_cockpit_factory_reset_confirm">
+        <div class="modal-content">
+            <div class="container">
+                <div id="id_cockpit_factory_reset_warning_div" class="pxc-f-gradbox">
+                    <span id="id_cockpit_factory_reset_warning_span" class="c_cockpit_factory_reset_warning" style="color:red;font-weight: bold;"></span>
+                    <span id="id_cockpit_factory_reset_warning_span_sp" class="c_cockpit_factory_reset_warning_sp" style="color:red;font-weight: bold;" hidden></span>
+                </div>
+                <br>
+                <div style="display: flex;justify-content: center;">
+                    <button class="pxc-btn-pa" id="id_cockpit_factory_reset_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                    <button class="pxc-btn" id="id_cockpit_factory_reset_cancel_btn" style="padding-left: 5px;"><span class="c_glb_th_config_cancel"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+  <div class="modal" id="id_cockpit_modal_change_user_password">
+    <div class="modal-content">
+      <div class="container">
+        <h1 id="id_cockpit_form_change_user_password_title" class="c_cockpit_change_user_password">Change current User Password</h1>
+        <div class="div-centered">
+          <form id="id_cockpit_form_change_user_password">
+            <label class="c_cockpit_username" style="width:150px; display: inline-block; padding-bottom:10px;">Username</label>
+            <input type="text" class="p_usermanager_input_username" id="id_cockpit_change_password_username" name="username" readonly style="width: 180px;"></br>
+            <div >
+                <label class="c_cockpit_current_password" style="width:150px; display: inline-block; padding-bottom:10px;">Current Password</label>
+                <input type="password" autocomplete="on" id="id_cockpit_change_password_input_current"
+                       class="p_cockpit_input_current_password um-userpass" name="currentPassword" style="width: 180px;"
+                       placeholder="Enter Current Password" maxlength="127" required></br>
+            </div>
+            <div >
+                <label class="c_cockpit_new_password" style="width:150px; display: inline-block; padding-bottom:10px;">New Password</label>
+                <input type="password" autocomplete="on" id="id_cockpit_change_password_input_new" style="width: 180px;"
+                       class="p_cockpit_input_new_password um-userpass" confirmpasswd="id_cockpit_change_password_input_new_confirm"
+                       name="newPassword" placeholder="Enter new Password" maxlength="127" required></br>
+            </div>
+            <div>
+                <label class="c_cockpit_confirm_new_password" style="width:150px; display: inline-block; padding-bottom:10px;">Confirm new Password</label>
+                <input type="password" autocomplete="on" id="id_cockpit_change_password_input_new_confirm" style="width: 180px;"
+                       class="p_cockpit_input_confirm_new_password um-userpass-confirm" mainpasswd="id_cockpit_change_password_input_new"
+                       name="confirmNewPassword" placeholder="Enter new Password again" maxlength="127" required></br>
+            </div>
+            <div class="centered">
+              <button type="submit" class="pxc-btn-pa"><span class="c_glb_th_config_save">Save</span></button>
+              <button type="button" class="pxc-btn" id="id_cockpit_change_password_btn_cancel"><span class="c_glb_th_config_cancel">Cancel</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

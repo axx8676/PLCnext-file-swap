@@ -1,0 +1,5 @@
+var oTxt_Global_Content =
+{
+    /********************* PLCnext Store *********************/
+    "id_menu_subitem_plcnextstore_plcnextstore": "PLCnext Store",
+};

@@ -1,0 +1,14 @@
+﻿var oTxtMainContent =
+{
+	/********************* HMI Settings ***********************/
+	"id_pagetitle_HMISettings":"HMI Settings",
+	"c_menu_title_hmisettings":"HMI Settings",
+	"id_subpagetitle_hmisettings":"The configuration can be done here.",
+	"id_td_eins":"first entry",
+	"id_td_zwei":"second entry",
+	"id_td_drei":"third entry",
+	"id_td_vier":"fourth entry",
+	"id_slider_brightness":"Display brightness",
+	"id_slider_brightness_text":"Set the screen brightness here.",
+	"id_slider_brightness_value":"Value: "
+};

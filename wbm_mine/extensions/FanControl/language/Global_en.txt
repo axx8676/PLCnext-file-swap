@@ -1,0 +1,6 @@
+﻿var oTxt_Global_Content =
+{
+    /********************* Configuration - Fan Control ***********************/
+    "id_menu_subitem_fancontrol_fancontrolconfiguration":"Fan Control",
+
+};

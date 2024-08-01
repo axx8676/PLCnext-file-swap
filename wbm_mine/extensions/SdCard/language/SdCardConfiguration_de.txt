@@ -1,0 +1,88 @@
+var oTxt_SdCardConfiguration_Content =
+{   
+    /********************* Security - SD Card ***********************/
+    "c_proficloud_sdcard_info":"SD-Karte",
+    
+    /* Status */
+    "c_sdcard_current_storage":"Aktueller Gerätespeicher (Overlay Filesystem)",
+    "c_sdcard_internal_sdcard_storage"   : "Interne SD-Karte",
+    "c_sdcard_external_sdcard_storage"   : "Externe SD-Karte",
+    "c_sdcard_system_message"            : "Systemnachricht",
+    "c_sdcard_ext_not_available"         : "Externe SD-Karte nicht gesteckt",
+    "c_sdcard_ext_not_encrypted"         : "Gesteckte SD-Karte nicht verschlüsselt",
+    "c_sdcard_ext_encrypted"             : "Gesteckte SD-Karte verschlüsselt",
+    "c_sdcard_ext_no_encryption_support" : "Gesteckte SD-Karte unterstützt keine Verschlüsselung",
+    "c_sdcard_ext_no_encryption_unknown" : "Verschlüsselungsstatus der gesteckten SD-Karte unbekannt!",
+    "c_sdcard_ext_encryption_request"    : "Verschlüsselungsanfrage vorhanden",
+    "c_sdcard_ext_decryption_request"    : "Entschlüsslungsanfrage vorhanden",
+    "c_sdcard_activate_encryption"       : "Verschlüsselung aktivieren",
+    "c_sdcard_deactivate_encryption"     : "Verschlüsselung deaktivieren",
+    "c_sdcard_activate_support"          : "Unterstützung aktivieren",
+    "c_sdcard_deactivate_support"        : "Unterstützung deaktivieren",
+    "c_sdcard_set_recovery_password"     : "Wiederherstellungs-Passwort setzen",
+    "c_sdcard_del_recovery_password"     : "Wiederherstellungs-Passwort löschen",
+    "c_sdcard_sd_card_encryption"        : "Verschlüsselung der SD-Karte",
+    "c_sdcard_recovery_password"         : "Wiederherstellungs-Passwort",
+    "c_sdcard_encryption_password"       : "Verschlüsselungs-Passwort",
+    "c_sdcard_encryption_password_confirm" : "Verschlüsselungs-Passwort wiederholen",
+    "c_sdcard_password"                  : "Passwort",
+    "c_sdcard_recovery_password_confirm" : "Wiederherstellungs-Passwort wiederholen",
+    "c_sdcard_password_confirm"          : "Passwort wiederholen",
+    "c_sdcard_show_password"             : "Passwort anzeigen",
+    "c_sdcard_recovery_passwort_set"     : "Gesetzt",
+    "c_sdcard_activated"                 : "Aktiviert",
+    "c_sdcard_deactivated"               : "Deaktiviert",
+    "c_sdcard_activation_request"        : "Aktivierungsanfrage vorhanden",
+    "c_sdcard_deactivation_request"      : "Deaktivierungsanfrage vorhanden",
+    "c_sdcard_recovery_passwort_unset"   : "Nicht gesetzt",
+    "c_sdcard_password_input"            : "Passworterstellung",
+    "c_sdcard_copy_password_clipboaed"   : "Passwort in die Zwischenablage kopieren",
+    
+    /* Configuration */
+    "c_sdcard_support_external_sdcard"          : "Unterstützung der externen SD-Karte",
+    "c_sdcard_set_password_for_data_protection" : "Passwort setzen",
+    "c_sdcard_data_protection_config"           : "Datenschutz",
+
+    "id_sdcard_form_set_encryption_password_title" : "Passwort für die Verschlüsselung der SD-Karte setzen",
+    "id_sdcard_form_set_recovery_password_title"   : "Wiederherstellungs-Passwort zum Entsperren der geschützten SD-Karte setzen",
+    "c_sdcard_set_ext_card_recovery_passwd"        : "Wiederherstellungs-Passwort zum Entsperren der geschützten SD-Karte",
+    
+    "c_sdcard_input_enter"    : "Eingeben", 
+    "c_sdcard_input_generate" : "Generieren", 
+    
+    /* System status messages */
+    "c_sdcard_sm_sd_card_activated"            : "Unterstützung der externen SD-Karte aktiviert",
+    "c_sdcard_sm_sd_card_deactivated"          : "Unterstützung der externen SD-Karte deaktiviert",
+    "c_sdcard_sm_sd_card_notsupported"         : "Externe SD-Karte nicht unterstützt",
+    "c_sdcard_sm_reboot_after_deactivation"    : "Achtung: Die Unterstützung der externen SD-Karte wurde deaktiviert. Zur vollständigen Deaktivierung ist ein Systemneustart erforderlich",
+    "c_sdcard_sm_reboot_after_activation"      : "Achtung: Die Unterstützung der externen SD-Karte wurde aktiviert. Zur vollständigen Aktivierung ist ein Systemneustart erforderlich",
+    "c_sdcard_sm_reboot_after_encryption"      : "Achtung: Die Verschlüsselung der externen SD-Karte wurde aktiviert. Zur vollständigen Verschlüsselung ist ein Systemneustart erforderlich",
+    "c_sdcard_sm_reboot_after_decryption"      : "Achtung: Die Entschlüsslung der externen SD-Karte wurde aktiviert. Zur vollständigen Entschlüsslung ist ein Systemneustart erforderlich",
+    "c_sdcard_sm_reset_local_modification"     : "Ungesicherte Änderungen der Konfiguration werden verworfen!",
+    "c_sdcard_sm_local_modification_reseted"   : "Ungesicherte Änderungen der Konfiguration wurden verworfen!",
+    "c_sdcard_sm_apply_local_modification"     : "Konfiguration der SD-Karte wird übernommen...",
+    "c_sdcard_sm_no_changes_detected"          : "Keine Änderungen erkannt",
+    "c_sdcard_sm_changes_detected"             : "Es existieren ungesicherte Änderungen der Konfiguration!",
+    "c_sdcard_sm_undefined_sys_message"        : "Systemnachricht nicht definiert!",
+    "c_sdcard_sm_config_error_occured"         : "Konfigurationsfehler aufgetreten!",
+    "c_sdcard_sm_comm_error_occured"           : "Kommunikationsfehler aufgetreten!",
+    "c_sdcard_sm_function_not_supported"       : "Die Funktion wird für diesen Controller nicht unterstützt",
+    "c_sdcard_sm_factory_reset_reactivation"   : "Reaktivierung nach dem Zurücksetzen auf Werkseinstellungen",
+    "c_sdcard_sm_factory_reset_reactivation_1" : "Falls aktiviert, wird die externe SD-Karte nach dem Zurücksetzen auf Werkseinstellungen aktiviert.",
+    "c_sdcard_sm_factory_reset_reactivation_2" : "Falls deaktiviert und die Unterstützung für externe SD-Karten aktiviert ist, bleibt die externe SD-Karte nach dem Zurücksetzen auf Werkseinstellungen aktiviert.",
+    "c_sdcard_sm_factory_reset_reactivation_3" : "Falls deaktiviert und die Unterstützung für externe SD-Karten deaktiviert ist, bleibt die externe SD-Karte nach dem Zurücksetzen auf Werkseinstellungen deaktiviert.",
+
+    "c_sdcard_sm_factory_reset_reactivation_enabled" : "Reaktivierung nach dem Zurücksetzen auf Werkseinstellungen wurde aktiviert.",
+    "c_sdcard_sm_factory_reset_reactivation_disabled" : "Reaktivierung nach dem Zurücksetzen auf Werkseinstellungen wurde deaktiviert.",
+
+    "c_sdcard_del_recovery_password_warning_info": "Achtung: Das Wiederherstellungs-Passwort zum Entsperren der geschützten SD-Karte wird gelöscht. Möchten Sie mit dem Löschen des Wiederherstellungs-Passworts fortfahren?",
+    "c_sdcard_deactivate_encryption_warning_info": "Achtung: Beim nächsten Systemneustart wird die externe SD-Karte entschlüsselt und der Controller auf Werkseinstellungstyp 1 zurückgesetzt. Möchten Sie mit dem Entschlüsseln fortfahren?",
+    "c_sdcard_activate_encryption_warning_info"  : "Achtung: Beim nächsten Systemneustart wird die externe SD-Karte verschlüsselt und der Controller auf Werkseinstellungstyp 1 zurückgesetzt. Möchten Sie mit dem Verschlüsseln fortfahren?",
+    
+    /* System warning messages */
+    "c_sdcard_sm_warning" : "Warnung",
+    "c_sdcard_sm_activation_warning_1" : "Die Verwendung einer externen SD-Karte erfordert den Schutz vor physikalischen Zugriffen auf die SD-Karte.",
+    "c_sdcard_sm_activation_warning_2" : "Stellen Sie sicher, dass nur autorisierte Personen auf die SD-Karte zugreifen können!",
+    "c_sdcard_sm_activation_warning_3" : "Die SD-Karte enthält vertrauliche Daten. Die Daten können von Personen gelesen werden, die auf die SD-Karte zugreifen.",
+
+};

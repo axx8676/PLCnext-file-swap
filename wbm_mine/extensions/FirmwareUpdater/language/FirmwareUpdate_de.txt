@@ -1,0 +1,27 @@
+var oTxt_FirmwareUpdate_Content =
+{
+    /********************* Firmware Update *********************/
+    "c_fwupdate_subtitle_info":"Firmware-Update",
+    "c_fwupdate_format_err_span":"Der ausgewählte Update-Container hat kein gültiges Dateiformat! (.raucb)",
+    "c_fwupdate_upload_err_span":"Fehler beim Hochladen der Update-Datei!",
+    "c_fwupdate_invalid_file_abort_span":"Das Hochladen der Update-Datei wurde vom Benutzer abgebrochen oder die Verbindung ist abgebrochen",
+    "c_fwupdate_invalid_size_span":"Gewählte Update-Datei ist zu groß!",
+    "c_fwupdate_uploading_abort_span":"Update der Firmware abgebrochen",
+    "c_fwupdate_upload_transfered":"Übertragen: ",
+    "c_fwupdate_upload_remaining":"Verbleibend: ",
+    "c_fwupdate_uploading_file_info":"Der Update-Container wird auf den Controller übertragen",
+    "c_fwupdate_processing_file_info":"Der Update-Container wird vom Controller verarbeitet",
+    "c_fwupdate_updating_fw_info":"Beachten Sie: Während des Firmware-Updates wird die Verbindung zum Controller unterbrochen. Anschließend wird der Controller automatisch neu gestartet. Wenn der Controller vollständig initialisiert ist, loggen Sie sich erneut in das WBM ein. Die aktualisierte Firmware-Version wird im WBM angezeigt.",
+    "c_fwupdate_upload_success":"Der Update-Container wurde erfolgreich auf den Controller übertragen",
+    "c_fwupdate_select_update_file":"Wählen Sie die Datei mit dem Update-Container",
+    "c_fwupdate_data_processing":"Der Update-Container wird vom Controller verarbeitet...",
+    "c_fwupdate_updating_start":"Die Firmware wird aktualisiert...",
+    "c_fwupdate_updating_error":"Beim Firmware-Update ist ein Fehler aufgetreten!",
+    "c_fwupdate_start_update_button":"Update starten",
+    "c_fwupdate_abort_update_button":"Update abbrechen",
+    "c_fwupdate_update_completed":"Abgeschlossen",
+    "c_fwupdate_raucb_filesize_text":"Größe: ",
+    "c_fwupdate_raucb_filetype_text":"Typ:",
+    "c_fwupdate_raucb_browse_text":"Durchsuchen...",
+    "c_fwupdate_no_file_selected":"Keine Datei ausgewählt",
+};

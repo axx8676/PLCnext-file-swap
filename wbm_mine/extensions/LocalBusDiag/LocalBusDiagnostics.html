@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - Local Bus</title>
+<meta charset="UTF-8">
+<script src="Language.js"></script>
+<script src="Session.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="extensions/LocalBusDiag/LocalBusDiagnostics.js"></script>
+</head>
+<body>
+    <h1 id="id_lbdiag_pagetitle_diagnostics"><span class="c_menu_title_diagnostics">Diagnostics</span></h1>
+    <div class="pxc-plt-ctrl">
+        <div class="pxc-p-plain">
+            <div id="id_lbdiag_lb_diag_active_lb_header">
+                <h3 id="id_subpagetitle_lb_diag" class="c_lbdiag_subtitle_info" style="display:inline;">Local Bus</h3>
+                <h3 id="id_subpagetitle_lb_diag_active_bus" style="display:inline;">()</h3>
+            </div>
+            <hr></hr>
+
+            <!-- Local Bus Modules List -->
+            <h3 class="c_lbdiag_module_list">Local Bus Module List</h3>
+            
+            <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                <table hidden id="id_lbdiag_axl_modules_list_table" class="pxc-tbl-zebra" style="width:80%">
+                    <colgroup>
+                        <col style="width: 7%">
+                        <col style="width: 25%">
+                        <col style="width: 25%">
+                        <col style="width: 25%">
+                        <col style="width: 11%">
+                        <col style="width: 7%">
+                    </colgroup>
+                    <tr class="exclude" style="height: 40px;">
+                        <th class="c_lbdiag_module_no"></th>
+                        <th class="c_lbdiag_module_type"></th>
+                        <th class="c_lbdiag_function"></th>
+                        <th class="c_lbdiag_location"></th>
+                        <th class="c_lbdiag_diagnostics"></th>
+                        <th class="c_lbdiag_details"></th>
+                    </tr>
+                    <tr class="odd exclude">
+                        <td>0</td>
+                        <td><!--#include virtual="InfoValues.cgi?artname"--></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+                <table hidden id="id_lbdiag_ib_modules_list_table" class="pxc-tbl-zebra" style="width:80%">
+                    <colgroup>
+                        <col style="width: 7%">
+                        <col style="width: 43%">
+                        <col style="width: 15%">
+                        <col style="width: 16%">
+                        <col style="width: 15%">
+                    </colgroup>
+                    <tr class="exclude" style="height: 40px;">
+                        <th class="c_lbdiag_module_no"></th>
+                        <th class="c_lbdiag_module_description"></th>
+                        <th class="c_lbdiag_module_id"></th>
+                        <th class="c_lbdiag_module_identcode"></th>
+                        <th class="c_lbdiag_peripheral_errors"></th>
+                    </tr>
+                    <tr class="odd exclude">
+                        <td>0</td>
+                        <td><!--#include virtual="InfoValues.cgi?artname"--></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+                <div id="id_lbdiag_module_list_states">
+                    <span hidden class="c_lbdiag_status_text_module_error_h"     id="id_lbdiag_status_module_error_span" style="color:red;"></span>
+                    <span hidden class="c_lbdiag_status_text_no_bus_config_h"    id="id_lbdiag_status_no_bus_config_span" style="color:red;"></span>
+                    <span hidden class="c_lbdiag_status_text_list_error_h"       id="id_lbdiag_status_list_error_span" style="color:red;"></span>
+                    <span hidden                                                 id="id_lbdiag_status_additional_text_red_span" style="color:red;"></span>
+                <div>
+            </div>
+            </br>
+            <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                <table class="pxc-tbl-zebra" style="width:80%">
+                    <colgroup>
+                        <col style="width: 47%">
+                        <col style="width: 53%">
+                    </colgroup>
+                    <tr>
+                        <th colspan="2" class="c_lbdiag_diag_status_registers"></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="c_lbdiag_diag_status_register"></span> 
+                        </td>
+                        <td id="id_lbdiag_diag_status_register_td">
+                            <span id="id_lbdiag_diag_status_register_val" style="color:white; font-weight: bold;">N/A</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="c_lbdiag_diag_param_register"></span>
+                            <span > 1</span>
+                        </td>
+                        <td>
+                            <span id="id_lbdiag_diag_param_register_1_val">N/A</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="c_lbdiag_diag_param_register"></span>
+                            <span > 2</span>
+                        </td>
+                        <td>
+                            <span id="id_lbdiag_diag_param_register_2_val">N/A</span>
+                        </td>
+                    </tr>
+                    <tr id="id_lbdiag_update_diag_registers_tr" hidden>
+                        <td>
+                            <span class="c_lbdiag_update_diagnostics"></span>
+                        </td>
+                        <td>
+                            <button class="pxc-btn-pa" id="id_lbdiag_update_diag_registers_button"><span class="c_lbdiag_update_diagnostics_button"></span></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <span style="display: inline-block; width:69%;"></span>
+                <span style="height: 15px; width: 15px; background-color: #92D050; border-radius: 50%; display: inline-block;"></span>
+                <span class="c_lbdiag_diag_status_ok">OK</span></br>
+                <span style="display: inline-block; width:69%;"></span>
+                <span style="height: 15px; width: 15px; background-color:#FFC000; border-radius: 50%; display: inline-block;"></span>
+                <span class="c_lbdiag_diag_status_warning" >Warning</span></br>
+                <span style="display: inline-block; width:69%;"></span>
+                <span style="height: 15px; width: 15px; background-color: #ED1C24; border-radius: 50%; display: inline-block;"></span>
+                <span class="c_lbdiag_diag_status_error">Error</span></br>
+            </div>
+            <div id="id_lbdiag_status_div">
+                <span class="c_lbdiag_diagnostics"></span><span>:</span>
+                <span id="id_lbdiag_online_circle_span" style="height: 15px; width: 15px; background-color:green; border-radius: 50%; display: inline-block;"></span>
+                <span id="id_lbdiag_online_status_span" style="color:green;">Online</span>
+                <span id="id_lbdiag_offline_circle_span" style="height: 15px; width: 15px; background-color:red; border-radius: 50%; display:none;"></span>
+                <span hidden id="id_lbdiag_offline_status_span" style="color:red;">Offline</span>
+                <span style="white-space: pre;">         |        </span>
+                <span class="c_lbdiag_status_text_h"></span><span>:</span>
+                <span class="c_lbdiag_diag_status_ok"                            id="id_lbdiag_status_ok_span" style="color:green;"></span>
+                <span hidden class="c_lbdiag_status_text_reloading_table_h"      id="id_lbdiag_status_reloading_table_span" style="color:blue;"></span>
+                <span hidden class="c_lbdiag_status_text_project_mod_detected_h" id="id_lbdiag_status_new_configs_detected_span" style="color:blue;"></span>
+                <span hidden class="c_lbdiag_status_text_disconnected_h"         id="id_lbdiag_status_disconnected_span" style="color:red;"></span>
+                <span hidden class="c_lbdiag_status_text_periph_error_h"         id="id_lbdiag_status_periph_error_span" style="color:red;"></span>
+                <span hidden class="c_lbdiag_status_text_user_error_h"           id="id_lbdiag_status_user_error_span" style="color:red;"></span>
+                <span hidden class="c_lbdiag_status_text_bus_error_h"            id="id_lbdiag_status_bus_error_span" style="color:red;"></span>
+                <span hidden class="c_lbdiag_status_text_hw_error_h"             id="id_lbdiag_status_hw_error_span" style="color:red;"></span>
+                <span hidden class="c_lbdiag_status_text_sysfail_h"              id="id_lbdiag_status_sysfail_span" style="color:blue;"></span>
+                <span hidden class="c_lbdiag_status_text_registerupdate_fail_h"  id="id_lbdiag_status_registerupdate_fail_span" style="color:red;"></span>
+                <span hidden class="c_lbdiag_status_text_register_updated_h"     id="id_lbdiag_status_register_updated_span" style="color:green;"></span>
+                <span hidden style="white-space: pre;">         |        </span>
+                <span hidden class="c_lbdiag_diag_status_register_h"></span><span hidden>:</span>
+                <span hidden id="id_lbdiag_diag_status_register">0x00</span>
+                <span hidden style="white-space: pre;">         |        </span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Module Information Modal -->
+    <div class="modal" id="id_div_lbdiag_module_infos_modal">
+        <div class="modal-content">
+          <div class="container">
+            <h1 id="id_lbdiag_module_info_title">Module Information</h1>
+            <div class="div-centered">
+              <form id="id_lbdiag_show_module_info_form">
+                <label style="width:570px; display: inline-block"></label>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <table  id="id_lbdiag_module_Info_table" class="pxc-tbl-zebra" style="width:100%">
+                        <colgroup>
+                            <col style="width: 40%">
+                            <col style="width: 60%">
+                        </colgroup>
+                        <!----------------------------->
+                        <!-- Module Status Section   -->
+                        <!----------------------------->
+                        <th style="height: 30px;" colspan="2" class="c_lbdiag_local_bus"></th>
+                        <!-- Status -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_status"></span>
+                            </td>
+                            <td id="id_lbdiag_module_info_status_id" >
+                                <span hidden id="id_lbdiag_diag_status_ok_span"      class="c_lbdiag_diag_status_ok"        style="color:white;font-weight: bold;"></span>
+                                <span hidden id="id_lbdiag_diag_status_warning_span" class="c_lbdiag_diag_status_warning"   style="color:white;font-weight: bold;"></span>
+                                <span hidden id="id_lbdiag_diag_status_error_span"   class="c_lbdiag_diag_status_error"     style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <!----------------------------------->
+                        <!-- Module General Data Section   -->
+                        <!----------------------------------->
+                        <th style="height: 30px;" colspan="2" class="c_lbdiag_general_data"></th>
+                        <!-- Module Number -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_module_number"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_number_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Vendor name -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_vendor_name"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_vendor_name_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Product Name -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_product_name"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_product_name_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Product Text -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_product_text"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_product_text_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Order Number -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_order_number"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_order_number_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Serial Number -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_serial_number"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_serial_number_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Hardware Version -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_hardware_version"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_hardware_version_value">2014-01-22 01</span>
+                            </td>
+                        </tr>
+                        <!-- Firmware Version -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_firmware_version"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_firmware_version_value">0000-00-00 --</span>
+                            </td>
+                        </tr>
+                        <!--------------------------------->
+                        <!--     User Defined Section    -->
+                        <!--------------------------------->
+                        <th style="height: 30px;" colspan="2" class="c_lbdiag_user_defined"></th>
+                        <!-- Location -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_location"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_location_value">PxCE Geb. 4, 3. OG</span>
+                            </td>
+                        </tr>
+                        <!-- Equipment Identifier -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_function"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_function_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Application Device Address -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_appl_device_addr">0</span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_app_device_addr_value"></span>
+                            </td>
+                        </tr>
+                        <!------------------------------->
+                        <!-- Peripheral Errors Section -->
+                        <!------------------------------->
+                        <th style="height: 30px;" colspan="2" class="c_lbdiag_peripheral_errors"></th>
+                        <!-- Diagnostic State - Cons. No. -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_diag_state_cons_no_text_h"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_diag_state_cons_no_value">0</span>
+                            </td>
+                        </tr>
+                        <!-- Diagnostic State - Priority -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_diag_state_prio"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_diag_state_prio_value">0x00</span>
+                            </td>
+                        </tr>
+                        <!-- Diagnostic State - Channel/Group/Module -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_diag_state_CGM"></span>
+                            </td>
+                            <td>
+                                <span id="id_lbdiag_module_info_diag_state_CGM_value">0</span>
+                            </td>
+                        </tr>
+                        <!-- Diagnostic State - Code -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_diag_state_code"></span>
+                            </td>
+                            <td id="id_lbdiag_module_info_diag_code_td">
+                                <span id="id_lbdiag_module_info_diag_code_value" style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <!-- Diagnostic State - Text -->
+                        <tr>
+                            <td>
+                                <span class="c_lbdiag_diag_state_text"></span>
+                            </td>
+                            <td id="id_lbdiag_module_info_diag_text_td">
+                                <span id="id_lbdiag_module_info_diag_text_value" style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div> 
+                <div class="centered">
+                    <button type="button" class="pxc-btn-pa" id="id_lbdiag_module_info_close_button"><span class="c_lbdiag_close_button_text">Close</span></button>
+                </div>                 
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

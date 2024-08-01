@@ -1,0 +1,24 @@
+﻿var oTxt_SplcConfiguration_Content =
+{
+    /***** PROFIsafe-SPLC Configuration ****/
+    "c_splc_subtitle_info"            : "SPLC",
+    "c_splc_notifications_activation" : "Enabling/Disabling Notifications",
+    
+    /* Notifications activation table */
+    "c_splc_notifications"           : "SPLC Notification",
+    "c_splc_notification_activation" : "Activation",
+    
+    /* Notifications F-Address Ranges */
+    "c_splc_notifications_f_address_ranges"   : "Notifications F-Address Ranges",
+    "c_splc_notifications_f_address_info"     : "(Only SPLC Notifications within these F-Address Ranges are enabled)",
+    "c_splc_notifications_f_start_address"    : "Start Address",
+    "c_splc_notifications_f_end_address"      : "End Address",
+    "c_splc_add_f_addr_range_button_text"     : "Add F-Address Range",
+    "c_splc_delete_f_addrrange_button_text"   : "Remove F-Address Range",
+    
+    /* Messages */
+    "c_splc_no_entries_available"         : "No entries available!",
+    "c_splc_invalid_f_addrrange_format"   : "Invalid F-Address Range used!. Defined F-Address Range is 1 - 65535",
+    "c_splc_status_text_internal_error"   : "An internal error has occurred: ",
+    
+};

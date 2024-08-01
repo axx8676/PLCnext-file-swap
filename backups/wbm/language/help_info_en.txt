@@ -1,0 +1,12 @@
+var oTxtHelpInfoContent =
+{
+    /****************** Help Menu *********************/
+    "c_helpitem_product_info_downloads"       : "Product Information and Downloads",
+    "c_helpitem_product_psirt"                : "Phoenix Contact Security Vulnerability Management (PSIRT)",
+    "c_helpitem_plcnext_community"            : "PLCnext Community",
+    "c_helpitem_plcnext_tech_info_center"     : "PLCnext Info Center",
+    "c_helpitem_plcnext_security_info_center" : "PLCnext Security Info Center",
+    "c_helpitem_plcnext_store"                : "PLCnext Store",
+    "c_helpitem_plcnext_proficloud_v3"        : "Proficloud",
+
+};

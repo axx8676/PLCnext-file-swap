@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <title><!--#include virtual="InfoValues.cgi?artname"--> - Network</title>
+    <meta charset="UTF-8">
+    <script src="Session.js"></script>
+    <script src="HelpFunctions.js"></script>
+    <script src="Utilities.js"></script>
+    <script src="Language.js"></script>
+    <script src="validation_rules.js"></script>
+    <script src="extensions/NetConf/NetworkConfiguration.js"></script>
+    <style>
+#id_netload_limiter_div table th {
+    height: 30px;
+    vertical-align: middle;
+}
+
+.tbl-netload-limiter {
+    width: 100%;
+}
+
+.config_enabled {
+    color: white;
+    font-weight: bold;
+    cursor: default;
+    border: 1px solid rgba(118, 118, 118, 0.3);
+}
+
+.state_limiting {
+    background-color: rgb(237, 28, 36);
+}
+
+.state_not_limiting {
+    background-color: rgb(146, 208, 80);
+}
+
+.tooltip .tooltip-text-container {
+    width: 500px;
+    position: absolute;
+    right: -80px;
+    bottom: 18px;
+    text-align: right;
+    visibility: hidden;
+}
+.tooltip:hover .tooltip-text-container {
+    visibility: visible;
+}
+.tooltip .tooltip-text-container .tooltip-text-top {
+    max-width : 100%;
+    background-color: #FFC000;
+    font-weight: bold;
+    overflow-wrap : break-word;
+    top:initial;
+    left:initial;
+    bottom:initial;
+    margin-left:initial;
+    position:relative;
+    display:inline-block;
+}
+.disabled-tab {
+    color: currentColor;
+    text-decoration: none;
+    pointer-events: none;
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+    </style>
+</head>
+<body>
+    <div id="id_lanconfig_page_global_div" hidden>
+        <h1 id="id_pagetitle_config" class="c_menu_title_config">Information</h1>
+        <div class="pxc-p-plain">
+            <h3 id="id_subpagetitle_lanconfig" class="c_menu_title_network_info">Network Configuration</h3>
+            <hr></hr>
+
+            <!-- Main Tab -->
+            <div id="c_cer_main_tab" style="width: 90%;">
+                <div class="pxc-cnt pxc-az" >
+                    <div class="pxc-pd-tabs pxc-tabs" data-dojo-type="pxc.layout.SimpleTabController" style="float: left;" id="pxc_layout_SimpleTabController_0" widgetid="pxc_layout_SimpleTabController_0" style="visibility: visible;">
+                        <div class="cf pxc-pd-tabsrow" style="float: left;" >
+                            <h2>
+                                <a class="pxc-tab-network-configuration pxc-tab-on" id="id_network_configuration_tab" href="#pxc-jump-network-configuration" data-tab-id="pxc-tab-network-configuration">&nbsp <span class="c_lanconfig_lan_interfaces"></span> &nbsp</a>
+                            </h2>
+                            <h2>
+                                <a class="pxc-tab-netload-limiter" id="id_netload_limiter_tab" href="#pxc-jump-netload-limiter" data-tab-id="pxc-tab-netload-limiter">&nbsp <span>Netload Limiter</span> &nbsp</a>
+                            </h2>
+                            <h2 id="pxc-tab-wlan-configuration-button" style="display: none;">
+                                <a class="pxc-tab-wlan-configuration" id="id_wlan-configuration" href="#pxc-jump-wlan-configuration" data-tab-id="pxc-tab-wlan-configuration">&nbsp <span class="c_lanconfig_wan_interfaces"></span> &nbsp</a>;
+                            </h2>
+                            <h2 id="pxc-tab-extlan-configuration-button" style="display: none;">
+                                <a class="pxc-tab-extlan-configuration" id="id_extlan-configuration" href="#pxc-jump-extlan-configuration" data-tab-id="pxc-tab-extlan-configuration">&nbsp <span class="c_lanconfig_additional_settings"></span> &nbsp</a>;
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pxc-tab-network-configuration" class="pxc-tabouterpane pxc-stab-root" style="width: 87.2%;">
+                <a id="pxc-jump-network-configuration" ></a>
+                <div class="cd pxc-pd-tab" id="pxc-tab-network-configuration">
+                    <div id="id_lanconfig_config_changed_warning_div" style="display:none; width:100%;">
+                        <div class="pxc-error-theme-wrp cf" style="background-color: #FFC000; margin-left: 0px;">
+                            <div class="pxc-error-msg">
+                                <div class="pxc-exclamation"><div style="color: #FFC000;">!</div></div>
+                                <span class="pxc-msg-txt c_lanconfig_not_active_config_info" style="display:inline-block;">Changed settings not yet activated. A system restart is required!</span>
+                            </div>
+                            <a href="noscript.html" class="pxc-lnk-error"></a>
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                    <div id="id_lanconfig_rplc_system_help_message_div"></div>
+                    <div>
+                    <form id="id_lanconfig_interfaces_tables_form">
+                        <div id="id_lanconfig_interfaces_div">
+                            <!-- Content will be replaces automatically on page load -->
+                        </div>
+                    </form>
+                    <button class="pxc-btn-dis sticky-button-bottom" disabled id="id_lanconfig_save_config_restart_button" style="float: right; margin: -10px 0px;"><span class="c_glb_th_config_apply_restart"></span></button>
+                    <button class="pxc-btn-dis sticky-button-bottom" id="id_lanconfig_discard_config_button" style="float: right; margin: -10px 0px;"><span class="c_glb_th_config_discard"></span></button>
+                    <div hidden>
+                        <span id="id_lanconfig_port_full_duplex_val" class="c_lanconfig_port_full_duplex"></span>
+                        <span id="id_lanconfig_port_half_duplex_val" class="c_lanconfig_port_half_duplex"></span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div hidden id="pxc-tab-netload-limiter" class="pxc-tabouterpane pxc-stab-root" style="width: 87.2%;">
+                <a id="pxc-jump-netload-limiter" ></a>
+                    <div class="cd pxc-pd-tab cf pxc-cnt pxc-mod-main-table-alt-rows" id="pxc-tab-netload-limiter">
+                        <div id="div_time_since_last_reset" style="text-align: right">
+                            <span id="id_label_time_since_last_reset_statistics" class="c_time_since_last_reset_statistics"></span>: 
+                            <span id="id_time_since_last_reset_statistics"></span>
+                        </div>
+                        <form id="id_netload_limiter_tables_form">
+                            <div id="id_netload_limiter_div">                        
+                            </div>
+                        </form>
+                        <button id="id_netload_limiter_reset_statistics" type="button" class="pxc-btn-pa sticky-button-bottom" style="float: right; margin: -10px 0px;"><span class="c_netload_limiter_reset_statistics"></span></button>
+                        <button id="id_netload_limiter_apply_configuration" type="button" class="pxc-btn-pa sticky-button-bottom" style="float: right; margin: -10px 0px;"><span class="c_netload_limiter_apply_configuration"></span></button>
+                        <button id="id_netload_limiter_discard" type="button" class="pxc-btn sticky-button-bottom" style="float: right; margin: -10px 0px;"><span class="c_netload_limiter_discard"></span></button>
+                    </div>
+                </a>
+            </div>
+            <div hidden id="pxc-tab-wlan-configuration"  class="pxc-tabouterpane pxc-stab-root" style="width: 87.2%;">
+                <a id="#pxc-jump-wlan-configuration" ></a>
+                <div class="cd pxc-pd-tab cf pxc-cnt pxc-mod-main-table-alt-rows" id="pxc-tab-wlan-configuration">
+                        <form id="id_wlan-configuration_tables_form">
+                            <div id="id_wlan-configuration_div">
+                            </div>
+                        </form>
+                        <button class="pxc-btn-dis sticky-button-bottom" disabled id="id_wlanconfig_save_config_restart_button" style="float: right; margin: -10px 0px;"><span class="c_glb_th_config_apply_restart"></span></button>
+                        <button class="pxc-btn-dis sticky-button-bottom" id="id_wlanconfig_discard_config_button" style="float: right; margin: -10px 0px;"><span class="c_glb_th_config_discard"></span></button>
+                    </div>
+                </a>
+            </div>
+            <div hidden id="pxc-tab-extlan-configuration"  class="pxc-tabouterpane pxc-stab-root" style="width: 87.2%;">
+                <a id="#pxc-jump-extlan-configuration" ></a>
+                <div class="cd pxc-pd-tab cf pxc-cnt pxc-mod-main-table-alt-rows" id="pxc-tab-extlan-configuration">
+                        <form id="id_extlan-configuration_tables_form">
+                            <div id="id_extlan-configuration_div">
+                            </div>
+                        </form>
+                        <button class="pxc-btn-dis sticky-button-bottom" disabled id="id_extlanconfig_save_config_restart_button" style="float: right; margin: -10px 0px;"><span class="c_glb_th_config_apply_restart"></span></button>
+                        <button class="pxc-btn-dis sticky-button-bottom" id="id_extlanconfig_discard_config_button" style="float: right; margin: -10px 0px;"><span class="c_glb_th_config_discard"></span></button>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div hidden>
+            <span id="id_lanconfig_config_save_error_span" class="c_lanconfig_config_save_error"></span>
+        </div>
+        <div class="modal" id="id_lanconfig_save_restart_modal" ifacenumber="0">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_lanconfig_save_restart_warning_div" class="pxc-f-gradbox">
+                        <span id="id_lanconfig_restart_config_info" class="c_lanconfig_save_restart_info" style="color:red;font-weight: bold;"></span>
+                    </div>
+                    <br>
+                    <div style="display: flex;justify-content: center;">
+                        <button class="pxc-btn-pa" id="id_lanconfig_restart_conf_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                        <span>&nbsp; </span>
+                        <button class="pxc-btn" id="id_lanconfig_restart_conf_cancle_btn"><span class="c_glb_btn_cancel"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="id_lanconfig_discard_modal" ifacenumber="0">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_lanconfig_discard_warning_div" class="pxc-f-gradbox">
+                        <span id="id_lanconfig_discard_config_info" class="c_glb_discard_config_warning" style="color:red;font-weight: bold;"></span>
+                    </div>
+                    <br>
+                    <div style="display: flex;justify-content: center;">
+                        <button class="pxc-btn-pa" id="id_lanconfig_discard_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                        <span>&nbsp; </span>
+                        <button class="pxc-btn" id="id_lanconfig_discard_cancle_btn"><span class="c_glb_th_config_cancel"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="id_netload_limiter_reset_statistics_modal" ifacenumber="0">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_netload_limiter_reset_statistics_warning_div" class="pxc-f-gradbox">
+                        <span id="id_netload_limiter_reset_statistics_info" class="c_netload_limiter_reset_statistics_warning" style="color:red;font-weight: bold;"></span>
+                    </div>
+                    <br>
+                    <div style="display: flex;justify-content: center;">
+                        <button class="pxc-btn-pa" id="id_netload_limiter_reset_statistics_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                        <span>&nbsp; </span>
+                        <button class="pxc-btn" id="id_netload_limiter_reset_statistics_cancle_btn"><span class="c_glb_th_config_cancel"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="id_netload_limiter_apply_configuration_modal" ifacenumber="0">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_netload_limiter_apply_configuration_warning_div" class="pxc-f-gradbox">
+                        <span id="id_netload_limiter_apply_configuration_info" class="c_netload_limiter_apply_configuration_warning" style="color:red;font-weight: bold;"></span>
+                    </div>
+                    <br>
+                    <div style="display: flex;justify-content: center;">
+                        <button class="pxc-btn-pa" id="id_netload_limiter_apply_configuration_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                        <span>&nbsp; </span>
+                        <button class="pxc-btn" id="id_netload_limiter_apply_configuration_cancle_btn"><span class="c_glb_th_config_cancel"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="id_wlanconfig_save_restart_modal" ifacenumber="0">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_lanconfig_save_restart_warning_div" class="pxc-f-gradbox">
+                        <span id="id_lanconfig_restart_config_info" class="c_lanconfig_save_restart_info" style="color:red;font-weight: bold;"></span>
+                    </div>
+                    <br>
+                    <div style="display: flex;justify-content: center;">
+                        <button class="pxc-btn-pa" id="id_wlanconfig_restart_conf_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                        <span>&nbsp; </span>
+                        <button class="pxc-btn" id="id_wlanconfig_restart_conf_cancle_btn"><span class="c_glb_btn_cancel"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="id_extlanconfig_save_restart_modal" ifacenumber="0">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_lanconfig_save_restart_warning_div" class="pxc-f-gradbox">
+                        <span id="id_lanconfig_restart_config_info" class="c_lanconfig_save_restart_info" style="color:red;font-weight: bold;"></span>
+                    </div>
+                    <br>
+                    <div style="display: flex;justify-content: center;">
+                        <button class="pxc-btn-pa" id="id_extlanconfig_restart_conf_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                        <span>&nbsp; </span>
+                        <button class="pxc-btn" id="id_extlanconfig_restart_conf_cancle_btn"><span class="c_glb_btn_cancel"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pxc-loader-ico modal" id="id_div_loader"></div>
+    </div>
+    <div hidden>
+        <span id="id_netload_limiter_config_disabled" class="c_netload_limiter_config_disabled"></span>
+        <span id="id_netload_limiter_config_disable" class="c_netload_limiter_config_disable"></span>
+        <span id="id_netload_limiter_config_enabled" class="c_netload_limiter_config_enabled"></span>
+        <span id="id_netload_limiter_config_enable" class="c_netload_limiter_config_enable"></span>
+        <span id="id_netload_limiter_state_limiting" class="c_netload_limiter_state_limiting"></span>
+        <span id="id_netload_limiter_state_not_limiting" class="c_netload_limiter_state_not_limiting"></span>
+        <span id="id_netload_limiter_packets_per_milliseconds_unit" class="c_netload_limiter_packets_per_milliseconds_unit"></span>
+        <span id="id_netload_limiter_byte_per_milliseconds_unit" class="c_netload_limiter_byte_per_milliseconds_unit"></span>
+    </div>
+</body>
+</html>

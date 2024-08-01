@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - Fan Control</title>
+<meta charset="UTF-8">
+<script src="Session.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="Language.js"></script>
+<script src="es6/es6-promise.min.js"></script>
+<script src="es6/es6-promise.auto.min.js"></script>
+<script src="extensions/FanControl/FanControlConfiguration.js"></script>
+</head>
+<body>
+  <h1 id="id_pagetitle_configs" class="c_menu_title_config">Configuration</h1>
+  
+  <div class="pxc-plt-ctrl">
+    <div class="pxc-p-plain">
+        <h3 id="id_subpagetitle_fancontrol" class="c_fancontrol_subtitle_info"></h3>
+            
+        <hr></hr>
+        
+        <div class="pc-container">
+            <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                <table class="pxc-tbl-zebra" style="width:100%" id="id_fancontrol_fan_status_table">
+                    <thead>
+                          <colgroup>
+                          <col style="width: 40%">
+                          <col style="width: 60%">
+                        </colgroup>
+                        <tr>
+                            <th scope="col" colspan="2" class="c_glb_th_status" >Status</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            <td id="id_fancontrol_fan_defect_td" class="c_fancontrol_fan_defect"></td>
+                            <td id="id_fancontrol_fan_defect_value_td" style=" color: white; font-weight:bold">
+                                <span id="id_fancontrol_fan_defect_yes_span" hidden>Yes</span>
+                                <span id="id_fancontrol_fan_defect_no_span"  hidden>No</span>
+                                <span id="id_fancontrol_fan_defect_na_span"  hidden>N/A</span>
+                            </td>
+                        </tr>
+                        <tr class="odd">
+                            <td id="id_fancontrol_fan_maintenance_td" class="c_fancontrol_fan_maintenance"></td>                            
+                            <td id="id_fancontrol_fan_maintenance_value_td" style=" color: white; font-weight:bold">
+                                <span id="id_fancontrol_fan_maintenance_yes_span" hidden>Yes</span>
+                                <span id="id_fancontrol_fan_maintenance_no_span"  hidden>No</span>
+                                <span id="id_fancontrol_fan_maintenance_na_span"  hidden>N/A</span>
+                            </td>                           
+                        </tr>
+                        <tr class="odd">
+                            <td id="id_fancontrol_fan_lastcalibration_td" class="c_fancontrol_fan_lastcalibration"></td>
+                            <td id="id_fancontrol_fan_lastcalibration_value_td">                            
+                                <span id="id_fancontrol_fan_lastcalibration_value_td">"--"</span>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                <table class="pxc-tbl-zebra" style="width:100%" id="id_fancontrol_fan_settings_table">
+                    <thead>
+                          <colgroup>
+                          <col style="width: 40%">
+                          <col style="width: 60%">
+                        </colgroup>
+                        <tr>
+                            <th scope="col" colspan="2" class="c_glb_th_configuration" >Configuration</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            <td id="id_fancontrol_fan_calibration_td" class="c_fancontrol_fan_calibration"></td>
+                            <td><button class="pxc-btn-pa" id="id_fancontrol_calibration_button"><span class="c_fancontrol_start_fan_calibration">Start calibration</span></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="id_lanconfig_status_div">
+                <span class="c_fancontrol_connection exclude"></span>
+                <span id="id_fancontrol_online_circle_span" style="height: 15px; width: 15px; background-color:green; border-radius: 50%; display: inline-block;"></span>
+                <span id="id_fancontrol_online_status_span" style="color:green;">Online</span>
+                <span hidden id="id_fancontrol_offline_circle_span" style="height: 15px; width: 15px; background-color:red; border-radius: 50%; display: none;"></span>
+                <span hidden id="id_fancontrol_offline_status_span" style="color:red;">Offline</span>
+                <span class="exclude" style="white-space: pre;">         |        </span>
+                <span class="exclude">Status: </span>
+                <span class="c_fancontrol_status_text_ok_h"                          id="id_fancontrol_status_ok_span" style="color:green;">Ok</span>
+                <span class="c_fancontrol_status_text_na_h"                          id="id_fancontrol_status_na_span" style="color:grey;">Fan module not plugged</span>
+                <span hidden class="c_fancontrol_status_text_disconnected_h"         id="id_fancontrol_status_disconnected_span" style="color:red;"></span>
+
+            </div> 
+        </div>
+    </div>
+  </div>
+  
+      <!-- Module Information Modal -->
+    <div hidden class="modal" id="id_div_fancalibration_start_confirm">
+        <div class="modal-content">
+            <div class="container">
+                <div id="id_fancalibration_start_question_div" class="pxc-f-gradbox">
+                    <span id="id_fancalibration_start_question_info"   class="c_fancalibration_start_question_info"   style="color:red;font-weight: bold;"></span>
+                </div>
+                <br>
+                <div style="display: flex;justify-content: center;">
+                    <button class="pxc-btn-pa" id="id_fancalibration_start_ok_btn"><span class="c_fancalibration_start_ok">Start</span></button>
+                    &nbsp;
+                    <button class="pxc-btn-pa" id="id_fancalibration_start_cancel_btn"><span class="c_fancalibration_start_cancel">Cancel</span></button>   
+                </div>          
+            </div>            
+        </div>
+    </div>
+
+</body>
+</html>

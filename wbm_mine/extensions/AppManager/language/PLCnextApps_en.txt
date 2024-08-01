@@ -1,0 +1,70 @@
+﻿var oTxt_PLCnextApps_Content =
+{
+    /*** PLCnext Apps ***/
+    "c_menu_title_plcnextapps"         : "PLCnext Apps",
+    "c_plcnextapps_installed_appslist" : "Installed PLCnext Apps",
+    
+    /* Installation Mode */
+    "c_plcnextapps_install_mode"             : "Installation Mode",
+    "c_plcnextapps_install_mode_activated"   : "Activated",
+    "c_plcnextapps_install_mode_deactivated" : "Deactivated",
+    "c_plcnextapps_install_mode_activation"  : "Activation status",
+    "c_plcnextapps_install_mode_activation_info" : "Apps can only be managed when the install mode is activated.\nAfter disabling the install mode, the Controller will restart if at least one app part requires a reboot!",
+    
+    /* Apps Table */
+    "c_plcnextapps_appinfo_name"           : "App Name",
+    "c_plcnextapps_appinfo_id"             : "App ID",
+    "c_plcnextapps_appinfo_version"        : "Version",
+    "c_plcnextapps_appinfo_target"         : "Controller",
+    "c_plcnextapps_appinfo_min_fw_version" : "Min FW Version",
+    "c_plcnextapps_appinfo_licensestatus"  : "License Status",
+    "c_plcnextapps_appinfo_manufacturer"   : "Manufacturer",
+    "c_plcnextapps_appinfo_status"         : "App Status",
+    
+    /* Apps Management */
+    "c_plcnextapps_activate_app"   : "Start",
+    "c_plcnextapps_deactivate_app" : "Stop",
+    "c_plcnextapps_uninstall_app"  : "Uninstall",
+    "c_plcnextapps_install_app"    : "Install App",
+    "c_plcnextapps_cancle_text"    : "Cancel",
+    
+    /* AppStatus */
+    "c_plcnextapps_status_active"   : "RUN",
+    "c_plcnextapps_status_inactive" : "STOP",
+    
+    /* License Status */
+    "c_plcnextapps_licensestatus_valid"   : "License valid",
+    "c_plcnextapps_licensestatus_invalid" : "License invalid",
+    "c_plcnextapps_licensestatus_free"    : "License free",
+    "c_plcnextapps_license_valid_tt"    : "Valid license or no license is required",
+    "c_plcnextapps_license_invalid_tt"  : "Invalid license. The App can not start!",
+    "c_plcnextapps_license_limited_tt"  : "Invalid license. The App can run with limited functionality!",
+    
+    /* System messages */
+    "c_plcnextapps_sm_installing_info"               : "The App is being installed",
+    "c_plcnextapps_sm_uninstalling_info"             : " is being uninstalled...",
+    "c_plcnextapps_sm_activating_info"               : " is being started...",
+    "c_plcnextapps_sm_deactivating_info"             : " is being stopped",
+    "c_plcnextapps_sm_uploading_info"                : "The App container is being transferred to the Controller: ",
+    "c_plcnextapps_sm_status_activated_info"         : " has been started",
+    "c_plcnextapps_sm_status_deactivated_info"       : " has been stopped",
+    "c_plcnextapps_sm_status_installed_info"         : "The App has been installed",
+    "c_plcnextapps_sm_status_uninstalled_info"       : " has been uninstalled",
+    "c_plcnextapps_sm_error_occured_info"            : "An Error has occurred: ",
+    "c_plcnextapps_sm_invalid_container_format_info" : "Invalid update container file format (.app) selected",
+    "c_plcnextapps_sm_uploading_error_info"          : "An error has occurred while transferring the app container!",
+    "c_plcnextapps_sm_status_reboot_info"            : "The Controller is being rebooted!",
+    "c_plcnextapps_sm_opt_msg_error_code_info"       : "Error Code:",
+    "c_plcnextapps_sm_opt_msg_error_msg_info"        : "Error Message:",
+    "c_plcnextapps_sm_act_reboot_req_1_info"         : "Attention: After starting of the App ",
+    "c_plcnextapps_sm_act_reboot_req_2_info"         : " the control will be rebooted automatically. Do you want to proceed with starting the App?", 
+    "c_plcnextapps_sm_deact_reboot_req_1_info"       : "Attention: After stopping of the App ",
+    "c_plcnextapps_sm_deact_reboot_req_2_info"       : " the control will be rebooted automatically. Do you want to proceed with stopping the App?",
+    "c_plcnextapps_sm_disconnected_info"                : "Lost connection to Controller!",
+
+    "c_plcnextapps_management_warning_1" : "Apps management can adversely affect the real-time behavior of the system.",
+    "c_plcnextapps_management_warning_2" : "Therefore, do not manage any apps during productive operation!",
+	
+    "c_plcnextapps_appstart_warning" : "Starting PLCnext Apps can take several minutes. If connection errors to the device are displayed in the WBM, do not restart the controller. Reload the WBM page in the browser after approx. one minute (F5 key). If the connection error persists, repeat the process.",
+    "c_plcnextapps_appstop_warning" : "Stopping PLCnext Apps can take several minutes. If connection errors to the device are displayed in the WBM, do not restart the controller. Reload the WBM page in the browser after approx. one minute (F5 key). If the connection error persists, repeat the process.",
+};

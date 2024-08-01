@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--></title>
+<meta charset="UTF-8">
+<!--#include virtual="MainMetaContent.cgi"-->
+<link href="pxc_styles.css" rel="styleSheet">
+<link href="pxc_device.css" rel="styleSheet">
+<link href="print.css" rel="styleSheet" media="print">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/ico" href="favicon.ico">
+<script src="jquery.min.js"></script>
+<script src="jquery.tools.min.js"></script>
+<script src="jquery.validate.min.js"></script>
+<script src="jquery.simplemodal.js"></script>
+<script src="jquery.cookie.js"></script>
+<script src="ajax_interface.js"></script>
+<script src="Session.js"></script>
+<script src="WbmModules.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="Main.js"></script>
+<script src="Utilities.js"></script>
+<script src="LanguageManager.js"></script>
+<script src="Language.js"></script>
+<script src="es6/object-assign.js"></script>
+<script src="es6/es6-promise.min.js"></script>
+<script src="es6/es6-promise.auto.min.js"></script>
+<!--[if IE 6]>
+<script src="DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+  $(document).ready(function() {
+    DD_belatedPNG.fix('img, pxc-sr, .pxc-ovl, .pxc-tah-puPopup');
+  });
+</script>
+<![endif]-->
+<script>
+$(document).ready( function()
+{
+    if(!Session.IsUserAuthenticationRequired())
+    {
+      $("#id_main_logout_timer").hide();
+      $("#id_main_button_logout").hide();
+    }
+});
+</script>
+<style>
+/* Dropdown Button */
+.dropdown-button {
+  color: #000000;
+  border: none;
+  padding: 4px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #FFFFFF;
+  min-width: 400px;
+  box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #D8EFF0; color:#026776;}
+
+/* displac dropdown menu on hover*/
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Background as well as font color for drop down menu */
+.dropdown:hover .dropdown-button {color:#026776;}
+
+.sticky-err-header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+/* Security Profile */
+.activated-sp-img-container {
+    background: url("images/Shield_key_small_blue.png") no-repeat;
+    display: inline-block;
+    background-size: 20px 20px;
+    height: 20px;
+    padding-left: 22px;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+}
+
+.deactivated-sp-img-container {
+    background: url("images/Shield_key_small_gray.png") no-repeat;
+    display: inline-block;
+    background-size: 20px 20px;
+    height: 20px;
+    padding-left: 22px;
+    position: absolute;
+    top: -20px;
+    left: 40%;
+}
+
+.activated-sp-img-container span {
+    height: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size:8pt;
+    color: #22969E;
+}
+
+.deactivated-sp-img-container span {
+    height: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size:8pt;
+    color: gray;
+}
+
+/* Integrity State */
+.integrity-state-success-img-container {
+    background: url("images/Shield_key_small_blue.png") no-repeat;
+    display: inline-block;
+    background-size: 20px 20px;
+    height: 20px;
+    padding-left: 22px;
+    position: absolute;
+    top: -20px;
+    left: 52%;
+}
+
+.integrity-state-failed-img-container {
+    background: url("images/Shield_key_small_red.png") no-repeat;
+    display: inline-block;
+    background-size: 20px 20px;
+    height: 20px;
+    padding-left: 22px;
+    position: absolute;
+    top: -20px;
+    left: 52%;
+}
+
+.integrity-state-success-img-container  span {
+    height: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size:8pt;
+    color: #22969E;
+}
+
+.integrity-state-failed-img-container span {
+    height: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size:8pt;
+    color: #ED1C24;
+}
+
+</style>
+</head>
+<body>
+<div id="pxc-all">
+  <div id="id_main_messages_box_div">
+    
+    <div hidden class="pxc-error-general-msg-wrp" id="id_main_connection_error_div">
+        <div class="pxc-error-msg">
+            <div class="pxc-exclamation"><div>!</div></div>
+            <span class="pxc-msg-txt c_glb_connection_error_occured" style="display:inline-block;">Lost connection to controller</span>
+        </div>
+    </div>
+    <div hidden class="pxc-warning-general-msg-wrp" id="id_main_session_timeout_warning_div" style="margin-top: 2px;">
+        <div class="pxc-warning-msg">
+            <div class="pxc-warning"><div>i</div></div>
+            <span class="pxc-msg-txt c_session_timeout_warning" style="display: inline-block;">Less than 2 minutes remain for your WBM session. Therefore, watch out for unsaved user configurations in the WBM.</span>
+            <button class="pxc-btn-remove msg-hide" id="id_main_session_timeout_warning_hide_btn" style="float: right; display: inline-block; margin: -4px 5px;"></button>
+            <button class="pxc-btn-pa" id="id_main_session_prolong_button" style="float: right; margin: -5px 5px;"><span class="c_session_prolong_text">Prolong session</span></button>
+        </div>
+    </div>
+    <div hidden class="pxc-warning-general-msg-wrp" id="id_main_password_expiration_warning_div" style="margin-top: 2px;">
+        <div class="pxc-warning-msg">
+            <div class="pxc-warning"><div>i</div></div>
+            <div id="id_main_password_expiration_warning_content" style="display:inline-block;">
+            </div>
+            <button class="pxc-btn-remove msg-hide" id="id_main_password_expiration_warning_hide_btn" style="float: right; display: inline-block; margin: -3.5px 5px;"></button>
+        </div>
+    </div>
+    <div hidden class="pxc-warning-general-msg-wrp" id="id_main_default_password_active_warning_div" style="margin-top: 2px;">
+        <div class="pxc-warning-msg">
+            <div class="pxc-warning"><div>i</div></div>
+            <span class="pxc-msg-txt c_default_password_active" style="display: inline-block;">Default user password is active. It is strongly recommended to change the default user password.</span>
+            <button class="pxc-btn-remove msg-hide" id="id_main_default_password_active_warning_hide_btn" style="float: right; display: inline-block; margin: -3.5px 5px;"></button>
+        </div>
+    </div>
+  </div>
+  <div id="page-header" class="header">
+    <div id="pxc-funcnav" class="cf nav">
+      <ul class="pxc-lang" id="id_lang_elements_ul">
+        <li><a id="id_lang_de" href="#" onclick="Language.ChangeLanguage(event, 'de')">Deutsch</a></li>
+        <li><a id="id_lang_en" href="#" onclick="Language.ChangeLanguage(event, 'en')">English</a></li>
+      </ul>
+      <div class="dropdown pxc-btm-btn-align" style="display:inline-block; position: relative; top: -5px;">
+          <button style="text-align: center;" class="dropdown-button"><span class="c_glb_th_help">Help</span></button>
+          <div id="id_main_help_info_items_div" class="dropdown-content">
+          </div>
+      </div>
+      <div hidden class="pxc-func" style="display:inline-block">
+        <span><a id="id_main_button_logout" href="#" onclick="Session.Logout()">Logout</a></span>
+        <span id="id_main_logout_timer"> in <span id="id_main_logout_timer_value"></span></span>
+      </div>
+      <div style="position: relative;">
+        <div  hidden id="id_main_activated_sp_div" style="dispay: inline-block;">
+            <span class="activated-sp-img-container" id="id_main_activated_sp_container_span" align="center">
+                <span class="c_secprofile_activated_main">&nbsp;Security Profile activated</span> 
+            </span>
+        </div>
+        <div hidden id="id_main_deactivated_sp_div" style="dispay: inline-block;">
+            <span class="deactivated-sp-img-container" id="id_main_deactivated_sp_main_span" align="center">
+                <span class="c_secprofile_deactivated_main" >&nbsp;Security Profile deactivated</span> 
+            </span>
+        </div>
+        <div hidden id="id_main_integrity_check_success_div" style="dispay: inline-block;">
+            <span class="integrity-state-success-img-container" align="center">
+                <span class="c_integrity_state_success_main">&nbsp;Integrity check successfull</span> 
+            </span>
+        </div>
+        <div hidden id="id_main_integrity_check_failed_div" style="dispay: inline-block;">
+            <span class="integrity-state-failed-img-container" align="center">
+                <span class="c_integrity_state_failed_main" >&nbsp;Integrity check failed</span> 
+            </span>
+        </div>
+      </div>
+    </div>
+    <div class="cf pxc-masthead">
+      <div class="pxc-r pxc-sl">
+        <div class="pxc-r pxc-sr">
+          <div class="cf pxc-bdy">
+            <div class="pxc-brandmid">
+              <a href="http://www.phoenixcontact.com" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;"><img src="logo.gif" width="123" height="32" alt="Phoenix Contact Logo" title="Phoenix Contact Homepage" class="pxc-logo"/></a>
+            </div>
+            <div class="pxc-qsrch" id="header">
+              <div id="id_div_header_center">
+                <div class="ellipsis" id="id_div_project_name">
+                  <span class="c_glb_project_name"></span><span id="id_main_project_name_span"></span>
+                </div>
+              </div>
+              <div id="id_div_header_right">
+                <div>HW: <span id="id_main_info_hwversion"></span> FW: <span id="id_main_info_fwversion"></span></div>
+                <div>MAC: <span id="id_main_info_mac"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pxc-main">
+    <div class="cf pxc-grid-2">
+      <div class="pxc-r pxc-sl">
+        <div class="pxc-r pxc-sr">
+          <div class="cf pxc-bdy">
+            <div class="cf pxc-grid-5">
+              <div class="pxc-fcol" id="id_div_mainmenu">
+                <div class="cf pxc-fcol-flt" id="id_main_menus_div">
+                  <div class="pxc-p-boxed">
+                    <div class="pxc-filterpane">
+                      <a href="#"></a>
+                      <a href="Home.html" page_name="Home" id="id_menu_main_subitem_home">
+                        <p class="pxc-filtertitle centered" id="id_div_devdesignation">
+                          <span id="id_main_home_artname"></span><br><span id="id_main_home_ordernum"></span>
+                        </p>
+                        <div id="id_div_devlogo"></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="pxc-p-boxed">
+                    <div class="c_btn_menuexpand c_btn_menu" id="id_div_btn_menu_overview"></div>
+                    <div class="pxc-filterpane">
+                      <p class="pxc-filtertitle c_menu_title" id="id_menu_title_overview">Overview</p>
+                      <ul class="c_menu_list" id="id_menu_overview">
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pxc-p-boxed">
+                    <div class="c_btn_menuexpand" id="id_div_btn_menu_diagnostics"></div>
+                    <div class="pxc-filterpane">
+                      <p class="pxc-filtertitle c_menu_title" id="id_menu_title_diagnostics">Diagnostics</p>
+                      <ul class="c_menu_list" id="id_menu_diagnostics">
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pxc-p-boxed">
+                    <div class="c_btn_menuexpand" id="id_div_btn_menu_config"></div>
+                    <div class="pxc-filterpane">
+                      <p class="pxc-filtertitle c_menu_title" id="id_menu_title_config">Configuration</p>
+                      <ul class="c_menu_list" id="id_menu_config">
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pxc-p-boxed">
+                    <div class="c_btn_menuexpand c_btn_menu" id="id_div_btn_menu_security"></div>
+                    <div class="pxc-filterpane">
+                      <p class="pxc-filtertitle c_menu_title" id="id_menu_title_security">Security</p>
+                      <ul class="c_menu_list" id="id_menu_security">
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pxc-p-boxed">
+                    <div class="c_btn_menuexpand c_btn_menu" id="id_div_btn_menu_administration"></div>
+                    <div class="pxc-filterpane">
+                      <p class="pxc-filtertitle c_menu_title" id="id_menu_title_administration">Administration</p>
+                      <ul class="c_menu_list" id="id_menu_administration">
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="cf pxc-fcol-flt">
+                </div>
+              </div>
+            </div>
+            <div class="cf pxc-grid-4" id="id_div_maincontentpanel">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pxc-r pxc-bl"><div class="pxc-r pxc-br"></div></div>
+    </div>
+    <div class="cf pxc-grid-6">
+      <div class="pxc-plt-ctrl">
+        <div class="cf pxc-grid-6">
+          <ul class="cf footer" id="page-footer">
+            <li class="pxc-copy" id="id_gbl_copyright"></li>
+            <li><a href="LegalInformation.html" target="_blank" onclick="fShowPopUpWindow('LegalInformation.html', 1000, 700, 1)" id="id_lnk_legalinformation" >Legal Information</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pxc-loader-ico" id="id_main_div_loader"></div>
+  </div>
+</div>
+</body>
+</html>

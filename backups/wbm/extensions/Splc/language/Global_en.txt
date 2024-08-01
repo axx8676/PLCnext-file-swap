@@ -1,0 +1,5 @@
+﻿var oTxt_Global_Content =
+{
+    /***** PROFIsafe / SPLC Configuration ****/
+    "id_menu_subitem_splc_splcconfiguration"      : "SPLC"
+};

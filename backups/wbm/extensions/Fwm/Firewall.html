@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - Firewall</title>
+<meta charset="UTF-8">
+<script src="Session.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="Utilities.js"></script>
+<script src="Language.js"></script>
+<script src="validation_rules.js"></script>
+<script src="extensions/Fwm/Firewall.js"></script>
+
+<style>
+
+.container {
+    padding: 16px;
+    overflow-x: scroll;
+}
+
+::placeholder {
+  color: #b2b4b6;
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* IE 10-11 */
+  color: #b2b4b6;
+}
+
+::-ms-input-placeholder { /* MS Edge */
+  color: #b2b4b6;
+}
+
+</style>
+</head>
+<body>
+    <div id="id_fw_page_global_div" hidden>
+        <h1 id="id_pagetitle_security" hidden>Security</h1>
+        <div id="id_fw_page_div" hidden class="pxc-plt-ctrl">
+            <div class="pxc-p-plain">
+                <h3 id="id_subpagetitle_sec">Firewall</h3>
+                <hr>
+                <div class="pxc-p-plain">
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <table class="pxc-tbl-zebra" style="width:100%">
+                        <colgroup>
+                            <col style="width: 90%">
+                        </colgroup>
+                        <tr>
+                            <th scope="col" colspan="2" class="c_fw_system_messages"></th>
+                        </tr>
+                        <tr>
+                            <td id="id_fw_system_messages_box_td">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <table class="pxc-tbl-zebra" style="width:100%">
+                        <colgroup>
+                            <col style="width: 30%">
+                            <col style="width: 70%">
+                        </colgroup>
+                        <tr>
+                            <th scope="col" colspan="2" class="c_fw_system_status"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span id = "id_fw_active_fw_rules_label"></span>
+                            </td>
+                            <td>
+                                <button class="pxc-btn-pa" id="id_fw_active_fw_rules_button" ><span class="c_fw_active_fw_rules_span"></span></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <form id="id_fw_firewall_status_config_form">
+                            <table id="id_fw_firewall_status_config_table" hidden class="pxc-tbl-zebra" style="width:100%">
+                                <colgroup>
+                                    <col style="width: 30%">
+                                    <col style="width: 70%">
+                                </colgroup>
+                                <tr>
+                                    <th scope="col" colspan="2" class="c_firewallmanager_firewall_status"></th>
+                                </tr>
+                            </table>
+                        </form>
+                </div>
+                <div class="c_fw_main_tab"></div>
+            </div>
+        </div>
+        <div class="modal" id="id_fw_modal_show_fw_active_rules">
+            <div class="modal-content" style="min-width:800px;">
+            <div class="container" style="max-width: 95%;">
+                <h1 id="id_fwm_form_list_fw_rules_title" class="c_fw_active_fw_rules_header">Active Firewall Rules</h1>
+                <form id="id_fw_show_active_rules_form">
+                    <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <table class="pxc-tbl-zebra" style="width:95%; overflow-x: scroll;" id="id_fw_active_rules_table">
+                        <colgroup>
+                            <col style="width: 20%">
+                            <col style="width: 5%">
+                            <col style="width: 75%">
+                        </colgroup>
+                        <tr>
+                            <th id="id_fw_active_rules_table_name"   class="c_fw_active_rules_table_name_col"></th>
+                            <th id="id_fw_active_rules_table_type"   class="c_fw_active_rules_table_type_col"></th>
+                            <th id="id_fw_active_rules_table_content"class="c_fw_active_rules_table_content_col"></th>
+                        </tr>
+                        
+                    </table>
+                    <div class="centered">
+                        <button class="pxc-btn-pa" id="id_fw_active_fw_rules_save_button" ><span class="c_fw_active_fw_rules_save_span"></span></button>
+                        <button class="pxc-btn-pa" id="id_fw_active_fw_rules_close_button"><span class="c_fw_active_fw_rules_close_span"></span></button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        <!-- Main Tab -->
+        <div id="c_fw_main_tab">
+            <div class="pxc-cnt pxc-az">
+                <div class="pxc-pd-tabs pxc-tabs" data-dojo-type="pxc.layout.SimpleTabController" style="float: left;" id="pxc_layout_SimpleTabController_0" widgetid="pxc_layout_SimpleTabController_0" style="visibility: visible;">
+                    <div class="cf pxc-pd-tabsrow" style="float: left;" >
+                        <h2>
+                        <a class="pxc-tab-fw-Base-config pxc-tab-on" id="id_main_basic_configs_tab" href="#pxc-jump-fw-Base-config" data-tab-id="pxc-tab-Basic-Configs">&nbsp <span class="c_fw_basic_config_tab_span"></span> &nbsp</a>
+                        </h2>
+                        <h2>
+                        <a class="pxc-tab-fw-User-config" href="#pxc-jump-fw-User-config" id="id_main_user_configs_tab" data-tab-id="pxc-tab-User-Configs">&nbsp <span class="c_fw_user_config_tab_span"></span> &nbsp</a>
+                        </h2>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <!-- Base Configurations -->
+        <div id="pxc-tab-Basic-Configs" class="pxc-tabouterpane pxc-stab-root" >
+            <a id="pxc-jump-fw-Base-config" ></a>
+                <div class="cd pxc-pd-tab" id="pxc-tab-Basic-Rules">
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows" >
+                    <form id="id_fw_icmpconfig_form" >
+                        <table id="id_fw_icmpconfig_table" hidden class="pxc-tbl-zebra" style="width:100%" style="float: left">
+                            <colgroup>
+                                <col style="width: 30%">
+                                <col style="width: 70%">
+                            </colgroup>
+                            <tr>
+                                <th scope="col" colspan="2" class="c_fw_icmpecho_configs"></th>
+                            </tr>
+                            <tr>
+                            </tr>
+                        </table>
+                    </form> 
+                </div>
+                <h3 class="c_fw_basic_rules_span_value"></h3>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <form id="id_fw_basic_port_rules_table_form">
+                        <table id="id_fw_basic_port_rules_table_table" hidden class="pxc-tbl-zebra" style="width:100%" id="id_fw_basic_port_rules_table">
+                            <colgroup>
+                                <col style="width: 5%">
+                                <col style="width: 15%">
+                                <col style="width: 10%">
+                                <col style="width: 10%">
+                                <col style="width: 35%">
+                                <col style="width: 15%">
+                            </colgroup>
+                            <tr>
+                                <th id="id_fw_basis_rules_table_nr"        class="c_fw_rules_config_seq"></th>
+                                <th id="id_fw_basis_rules_table_direction" class="c_fw_rules_config_direction"></th>
+                                <th id="id_fw_basis_rules_table_protocol"  class="c_fw_rules_config_prot"></th>
+                                <th id="id_fw_basis_rules_table_dsport"    class="c_fw_rules_config_dport"></th>
+                                <th id="id_fw_basis_rules_table_comment"   class="c_fw_rules_config_comment"></th>
+                                <th id="id_fw_basis_rules_table_action"    class="c_fw_rules_config_action"></th>
+                            </tr>
+                        </table>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    
+        <!-- User Konfiguration -->
+        <div id="pxc-tab-User-Configs" hidden class="pxc-tabouterpane pxc-stab-root">
+            <div class="pxc-pd-tabs pxc-tabs" data-dojo-type="pxc.layout.SimpleTabController" style="float: left;"id="pxc_layout_SimpleTabController_0" widgetid="pxc_layout_SimpleTabController_0" style="visibility: visible;">
+                <div class="cf pxc-pd-tabsrow" style="float: left;">
+                    <h2>
+                    <a class="pxc-tab-on" id="id_main_user_input_configs_tab" href="#pxc-jump-User-Input-Rules" data-tab-id="pxc-tab-User-Input-Rules">&nbsp <span class="c_fw_user_input_config_tab_span"></span> &nbsp</a>
+                    </h2><h2>
+                    <a href="#pxc-jump-User-Output-Rules" id="id_main_user_output_configs_tab" data-tab-id="pxc-tab-User-Output-Rules">&nbsp <span class="c_fw_user_output_config_tab_span"></span> &nbsp</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Input rules for User -->
+        <div id="pxc-tab-User-Input-Rules" hidden class="pxc-tabouterpane pxc-stab-root">
+            <a id="pxc-jump-User-Input-Rules"></a>
+            <div class="cd pxc-pd-tab" id="pxc-tab-Input-Rules">
+                <h3 class="c_fw_input_rules_titel_comm"></h3>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <form id="id_fw_user_input_config_form">
+                        <table class="pxc-tbl-zebra" style="width:100%" id="id_fw_user_input_rules_table">
+                            <thead>
+                                <colgroup>
+                                    <col style="width: 3%"> <!-- Seq.-->
+                                    <col style="width: 9%"> <!-- Interface-->
+                                    <col style="width: 9%"> <!-- Protocol-->
+                                    <col style="width: 15%"> <!-- Source Ip -->
+                                    <col style="width: 10%"> <!-- Source Port-->
+                                    <col style="width: 15%"><!-- Destination Ip -->
+                                    <col style="width: 10%"> <!-- Destination Port -->
+                                    <col style="width: 16%"><!-- Comment -->
+                                    <col style="width: 12%"> <!-- Action -->
+                                </colgroup>
+                                <tr>
+                                    <th class="c_fw_rules_config_seq"     id="id_fw_User_input_Rules_table_nr" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_Iface"   id="id_fw_User_input_Rules_table_Interface" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_prot"    id="id_fw_User_input_Rules_table_protocol" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_sip"     id="id_fw_User_input_Rules_table_sip" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_sport"   id="id_fw_User_input_Rules_table_sport" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_dip"     id="id_fw_User_input_Rules_table_dip" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_dport"   id="id_fw_User_input_Rules_table_dport" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_comment" id="id_fw_User_input_Rules_table_comment" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_action"  id="id_fw_User_input_Rules_table_action" style="text-align:center;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="exclude">
+                                    <td colspan="2">
+                                        <button class="pxc-btn-plus tooltip" id="id_fw_input_rules_add_button" style="float: left;">
+                                            <span class="tooltip-text-top c_fw_add_new_rule_button_text"></span>
+                                        </button>
+                                        <button class="pxc-btn-remove tooltip" id="id_fw_input_rules_remove_button" style="float: left;">
+                                            <span class="tooltip-text-top c_fw_remove_rule_button_text"></span>
+                                        </button>
+                                        <button class="pxc-btn-up tooltip" id="id_fw_input_rules_move_up_button" style="float: left;">
+                                            <span class="tooltip-text-top c_fw_move_rule_upbutton_text"></span>
+                                        </button>
+                                        <button class="pxc-btn-down tooltip" id="id_fw_input_rules_move_down_button" style="float: left;">
+                                            <span class="tooltip-text-top c_fw_move_rule_down_button_text"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    
+        <!-- Output rules for User -->
+        <div id="pxc-tab-User-Output-Rules" hidden class="pxc-tabouterpane pxc-stab-root">
+            <a id="pxc-jump-User-Output-Rules"></a>
+            <div class="cd pxc-pd-tab" id="pxc-tab-Input-Rules">
+                <h3 class="c_fw_output_rules_titel_comm"></h3>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <form id="id_fw_user_ouput_config_form">
+                        <table class="pxc-tbl-zebra" style="width:100%" id="id_fw_user_output_rules_table">
+                            <thead>
+                                <colgroup>
+                                    <col style="width: 4%"> <!-- Seq.-->
+                                    <col style="width: 9%"> <!-- Protocol-->
+                                    <col style="width: 14%"> <!-- Source Ip -->
+                                    <col style="width: 10%"> <!-- Source Port-->
+                                    <col style="width: 14%"><!-- Destination Ip -->
+                                    <col style="width: 10%"> <!-- Destination Port -->
+                                    <col style="width: 16%"><!-- Comment -->
+                                    <col style="width: 10%"> <!-- Action -->
+                                </colgroup>
+                                <tr class="exclude">
+                                    <th class="c_fw_rules_config_seq"     id="id_fw_User_output_Rules_table_nr"       style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_prot"    id="id_fw_User_output_Rules_table_protocol" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_sip"     id="id_fw_User_output_Rules_table_sip"      style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_sport"   id="id_fw_User_output_Rules_table_sport"    style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_dip"     id="id_fw_User_output_Rules_table_dip"      style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_dport"   id="id_fw_User_output_Rules_table_dport" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_comment" id="id_fw_User_output_Rules_table_comment" style="text-align:center;"></th>
+                                    <th class="c_fw_rules_config_action"  id="id_fw_User_output_Rules_table_action" style="text-align:center;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="exclude">
+                                    <td colspan="2">
+                                        <button class="pxc-btn-plus tooltip" id="id_fw_output_rules_add_button" style="float: left;">
+                                            <span class="tooltip-text-top c_fw_add_new_rule_button_text"></span>
+                                        </button>
+                                        <button class="pxc-btn-remove tooltip" id="id_fw_output_rules_remove_button" style="float: left;">
+                                            <span class="tooltip-text-top c_fw_remove_rule_button_text"></span>
+                                        </button>
+                                        <button class="pxc-btn-up tooltip" id="id_fw_input_output_move_up_button" style="float: left;">
+                                            <span class="tooltip-text-top c_fw_move_rule_upbutton_text"></span>
+                                        </button>
+                                        <button class="pxc-btn-down tooltip" id="id_fw_output_rules_move_down_button" style="float: left;">
+                                            <span class="tooltip-text-top c_fw_move_rule_down_button_text"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        <div hidden>
+            <span id="id_fw_td_firewall_config_status_ok" class="c_fw_td_firewall_config_status_ok"></span>;
+        </div>
+        
+        <div hidden id="id_fw_error_desc">
+            <span id="id_fw_character_text_span"           class="c_glb_character_text"></span>
+            <span id="id_fw_invalid_not_allowed_text_span" class="c_glb_not_valid_allowed_char_text"></span>
+        </div>
+        </br>
+        <button class="pxc-btn-pa sticky-button-bottom " id="id_fw_apply_config_button" style="float: right;"><span class="c_glb_th_config_apply"></span></button>
+        <button class="pxc-btn sticky-button-bottom " id="id_fw_discard_config_button" style="float: right; margin: 0px 5px;"><span class="c_glb_th_config_discard"></span></button>
+        
+        <div class="modal" id="id_fw_discard_modal" ifacenumber="0">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_fw_discard_warning_div" class="pxc-f-gradbox">
+                        <span id="id_fw_discard_config_info"   class="c_glb_discard_config_warning"   style="color:red;font-weight: bold;"></span>
+                    </div>
+                    <br>
+                    <div style="display: flex;justify-content: center;">
+                        <button class="pxc-btn-pa" id="id_fw_discard_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                        <span>&nbsp; </span>
+                        <button class="pxc-btn" id="id_fw_discard_cancle_btn"><span class="c_glb_th_config_cancel"></span></button>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pxc-loader-ico modal" id="id_div_loader" style="display:inline-block;"></div>
+    </div>
+</body>
+</html>

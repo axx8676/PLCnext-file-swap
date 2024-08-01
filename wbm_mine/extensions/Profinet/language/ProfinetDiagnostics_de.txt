@@ -1,0 +1,200 @@
+var oTxt_ProfinetDiagnostics_Content =
+{
+    /********************* Profinet - Diagnostics *********************/
+    "c_pndiag_subtitle_info":"PROFINET",
+    "c_pndiag_overview_tab_span":"Übersicht",
+    "c_pndiag_device_list_tab_span":"Geräteliste",
+    "c_pndiag_tree_view_tab_span":"Baumansicht",
+    "c_pndiag_topology_view_tab_span":"Netzwerktopologie-Ansicht",
+    "c_pndiag_statistics_tab_span":"Statistik",
+    
+    /*** Profinet Overview ***/
+    "c_pndiag_profinet_controller":"Profinet-Controller",
+    "c_pndiag_pnio_controller":"Profinet-Controller-Funktion",
+    "c_pndiag_pnio_controller_lan":"Profinet-Controller LAN-Schnittstelle",
+    "c_pndiag_pnio_device":"Profinet-Device-Funktion",
+    "c_pndiag_pnio_device_lan":"Profinet-Device LAN-Schnittstelle",
+    "c_pndiag_controller_details":"Controller-Details",
+    "c_pndiag_profile":"Profil",
+    "c_pndiag_details_text":"Details",
+    "c_pndiag_goto_treenode_text":"Gehe zu Baumknoten",
+
+    /***  Activation ***/
+    "c_pndiag_activated":"Aktiviert",
+    "c_pndiag_deactivated":"Deaktiviert",
+    "c_pndiag_active":"Aktiv",
+    
+    /*** Diagnose ***/
+    "c_pndiag_diagnosis":"Status",
+    "c_pndiag_true":"TRUE",
+    "c_pndiag_false":"FALSE",
+    "c_pndiag_diagnostics":"Diagnose",
+    "c_pndiag_no_channel_diagnosis":"Keine Kanaldiagnose vorhanden",
+    
+    /*** Controller Details ***/
+    "c_pndiag_profinet_device":"Profinet-Gerät",
+    "c_pndiag_device_name":"Stationsname",
+    "c_pndiag_device_type":"Gerätetyp",
+    "c_pndiag_device_status":"Status",
+    "c_pndiag_profinet_network":"Netzwerk",
+    "c_pndiag_ipaddr":"IP-Adresse",
+    "c_pndiag_ipaddr_range":"IP-Adressbereich",
+    "c_pndiag_std_gateway":"Standard-Gateway",
+    "c_pndiag_subnet_mask":"Subnetzmaske",
+    "c_pndiag_subnet_station_name":"Stationsname",
+    "c_pndiag_subnet_dns_name":"DNS-Hostname",
+    "c_pndiag_controller_eth_iface":"LAN-Schnittstelle des Controllers",
+    "c_pndiag_vendor_id":"Hersteller",
+    "c_pndiag_device_id":"Gerätetyp",
+    "c_pndiag_module_number":"AR User ID",
+    "c_pndiag_conn_devices_number":"Anzahl der anschließbaren Profinet-Geräte",
+    "c_pndiag_realtime_class":"Echtzeitklasse",
+    "c_pndiag_device_no":"Nr.",
+    "c_pndiag_details":"Details",
+    "c_pndiag_treenode":"Baumknoten",
+    "c_pndiag_device_status_details":"Statusdetails",
+    "c_pndiag_device_diagnosis":"Kanaldiagnose",
+    "c_pndiag_close_button_text":"Schließen",
+    "c_pndiag_device_modules" : "Module",
+    "c_pndiag_device_module_id" : "Modul-ID",
+    "c_pndiag_sub_modules" : "Submodule",
+    "c_pndiag_node_id" : "Knoten-ID",
+    "c_pndiag_submodule_id" : "Submodul-ID",
+    "c_pndiag_slot" : "Steckplatz",
+    "c_pndiag_subslot" : "Substeckplatz",
+    "c_pndiag_subelements" : "Subelemente",
+    "c_pndiag_type" : "Typ",
+    "c_pndiag_pn_device" : "Profinet-Geräte",
+    "c_pndiag_device_module_count":"Anzahl Module",
+
+    /*** Device Details ***/
+    "c_pndiag_device_unknown_name":"Geräte-ID",
+
+    /*** Module Details ***/
+    "c_pndiag_module_information":"Informationen",
+    "c_pndiag_module_device":"Konfiguriert in",
+    "c_pndiag_module_api":"API-Nr.",
+    "c_pndiag_module_slot":"Slot-Nr.",
+    "c_pndiag_module_type":"Modultyp",
+    "c_pndiag_module_submodule_count":"Anzahl Submodule",
+    "c_pndiag_module_status_title":"Modulstatus",
+    "c_pndiag_module_diagnosis":"Kanaldiagnose",
+    "c_pndiag_module_unknown_name":"Modul-ID",
+
+    /*** Module difference ***/
+    "c_pndiag_module_difference":"Moduldifferenz",
+    "c_pndiag_module_difference_default":"Es liegt eine Moduldifferenz vor",
+    "c_pndiag_module_difference_no_module":"Kein Modul",
+    "c_pndiag_module_difference_wrong_module":"Falsches Modul",
+    "c_pndiag_module_difference_proper_module":"Richtiges Modul, aber mindestens ein Submodul ist falsch, gesperrt oder fehlt",
+    "c_pndiag_module_difference_substituted_module":"Modul unterscheidet sich, ist aber kompatibel",
+
+    /*** Submodule Details ***/
+    "c_pndiag_submodule_information":"Informationen",
+    "c_pndiag_submodule_device":"Konfiguriert in",
+    "c_pndiag_submodule_api":"API-Nr.",
+    "c_pndiag_submodule_subslot":"Subslot-Nr.",
+    "c_pndiag_submodule_type":"Submodultyp",
+    "c_pndiag_submodule_status_title":"Submodulstatus",
+    "c_pndiag_submodule_diagnosis":"Kanaldiagnose",
+    "c_pndiag_submodule_unknown_name":"Submodul-ID",
+    "c_pndiag_submodule_channel_diag_source":"Kanal",
+
+    /*** Submodule difference ***/
+    "c_pndiag_submodule_difference":"Moduldifferenz",
+    "c_pndiag_submodule_difference_default":"Es liegt eine Moduldifferenz vor",
+    "c_pndiag_submodule_difference_no_submodule":"Kein Submodul",
+    "c_pndiag_submodule_difference_wrong_submodule":"Falsches Submodul",
+    "c_pndiag_submodule_difference_locked_submodule":"Gesperrtes Submodul",
+    "c_pndiag_submodule_difference_substituted_submodule":"Submodul unterscheidet sich, ist aber kompatibel",
+    "c_pndiag_submodule_difference_ar_pending":"'Application Ready' ausstehend",
+    "c_pndiag_submodule_difference_take_over":"Das Submodul steht für eine Übernahme nicht zur Verfügung",
+    "c_pndiag_submodule_difference_superordination_locked":"Diese AR wird durch eine überlagerte Ebene blockiert",
+    "c_pndiag_submodule_difference_locked_by_controller":"Diese AR gehört einer anderen IOAR",
+    "c_pndiag_submodule_difference_locked_by_supervisor":"Diese AR gehört einer anderen IOSAR",
+    "c_pndiag_submodule_difference_type":"Typ",
+
+    /**** Profinet Diagnostics Status ***/
+    "c_pndiag_status_text_h":"Status",
+    "c_pndiag_status_text_ok_h":"OK",
+    "c_pndiag_status_text_reloading_table_h":"Geräteliste wird neu geladen...",
+    "c_pndiag_status_text_reloading_tree_h":"Geräte-Baumansicht wird neu geladen...",
+    "c_pndiag_status_text_project_mod_detected_h":"Neue Projektkonfigurationen detektiert!",
+    "c_pndiag_status_text_wait_project_load_h":"Neue Projektkonfiguration wird geladen...",
+    "c_pndiag_status_text_disconnected_h":"Verbindung zum Controller ist abgebrochen!",
+    "c_pndiag_diag_status_ok":"OK",
+    "c_pndiag_diag_status_warning":"Warnung",
+    "c_pndiag_diag_status_urgent_warning":"Dringende Warnung",
+    "c_pndiag_diag_status_error":"Fehler",
+    "c_pndiag_diag_status_undef":"Undefiniert",
+    "c_pndiag_diag_status_no_connection":"Keine Verbindung",
+    "c_pndiag_diag_status_module_difference":"Moduldifferenz",
+    "c_pndiag_diag_status_no_info":"Keine Information",
+    "c_pndiag_diag_status_ar_inactive":"AR deaktiviert",
+    "c_pndiag_diag_status_ar_deactivated":"Keine Diagnose möglich. AR ist deaktiviert",
+    "c_pndiag_diag_textclass_device_warning":"Warnung! Öffnen Sie die Ansicht \"Geräteinformationen\" des Profinet-Gerätes, um weitere Informationen zu erhalten",
+    "c_pndiag_diag_textclass_device_error":"Fehler! Öffnen Sie die Ansicht \"Geräteinformationen\" des Profinet-Gerätes, um weitere Informationen zu erhalten",
+    
+    "c_pndiag_diag_text_none_span"               :"",  
+    "c_pndiag_diag_text_ok_span"                 :"OK",  
+    "c_pndiag_diag_text_dev_disconnected_span"   :"Verbindungsaufbau zum Gerät nicht möglich",
+    "c_pndiag_diag_text_data_invalid"            :"Ungültige Daten", 
+    "c_pndiag_diag_text_diag_available_span"     :"Diagnose ist vorhanden",
+    "c_pndiag_diag_text_mod_difference_span"     :"Moduldifferenz(en) vorhanden",
+    "c_pndiag_diag_text_ar_deactivated_span"     :"AR ist deaktiviert",
+    "c_pndiag_diag_text_neig_not_available_span" :"Nachbarschaftsinformationen nicht vorhanden",
+    "c_pndiag_diag_text_neig_not_unique_span"    :"Nachbarschaftsinformationen nicht eindeutig",
+    "c_pndiag_diag_text_dev_already_config_span" :"Der Name des Geräts ist bereits in einem anderen AR konfiguriert",
+    "c_pndiag_diag_text_maint_required_span"     :"\"Maintenance Required\"-Information ist vorhanden",
+    "c_pndiag_diag_text_maint_demanded_span"     :"\"Maintenance Demanded\"-Information ist vorhanden",
+    "c_pndiag_diag_text_man_diag_available_span" :"Kanal- oder herstellerspezifische Diagnosedaten sind verfügbar",
+    
+    
+    "c_pndiag_diag_text_manufacturer_diag_span"  :"Herstellerspezifische Diagnose ist vorhanden",
+    
+    /*** Profinet Diagnosis Connection Status ***/
+    "c_pndiag_connection_state_Offline": "Nicht verbunden",
+    "c_pndiag_connection_state_Online" : "Verbunden",
+    
+    /*** Profinet Device List ***/
+    "c_pndiag_device_list":"Profinet-Geräteliste",
+    "c_pndiag_devices_with_wbm_text":"* Profinet-Teilnehmer mit eigenem Web-based Management",
+    "c_pndiag_devices_wbm_link_text":"&nbsp;&nbsp; (Über den Link erreichbar)",
+    
+    /*** Profinet Device Informations ***/
+    "id_pndiag_form_show_device_infos_title":"Geräteinformationen",
+
+    /*** Module Informations ***/
+    "id_pndiag_form_show_module_infos_title":"Modulinformationen",
+
+    /*** Submodule Informations ***/
+    "id_pndiag_form_show_submodule_infos_title":"Submodulinformationen",
+
+    /*** Profinet Tree View ***/
+    "c_pndiag_tree_view":"Profinet-Baumansicht",
+    
+    /*** Profinet Topology View ***/
+    "c_pndiag_topology_view":"Profinet Topologie-Ansicht",
+    
+    /*** Profinet Statistics ***/
+    "c_pndiag_statistics":"Profinet-Statistik",
+    "c_pndiag_statistics_received_packets":"Empfangene Datenpakete",
+    "c_pndiag_lost_packets":"Verlorengegangene Packete",
+    "c_pndiag_on_error_rejected_packets":"Wegen Fehler abgewiesene Packete",
+    "c_pndiag_fault_free_transmitted":"Fehlerfrei gesendete Packete",
+    "c_pndiag_fault_free_received":"Fehlerfrei empfangene Packete",
+    "c_pndiag_statistics_settings":"Statistik-Einstellungen",
+    "c_pndiag_statistics_counter_reset":"Statistikzähler zurücksetzen",
+    "c_pndiag_counter_reset":"Zurücksetzen",
+    "c_pndiag_statistics_counter_request":"Zählerabfrage",
+    "c_pndiag_statistics_bus_quality":"Busqualität",
+    "c_pndiag_statistics_counter_request_lastboot":"Seit letztem Boot",
+    "c_pndiag_statistics_counter_request_last24h":"Letzte 24 Stunden",
+    "c_pndiag_statistics_counter_request_last7d":"Letzte 7 Tage",
+  
+    /*** Device status ***/
+    "c_pndiag_device_status_ar_deactivated":"AR deaktiviert",
+    "c_pndiag_device_status_ok":"OK",
+    "c_pndiag_device_status_warning":"Warnung",
+    "c_pndiag_device_status_error":"Fehler",
+};

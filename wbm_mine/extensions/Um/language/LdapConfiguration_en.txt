@@ -1,0 +1,67 @@
+﻿var oTxt_LdapConfiguration_Content =
+{
+    /********************* LDAP Configurations **********************/
+    "c_ldapconfigs_subtitle_info":"LDAP Configuration",
+    
+    "c_ldapconfig_activation_status":"LDAP Activation",
+    
+    "c_ldapconfig_servers_list_title":"LDAP Servers",
+    
+    /* Servers table */
+    "c_ldapconfig_server_ordernumber_h":"Seq.",
+    "c_ldapconfig_server_hostname_h":"Hostname",
+    "c_ldapconfig_server_port_h":"Port",
+    "c_ldapconfig_server_timeout_h":"Timeout",
+    
+    "c_ldapconfig_edit_server_config"       :"Edit LDAP Server Configuration",
+    "c_ldapconfig_remove_server_config"     :"Remove selected LDAP Server Configuration",
+    "c_ldapconfig_add_server_config"        :"Add a new LDAP Server Configuration",
+    "c_ldapconfig_move_server_config_up"    :"Move selected LDAP Server Configuration up",
+    "c_ldapconfig_move_server_config_down"  :"Move selected LDAP Server Configuration down",
+    
+    /* Server Add/Edit Modal */
+    "c_ldapconfig_server_config_general_opt"      :"General Options",
+    "c_ldapconfig_server_config_basic_opt"        :"Basic Configuration",
+    "c_ldapconfig_server_config_enhanced_opt"     :"Enhanced Configuration",
+    "c_ldapconfig_server_config_security_opt"     :"Security Options",
+    "c_ldapconfig_server_config_search_opt"       :"Search Options",
+    "c_ldapconfig_server_config_login_opt"        :"Login Options",
+    "c_ldapconfig_server_config_groupattrs_opt"   :"Group Attributes",
+    "c_ldapconfig_server_config_groupmapping_opt" :"LDAP Group Mappings",
+    "c_ldapconfig_server_config_local_opt"        :"Local Options",
+    
+    "c_ldapconfig_server_tls_mode_h"           :"TLS Mode",
+    "c_ldapconfig_server_enabletls_h"          :"TLS",
+    "c_ldapconfig_server_usestarttls_h"        :"StartTLS",
+    "c_ldapconfig_server_deactivatetls_h"      :"Deactivated",
+    "c_ldapconfig_server_truststore_h"         :"Trust Store",
+    "c_ldapconfig_server_basedn_h"             :"Base DN",
+    "c_ldapconfig_server_searchfilter_h"       :"Search Filter",
+    "c_ldapconfig_server_binddn_h"             :"Bind DN",
+    "c_ldapconfig_server_bindpasswd_h"         :"Bind Password",
+    "c_ldapconfig_server_bindpasswd_confirm_h" :"Confirm Bind Password",
+    "c_ldapconfig_server_cipherlist_h"         :"Cipher List",
+    "c_ldapconfig_server_comment_h"            :"Comment",
+    
+    "c_ldapconfig_remove_attribute"     :"Remove attribute",
+    "c_ldapconfig_add_attribuet"        :"Add attribute",
+    "c_ldapconfig_attribut"             :"Attributes",
+    "c_ldapconfig_ldapgroup"            :"LDAP Group",
+    "c_ldapconfig_add_groupmapping"     :"Add group mapping",
+    "c_ldapconfig_remove_groupmapping"  :"Remove group mapping",
+    "c_ldapconfig_local_role"           :"Local User Role",
+    
+    "c_ldapconfig_sm_server_remove_conf_info"           :"Warning: The selected LDAP server configuration will be removed from the system. Do you want to proceed with removing the server configuration?",
+
+    /* System messages */
+    "c_ldapconfig_connection_error_h"  : "A communication error has occurred: ",
+    "c_ldapconfig_config_read_error_h" : "An error has occurred while reading the LDAP configuration!",
+    "c_ldapconfig_parse_error_h"       : "An error has occurred while setting the LDAP configuration!",
+    "c_ldapconfig_msg_error_code_info" : "Error Code: ",
+    "c_ldapconfig_msg_error_msg_info"  : "Error Message: ",
+    
+    "c_ldapconfig_server_default_port_placeholder" : "When empty or zero: Default value will be used",
+    "c_ldapconfig_select_truststore" : "Select a Trust Store",
+
+    "c_ldapconfig_config_invalid_message"  : "The LDAP server configuration contains invalid user input. The error can be in the Basic Server Configuration, in the Enhanced Server Configuration, or in both.",
+};

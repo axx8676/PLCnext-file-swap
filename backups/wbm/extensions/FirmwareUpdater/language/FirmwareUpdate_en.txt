@@ -1,0 +1,27 @@
+﻿var oTxt_FirmwareUpdate_Content =
+{
+    /********************* Firmware Update *********************/
+    "c_fwupdate_subtitle_info":"Firmware Update",
+    "c_fwupdate_format_err_span":"Invalid update container file format (.raucb) selected",
+    "c_fwupdate_upload_err_span":"Error while uploading the update file",
+    "c_fwupdate_invalid_file_abort_span":"File upload has been aborted by the user, or the browser has dropped the connection",
+    "c_fwupdate_invalid_size_span":"Size of selected update file is too large",
+    "c_fwupdate_uploading_abort_span":"Firmware update aborted !",
+    "c_fwupdate_upload_transfered":"Transfered: ",
+    "c_fwupdate_upload_remaining":"Remaining: ",
+    "c_fwupdate_uploading_file_info":"The update container is being transferred to the Controller",
+    "c_fwupdate_processing_file_info":"The Controller is processing the update container",
+    "c_fwupdate_updating_fw_info":"The connection to the Controller will be lost during the update process. After Controller reboot, restart the WBM and check the installed firmware version",
+    "c_fwupdate_upload_success":"The update container has been transferred successfully to the Controller",
+    "c_fwupdate_select_update_file":"Select the update container file",
+    "c_fwupdate_data_processing":"Processing the update container ...",
+    "c_fwupdate_updating_start":"The firmware is being updated...",
+    "c_fwupdate_updating_error":"An error occurred while updating ",
+    "c_fwupdate_start_update_button":"Start Update",
+    "c_fwupdate_abort_update_button":"Abort Update",
+    "c_fwupdate_update_completed":"Completed",
+    "c_fwupdate_raucb_filesize_text":"Size: ",
+    "c_fwupdate_raucb_filetype_text":"Type:",
+    "c_fwupdate_raucb_browse_text":"Browse...",
+    "c_fwupdate_no_file_selected":"No file selected",
+};

@@ -1,0 +1,18 @@
+﻿var oTxt_SystemServices_Content =
+{
+    /********************* PLCnext System Services *********************/
+    "c_sysservices_subtitle_info"   : "System Services",
+    
+    "c_sysservices_number_h"         : "No.",
+    "c_sysservices_id_h"             : "Service ID",
+    "c_sysservices_name_h"           : "Service Name",
+    "c_sysservices_description_h"    : "Description",
+    "c_sysservices_activation_h"     : "Activation",
+    "c_sysservices_def_activation_h" : "Factory Default",
+    
+    "c_sysservices_restart_info"     : "When configuring the System Services, the controller will be restarted automatically.",
+    "c_sysservices_consistency_info" : "The configuration of the System Services via the WBM may collide with those of the System Services via the PLCnext Apps and may overwrite them. Ensure the consistency of the configurations beforehand.",
+    "c_sysservices_continue_info"    : "Do you want to proceed with configuring the System Services?",
+    "c_sysservices_request_error"    : "An error occurred while querying the PLCnext System Services.",
+    "c_sysservices_config_error"     : "An error occurred while configuring the PLCnext System Services. Error code: ",
+};

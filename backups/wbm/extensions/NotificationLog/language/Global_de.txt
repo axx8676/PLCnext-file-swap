@@ -1,0 +1,5 @@
+var oTxt_Global_Content =
+{
+    /********************* Notification Log ***********************/
+    "id_menu_subitem_notificationlog_notificationlog"  :"Benachrichtigungen",
+};

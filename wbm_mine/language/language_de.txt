@@ -1,0 +1,117 @@
+var oTxtMainContent =
+{
+    /********************* Menu *******************************/
+    "id_pagetitle_home":"Home",
+    "c_menu_title_overview":"Übersicht",
+    "id_menu_title_overview":"Übersicht",
+    "c_menu_title_infos":"Information",
+    "id_menu_title_infos":"Information",
+    "c_menu_title_config":"Konfiguration",
+    "id_menu_title_config":"Konfiguration",
+    "c_menu_title_diagnostics":"Diagnose",
+    "id_menu_title_diagnostics":"Diagnose",
+    "c_menu_title_security":"Security",
+    "id_menu_title_security":"Security",
+    "c_menu_title_administration":"Verwalten",
+    "id_menu_title_administration":"Verwalten",
+
+    /********************* Other global used elements ****************/
+    "c_glb_device_name":"Gerätename",
+    "c_glb_project_name":"Projektname",
+    "c_glb_system_description":"Beschreibung",
+    "c_glb_function":"Funktion",
+    "c_glb_location":"Einbauort",
+    "c_glb_contact":"Kontakt",
+    "c_glb_th_general_data":"Allgemeine Daten",
+    "c_glb_th_localbus":"Lokalbus",
+    "c_glb_localbus_nr":"Nr.",
+    "c_glb_product_name":"Produktname",
+    "c_glb_product_text":"Beschreibung",
+    "c_glb_equipid":"Betriebsmittel-Kennzeichen",
+    "c_glb_th_status":"Status",
+    "c_glb_th_configuration":"Konfiguration",
+    "c_glb_th_user_defined":"Benutzerdefiniert",
+    "c_glb_th_config_apply":"Anwenden",
+    "c_glb_th_config_apply_and_reboot":"Anwenden und neu starten",
+    "c_glb_th_config_apply_2":"Übernehmen",
+    "c_glb_th_config_reset":"Zurücksetzen",
+    "c_glb_th_config_cancel":"Abbrechen",
+    "c_glb_th_config_discard":"Verwerfen",
+    "c_glb_th_config_save":"Speichern",
+    "c_glb_th_config_generate":"Generieren",
+    "c_glb_th_config_save_restart":"Speichern und neu starten",
+    "c_glb_th_config_apply_restart":"Anwenden und neu starten",
+    "c_glb_discard_config_warning": "Achtung: Die Benutzereingaben werden verworfen und die WBM-Seite wird neu geladen. Möchten Sie fortfahren?", 
+    "c_glb_datasheet_note":"Weitere Informationen finden Sie im Datenblatt unter",
+    "c_glb_th_help":"Hilfe&nbsp;&#9660;&nbsp;",
+    "c_glb_system_messages": "Systemnachricht",
+    "c_addinfo":"<strong>Zusätzliche Information</strong>",
+    "c_glb_rt_reconfig_warning": "Das Anwenden der Konfiguration kann das Echtzeitverhalten des Systems beeinträchtigen. Vermeiden Sie daher die Rekonfiguration im laufenden Produktivbetrieb!",
+    "id_lnk_legalinformation":"Rechtliche Hinweise",
+    "id_gbl_copyright":"&copy; 2017 Phoenix Contact",
+    
+    "c_glb_btn_refresh":"Aktualisieren",
+    "c_glb_description":"Beschreibung",
+    "c_glb_btn_close":"Schließen",
+    "c_glb_please_select":"Bitte wählen:",
+    "c_glb_btn_next":"Weiter",
+    "c_glb_btn_back":"Zurück",
+    "c_glb_btn_ok":"OK",
+    "c_glb_btn_cancel":"Abbrechen",
+    "c_glb_btn_finish":"Abschließen",
+    "c_glb_btn_browse":"Durchsuchen...",
+    "c_glb_btn_upload":"Hochladen",
+    "c_glb_btn_deactivate":"Deaktivieren",
+    "c_glb_btn_activate":"Aktivieren",
+    "c_glb_btn_reset":"Zurücksetzen",
+    "c_glb_btn_activate_reboot":"Aktivieren und neu starten",
+    "c_glb_config_value": "Konfiguration",
+
+    /* Date and Time */
+    "c_glb_day_header"    : "Tag",
+    "c_glb_days_header"   : "Tage",
+    "c_glb_hour_header"   : "Stunde",
+    "c_glb_hours_header"  : "Stunden",
+
+    "c_glb_plural_dative_ext": "n",
+
+    "c_glb_connection_error" : "Ein Verbindungsfehler ist aufgetreten: ",
+    "c_glb_connection_error2": "Ein Verbindungsfehler ist aufgetreten",
+    "c_glb_system_message"   : "Systemnachricht",
+    "c_glb_warning"          : "Warnung",
+    
+    /* Security Profile */
+    "c_secprofile_deactivated_main":"Security-Profil deaktiviert",
+    "c_secprofile_activated_main":  "Security-Profil aktiviert",
+    
+    /* Integrity check */
+    "c_integrity_state_success_main":"Integritätsprüfung erfolgreich",
+    "c_integrity_state_failed_main": "Integritätsprüfung fehlgeschlagen",
+
+    /* Session timeout warning */
+    "c_session_timeout_warning": "Weniger als 2 Minuten verbleiben für Ihre WBM-Sitzung. Achten Sie daher auf nicht gespeicherte Benutzerkonfigurationen im WBM.",
+    "c_session_prolong_text": "Sitzung verlängern",
+
+    /********************* Login ***********************/
+    "id_login_welcome_text":"Bitte melden Sie sich mit Ihrem Benutzernamen und Ihrem Passwort an.",
+    "id_login_username":"Benutzername",
+    "id_login_password":"Passwort",
+    "id_login_button_login":"Anmelden",
+    "p_login_input_username":"Benutzername eingeben",
+    "p_login_input_password":"Passwort eingeben",
+    "c_login_system_use_notification" : "Systembenutzungshinweis",
+    "c_login_system_use_notification_request_error" : "Beim Abfragen des Systembenutzungshinweises ist ein Fehler aufgetreten. Bitte stellen Sie sicher, dass die Firmware ihren Startvorgang abgeschlossen hat. Fehlercode: ",
+    "c_default_password_active" : "Dringend empfohlen: Ändern Sie das aktuelle Passwort. Nutzen Sie das Standardpasswort nur für den erstmaligen Zugriff.",
+
+    /* Password Expiration */
+    "c_main_password_expiration_header_warning"   : "Ihr Passwort läuft bald ab!",
+    "c_main_password_expiration_text_warning"     : "Ihr Passwort läuft in ",
+    "c_main_password_expiration_text_warning_ext" : "&nbsp;ab. Ändern Sie daher ggf. Ihr Passwort oder wenden Sie sich an den Systemadministrator.",
+
+    /********************* Main ***********************/
+    "id_main_button_logout":"Abmelden",
+
+    /********************* HMI Settings ***********************/
+    "id_menu_subitem_hmisettings":"HMI Einstellungen",
+
+};

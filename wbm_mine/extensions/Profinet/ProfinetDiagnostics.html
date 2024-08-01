@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - Profinet</title>
+<meta charset="UTF-8">
+<script src="Session.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="Language.js"></script>
+<script src="Utilities.js"></script>
+<script src="ctree/jquery.ctree.min.js"></script>
+<script src="extensions/Profinet/ProfinetDiagnostics.js"></script>
+<style>
+
+table.scroll {
+    width: 100%;
+    border-collapse: collapse;
+    margin:0;
+}
+
+table.scroll tbody { 
+    display: block; 
+    max-height: 180px; 
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+td.break-line {
+    overflow-wrap: break-word;
+}
+.tooltip .tooltip-text-container {
+    width: 400px;
+    position: absolute;
+    left: 20px;
+    visibility: hidden;
+}
+.tooltip:hover .tooltip-text-container {
+    visibility: visible;
+}
+.tooltip .tooltip-text-container .tooltip-text-right {
+    max-width : 100%;
+    overflow-wrap : break-word;
+    top:initial;
+    left:initial;
+    bottom:initial;
+    margin-left:initial;
+    position:relative;
+    display:inline-block;
+}
+</style>
+</head>
+<body>
+    <h1 id="id_pagetitle_config"><span class="c_menu_title_diagnostics"></span></h1>
+    <div class="pxc-plt-ctrl">
+        <div class="pxc-p-plain">
+            <h3 id="id_subpagetitle_profinet_diagnostic" class="c_pndiag_subtitle_info">PROFINET</h3>
+            <hr></hr>
+            
+            <!-- Main Tab -->
+            <div id="c_cer_main_tab" style="width: 90%;">
+                <div class="pxc-cnt pxc-az" >
+                    <div class="pxc-pd-tabs pxc-tabs" data-dojo-type="pxc.layout.SimpleTabController" style="float: left;" id="pxc_layout_SimpleTabController_0" widgetid="pxc_layout_SimpleTabController_0" style="visibility: visible;">
+                        <div class="cf pxc-pd-tabsrow" style="float: left;" >
+                            <h2>
+                            <a class="pxc-tab-pndiag-Overview pxc-tab-on" id="id_pndiag_overview_tab" href="#pxc-jump-pndiag-overview" data-tab-id="pxc-tab-Overview">&nbsp <span class="c_pndiag_overview_tab_span"></span> &nbsp</a>
+                            </h2>
+                            <h2>
+                            <a class="pxc-tab-pndiag-Device-List" href="#pxc-jump-pndiag-device-list" id="id_pndiag_device_list_tab" data-tab-id="pxc-tab-Device-List">&nbsp <span class="c_pndiag_device_list_tab_span"></span> &nbsp</a>
+                            </h2>
+                            <h2>
+                            <a class="pxc-tab-pndiag-Tree-View" href="#pxc-jump-pndiag-tree-view" id="id_pndiag_tree_view_tab" data-tab-id="pxc-tab-Tree-View">&nbsp <span class="c_pndiag_tree_view_tab_span"></span> &nbsp</a>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profinet Overview -->
+            <div id="pxc-tab-Overview" class="pxc-tabouterpane pxc-stab-root" style="width: 87.2%;">
+                <a id="pxc-jump-pndiag-overview" ></a>
+                    <div class="cd pxc-pd-tab" id="pxc-tab-Overview">                  
+                    <div class="cf pxc-cnt pxc-mod-main-table-alt-rows" >
+                        <form id="id_pndiag_overview_form" >
+                            <h3 id="id_pndiag_profinet_controller_h" hidden class="c_pndiag_profinet_controller">Profinet Controller</h3>
+                            <hr id="id_pndiag_profinet_controller_hr" hidden></hr>
+                            <!-------------------------------------
+                              ---  Section Profinet Controller  ---
+                              ------------------------------------->
+                            <table  class="pxc-tbl-zebra" hidden id="id_pndiag_controller_overview_table" style="width:100%" style="float: left">
+                                <colgroup>
+                                    <col style="width: 40%">
+                                    <col style="width: 60%">
+                                </colgroup>
+                                <th style="height: 30px;" colspan="2">Status</th>
+                                <tr>
+                                    <td>
+                                        <span class="c_pndiag_pnio_controller"     style="display: inline-block; width: 300px;">PNIO Controller </span>
+                                    </td>
+                                    <td id="id_pndiag_controller_status_td" style="background-color:gray;">
+                                        <span class="c_pndiag_activated" id="id_pndiag_controller_status_activated" style="display: none; width: 155px; color:white; font-weight: bold;"></span>
+                                        <span class="c_pndiag_deactivated" id="id_pndiag_controller_status_deactivated" style="display: inline-block; width: 155px; color:white; font-weight: bold;"></span>
+                                    </td>
+                                </tr>
+                                <!------ Activation Status  ------>
+                                <tr>
+                                    <td>
+                                        <span class="c_pndiag_pnio_device"     style="display: inline-block; width: 300px;">PNIO Device </span>
+                                    </td>
+                                    <td id="id_pndiag_device_status_td" style="background-color:gray;">
+                                        <span class="c_pndiag_activated" id="id_pndiag_device_status_activated" style="display: none; width: 155px; color: white; font-weight: bold;"></span>
+                                        <span class="c_pndiag_deactivated" id="id_pndiag_device_status_deactivated" style="display: inline-block; width: 155px; color: white; font-weight: bold;"></span>
+                                    </td>
+                                </tr>
+                                <!------ Controller Details  ------>
+                                <th style="height: 30px;" colspan="2" class="c_pndiag_controller_details"></th>
+                                <tr>
+                                    <!-- Device Type -->
+                                    <td>
+                                        <span class="c_pndiag_device_type" style="display: inline-block; width: 300px;">Device Name</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="id_pndiag_device_name_input" style="width:250px;" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- IP Address -->
+                                    <td>
+                                        <span class="c_pndiag_ipaddr" style="display: inline-block; width: 300px;">IP Address</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="id_pndiag_ip_address_input" style="width:250px;" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- Subnet Mask -->
+                                    <td>
+                                        <span class="c_pndiag_subnet_mask" style="display: inline-block; width: 300px;">Subnet Mask</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="id_pndiag_subnet_mask_input" style="width:250px;" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- Default Gateway -->
+                                    <td>
+                                        <span class="c_pndiag_std_gateway" style="display: inline-block; width: 300px;">Standard Gateway</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="id_pndiag_std_gateway_input" style="width:250px;" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- Realtime Class -->
+                                    <td>
+                                        <span class="c_pndiag_realtime_class" style="display: inline-block; width: 300px;">Realtime Class</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="c_pndiag_realtime_class_input" style="width:250px;" value="RT" readonly>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+            <!-- Profinet Device List -->
+            <div id="pxc-tab-Device-List" hidden class="pxc-tabouterpane pxc-stab-root" style="width: 87.2%;">
+                <a id="pxc-jump-pndiag-device-list" ></a>
+                <div class="cd pxc-pd-tab" id="pxc-tab-Device-List">                  
+                    <div class="cf pxc-cnt pxc-mod-main-table-alt-rows" >
+                        <form id="id_pndiag_device_list_form" >
+                            <!------ Device List  ------>
+                            <h3 class="c_pndiag_device_list">Profinet Device List</h3>
+                            <hr></hr>
+                            <table  id="id_pndiag_device_list_table" class="pxc-tbl-zebra" style="table-layout:fixed; width:100%" style="float: left">
+                                <colgroup> 
+                                    <col style="width: 5%">
+                                    <col style="width: 25%">
+                                    <col style="width: 20%">
+                                    <col style="width: 30%">
+                                    <col style="width: 10%">
+                                    <col style="width: 10%"> <!-- Figure out the sizes properly -->
+                                </colgroup>
+                                <tr class="exclude" style="height: 40px;">
+                                    <th class="c_pndiag_device_no"></th>
+                                    <th class="c_pndiag_device_name"></th>
+                                    <th class="c_pndiag_ipaddr"></th>
+                                    <th class="c_pndiag_diagnosis"></th>
+                                    <th class="c_pndiag_details"></th>
+                                    <th class="c_pndiag_treenode"></th>
+                                </tr>
+                            </table>
+                            <br></br>
+                            <div>
+                                <span style="display: inline-block; width:75%; color:#0098A1;" class="c_pndiag_devices_with_wbm_text"></span>
+                                <span style="display: inline-block; width:75%; color:#0098A1;" class="c_pndiag_devices_wbm_link_text"></span>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+            <!-- Profinet Tree View -->
+            <div id="pxc-tab-Tree-View" hidden class="pxc-tabouterpane pxc-stab-root" style="width: 87.2%;">
+                <a id="pxc-jump-pndiag-tree-view" ></a>
+                <div class="cd pxc-pd-tab" id="pxc-tab-Tree-View">                  
+                    <div class="cf pxc-cnt pxc-mod-main-table-alt-rows" >
+                        <form id="id_pndiag_tree_view_form" >
+                            <!------ Device Tree  ------>
+                            <h3 class="c_pndiag_tree_view">Profinet Tree View</h3>
+                            <hr></hr>
+                            <div class="pxc-f-gradbox" style="display: inline-block;height:100%;width:1015px;">
+                                <div id="id_pndiag_devices_tree" class="ctree_root"></div>
+                                <div class="sticky-button-bottom pxc-f-gradbox" style="width: 200px; margin: 0px 750px; background-color: white;">
+                                    <!------ Icon Legend  ------>
+                                    <img src="./images/status_icon_severity_normal.svg" alt="OK" style="width:12px; height:12px; vertical-align: -1.75px;">
+                                    <span class="c_pndiag_diag_status_ok"></span>
+                                    <br>
+    
+                                    <img src="./images/status_icon_severity_warning.svg" alt="Warning" style="width:12px; height:12px; vertical-align: -1.75px;">
+                                    <span class="c_pndiag_diag_status_warning"></span>
+                                    <br>
+
+                                    <img src="./images/status_icon_severity_urgent_warning.svg" alt="Urgent Warning" style="width:12px; height:12px; vertical-align: -1.75px;">
+                                    <span class="c_pndiag_diag_status_urgent_warning"></span>
+                                    <br>
+    
+                                    <img src="./images/status_icon_severity_fault.svg" alt="Error" style="width:12px; height:12px; vertical-align: -1.75px;">
+                                    <span class="c_pndiag_diag_status_error"></span>
+                                    <br>
+                                    
+                                    <img src="./images/status_icon_severity_undef.svg" alt="Undefined" style="width:12px; height:12px; vertical-align: -1.75px;">
+                                    <span class="c_pndiag_diag_status_ar_inactive"></span>
+                                    <br>
+
+                                    <img src="./images/status_icon_unequal.svg" alt="Module difference" style="width:12px; height:12px; vertical-align: -1.75px;">
+                                    <span class="c_pndiag_diag_status_module_difference"></span>
+                                    <br>
+
+                                    <img src="./images/status_icon_no_connection.svg" alt="No connnection" style="width:12px; height:12px; vertical-align: -1.75px;">
+                                    <span class="c_pndiag_diag_status_no_connection"></span>
+                                    <br>
+
+                                    <img src="./images/status_icon_no_info.svg" alt="No info" style="width:12px; height:12px; vertical-align: -1.75px;">
+                                    <span class="c_pndiag_diag_status_no_info"></span>
+                                    <br>
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div> 
+            <div id="id_pndiag_status_div">
+                <br>
+                <span class="c_pndiag_diagnostics"></span><span>:</span>
+                <span id="id_pndiag_online_circle_span" style="height: 15px; width: 15px; background-color:green; border-radius: 50%; display: inline-block;"></span>
+                <span id="id_pndiag_online_status_span" style="color:green;">Online</span>
+                <span id="id_pndiag_offline_circle_span" style="height: 15px; width: 15px; background-color:red; border-radius: 50%; display:none;"></span>
+                <span hidden id="id_pndiag_offline_status_span" style="color:red;">Offline</span>
+                <span style="white-space: pre;">         |        </span>
+                <span class="c_pndiag_status_text_h"></span><span>:</span>
+                <span class="c_pndiag_status_text_ok_h"                   id="id_pndiag_status_ok_span" style="color:green;"></span>
+                <span hidden class="c_pndiag_status_text_reloading_table_h"      id="id_pndiag_status_reloading_table_span" style="color:blue;"></span>
+                <span hidden class="c_pndiag_status_text_reloading_tree_h"       id="id_pndiag_status_reloading_tree_span" style="color:blue;"></span>
+                <span hidden class="c_pndiag_status_text_wait_project_load_h"    id="id_pndiag_status_wait_project_load_span" style="color:blue;"></span>
+                <span hidden class="c_pndiag_status_text_project_mod_detected_h" id="id_pndiag_status_new_configs_detected_span" style="color:blue;"></span>
+                <span hidden class="c_pndiag_status_text_disconnected_h"                id="id_pndiag_status_disconnected_span" style="color:red;"></span>
+            </div> 
+            <div hidden>
+                <span id="id_pndiag_diag_textclass_device_error"         class="c_pndiag_diag_textclass_device_error" ></span>
+                <span id="id_pndiag_diag_textclass_device_warning"       class="c_pndiag_diag_textclass_device_warning" ></span>
+                <span id="id_pndiag_diag_textclass_device_ardeactivated" class="c_pndiag_diag_status_ar_deactivated" ></span>
+            <div>
+        </div>
+    </div>
+    <div hidden>
+        <span id="id_pndiag_treenode_station"      class="c_pndiag_subnet_station_name"></span>
+        <span id="id_pndiag_treenode_ipaddr"       class="c_pndiag_ipaddr"></span>
+        <span id="id_pndiag_treenode_vendor_id"    class="c_pndiag_vendor_id"></span>
+        <span id="id_pndiag_treenode_device_id"    class="c_pndiag_device_id"></span>
+        <span id="id_pndiag_treenode_modules"      class="c_pndiag_device_modules"></span>
+        <span id="id_pndiag_treenode_module_id"    class="c_pndiag_device_module_id"></span>
+        <span id="id_pndiag_treenode_sub_modules"  class="c_pndiag_sub_modules"></span>
+        <span id="id_pndiag_treenode_node_id"      class="c_pndiag_node_id"></span>
+        <span id="id_pndiag_treenode_submodule_id" class="c_pndiag_submodule_id"></span>
+        <span id="id_pndiag_treenode_slot_number"  class="c_pndiag_slot"></span>
+        <span id="id_pndiag_treenode_subslot"      class="c_pndiag_subslot"></span>
+        <span id="id_pndiag_treenode_subelements"  class="c_pndiag_subelements"></span>
+        <span id="id_pndiag_treenode_type"         class="c_pndiag_type"></span>
+        <span id="id_pndiag_pn_devices"            class="c_pndiag_pn_device"></span>
+    </div>
+    <!-- Device Details Modal -->
+    <div class="modal" id="id_div_pndiag_device_infos_modal">
+        <div class="modal-content">
+          <div class="container">
+            <h1 id="id_pndiag_form_show_device_infos_title">Device Informations</h1>
+            <div class="div-centered">
+              <form id="id_pndiag_show_device_infos_form">
+                <label style="width:570px; display: inline-block"></label>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <table  id="id_pndiag_device_Info_table" class="pxc-tbl-zebra" style="table-layout:fixed; width:100%">
+                        <colgroup>
+                            <col style="width: 40%;">
+                            <col style="width: 60%;">
+                        </colgroup>
+                        <!----------------------------->
+                        <!-- Profinet Device Section -->
+                        <!----------------------------->
+                        <th style="height: 30px;" colspan="2" class="c_pndiag_profinet_device"></th>
+                        <!-- Activation Status -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_device_status"></span>
+                            </td>
+                            <td id="id_pndiag_device_status_id">
+                                <span class="c_pndiag_true" id="id_pndiag_device_status_span" style="color:white; font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <!-- Module Number -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_module_number"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_device_module_number_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Vendor ID -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_vendor_id"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_device_infos_vendor_id_value"></span><!--
+                            <sub>hex</sub>-->
+                            </td>
+                        </tr>
+                        <!-- Device ID -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_device_id"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_device_infos_device_id_value"></span><!--
+                            <sub>hex</sub>-->
+                            </td>
+                        </tr>
+                        <!-- Module count -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_device_module_count"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_device_infos_module_count_value"></span>
+                            </td>
+                        </tr>
+                        <!----------------------------->
+                        <!--     Network Section    -->
+                        <!----------------------------->
+                        <tr>
+                            <th style="height: 30px;" colspan="2" class="c_pndiag_profinet_network"></th>
+                        </tr>
+                        <!-- IP Address -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_ipaddr"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_device_infos_ipaddr_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Netmask -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_subnet_mask"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_device_infos_subnet_mask_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Std. Gateway -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_std_gateway"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_device_infos_std_gateway_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Name of Station -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_subnet_station_name"></span>
+                            </td>
+                            <td class="break-line">
+                                <span id="id_pndiag_device_infos_station_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Dns Hostname -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_subnet_dns_name"></span>
+                            </td>
+                            <td class="break-line">
+                                <span id="id_pndiag_device_infos_dns_value"></span>
+                            </td>
+                        </tr>
+
+                        <!--------------------------->
+                        <!-- Device Status Section --> 
+                        <!--------------------------->
+                        <tr>
+                            <th id="id_pndiag_device_status_table_header" style="height: 30px;" colspan="2" class="c_pndiag_device_status_details"></th>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_dev_ok_tr" class="DiagText">
+                            <!-- No Bit set -->
+                            <td  colspan="2" id="id_pndiag_diag_text_ok_td">
+                                <span style="color:white;font-weight: bold;"> OK </span>
+                            </td> 
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_dev_disconnected_tr" class="DiagText">
+                            <!-- Bit 0: set if not connected -->
+                            <td  colspan="2" id="id_pndiag_diag_text_dev_disconnected_td">
+                                <span id="id_pndiag_diag_text_dev_disconnected_span"        class="c_pndiag_diag_text_dev_disconnected_span"        style="color:white;font-weight: bold;"></span>
+                            </td> 
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_data_invalid_tr" class="DiagText">
+                            <!-- Bit 1: set if data invalid -->
+                            <td colspan="2" id="id_pndiag_diag_text_data_invalid_td">
+                                <span id="id_pndiag_diag_text_data_invalid_span"         class="c_pndiag_diag_text_data_invalid"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_diag_available_tr" class="DiagText">
+                            <!-- Bit 2: set if diagnosis is available -->
+                            <td colspan="2" id="id_pndiag_diag_text_diag_available_td">
+                                <span id="id_pndiag_diag_text_diag_available_span"         class="c_pndiag_diag_text_diag_available_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_mod_difference_tr" class="DiagText">
+                            <!-- Bit 3: set if module difference is available in case of configuration difference -->
+                            <td colspan="2" id="id_pndiag_diag_text_mod_difference_td">
+                                <span id="id_pndiag_diag_text_mod_difference_span"         class="c_pndiag_diag_text_mod_difference_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_ar_deactivated_tr" class="DiagText">
+                            <!-- Bit 4: set  if AR is deactivated -->
+                            <td colspan="2" id="id_pndiag_diag_text_ar_deactivated_td">
+                                <span id="id_pndiag_diag_text_ar_deactivated_span"         class="c_pndiag_diag_text_ar_deactivated_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_neig_not_available_tr" class="DiagText">
+                            <!-- Bit 5: set if neighborhood information is not available -->
+                            <td colspan="2" id="id_pndiag_diag_text_neig_not_available_td">
+                                <span id="id_pndiag_diag_text_neig_not_available_span"         class="c_pndiag_diag_text_neig_not_available_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_neig_not_unique_tr" class="DiagText">
+                            <!-- Bit 6: neighborhood information not unique -->
+                            <td colspan="2" id="id_pndiag_diag_text_neig_not_unique_td">
+                                <span id="id_pndiag_diag_text_neig_not_unique_span"         class="c_pndiag_diag_text_neig_not_unique_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_dev_already_config_tr" class="DiagText">
+                            <!-- Bit 7 - Identify.cnf on alias received, but name of the device is already configured in another AR -->
+                            <td colspan="2" id="id_pndiag_diag_text_dev_already_config_td">
+                                <span id="id_pndiag_diag_text_dev_already_config_span"         class="c_pndiag_diag_text_dev_already_config_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_maint_required_tr" class="DiagText">
+                            <!-- Bit 8: Maintenance Required Information is available -->
+                            <td colspan="2" id="id_pndiag_diag_text_maint_required_td">
+                                <span id="id_pndiag_diag_text_maint_required_span"         class="c_pndiag_diag_text_maint_required_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_maint_demanded_tr" class="DiagText">
+                            <!-- Bit 9: Maintenance Demanded Information is available -->
+                            <td colspan="2" id="id_pndiag_diag_text_maint_demanded_td">
+                                <span id="id_pndiag_diag_text_maint_demanded_span"         class="c_pndiag_diag_text_maint_demanded_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+                        <tr hidden id="id_pndiag_device_diag_text_man_diag_available_tr" class="DiagText">
+                            <!-- Bit 10: Channel or Manufacturer Specific Diagnosis Information are available -->
+                            <td colspan="2" id="id_pndiag_diag_text_man_diag_available_td">
+                                <span id="id_pndiag_diag_text_man_diag_available_span"         class="c_pndiag_diag_text_man_diag_available_span"        style="color:white;font-weight: bold;"></span>
+                            </td>
+                        </tr>
+
+                        <!----------------------->
+                        <!-- Diagnosis Section -->
+                        <!----------------------->
+                        <tr id ="id_pndiag_device_diag_table_header_container">
+                            <th id="id_pndiag_device_diag_table_header" style="height: 30px;" colspan="2"  class="c_pndiag_device_diagnosis"></th>
+                        </tr>
+                    </table>
+                    <table id="id_pndiag_device_no_diag_table" class="scroll">
+                        <th hidden id="id_pndiag_device_no_diag_inner_table_header" colspan="2"></th>
+                        <!-- This table has to be shown if no diagnosis is available -->
+                        <tbody id="id_pndiag_device_no_diag_table_body">
+                            <tr>
+                                <td style="vertical-align : middle;text-align:center; width:100px"><div class="tooltip"><span class="tooltip-text-right" style="white-space:nowrap;">OK</span><img src="./images/status_icon_severity_normal.svg" alt="OK" style="width:24px; height:24px"></div></td>
+                                <td style="vertical-align : middle; width:435px"><span class="c_pndiag_no_channel_diagnosis"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="id_pndiag_device_diag_table" class="scroll">
+                        <th hidden id="id_pndiag_device_diag_inner_table_header" colspan="2"></th>
+                        <!-- This table has to be shown if channel diagnosis is available -->
+                        <tbody hidden id="id_pndiag_device_diag_table_body">
+                            <!-- Fill with JS -->
+                        </tbody>
+                    </table> 
+                </div> 
+                <div class="centered">
+                    <button type="button" class="pxc-btn-pa" id="id_pndiag_device_details_ok_button"><span class="c_pndiag_close_button_text">Close</span></button>
+                </div>                 
+                <br></br>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Module Details Modal -->
+    <div class="modal" id="id_div_pndiag_module_infos_modal">
+        <div class="modal-content">
+          <div class="container">
+            <h1 id="id_pndiag_form_show_module_infos_title">Module Informations</h1>
+            <div class="div-centered">
+              <form id="id_pndiag_show_module_infos_form">
+                <label style="width:570px; display: inline-block"></label>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <table  id="id_pndiag_module_Info_table" class="pxc-tbl-zebra" style="table-layout: fixed; width:100%">
+                        <colgroup>
+                            <col style="width: 40%">
+                            <col style="width: 60%">
+                        </colgroup>
+                    
+                        <!------------------------->
+                        <!-- Information Section -->
+                        <!------------------------->
+                        <tr>
+                            <th id="id_pndiag_module_Info_table_header" style="height: 30px;" colspan="2" class="c_pndiag_module_information"></th>
+                        </tr>
+                        <!-- Configured in Device-->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_module_device"></span>
+                            </td>
+                            <td class="break-line">
+                                <span id="id_pndiag_module_device_value"></span>
+                            </td>
+                        </tr>
+                        <!-- API Number -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_module_api"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_module_api_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Slot Number -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_module_slot"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_module_slot_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Modul type -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_module_type"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_module_type_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Submodule Count -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_module_submodule_count"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_module_submodule_count_value"></span>
+                            </td>
+                        </tr>
+
+                        <!--------------------------->
+                        <!-- Module Status Section -->
+                        <!--------------------------->
+
+                        <tr hidden id ="id_pndiag_module_diff_table_header_container">
+                            <th id="id_pndiag_module_diff_table_header" style="height: 30px;" colspan=2  class="c_pndiag_module_difference"></th>
+                        </tr>
+                        <tr hidden id ="id_pndiag_module_diff_table_container" style="background-color: #FFC000;">
+                            <td colspan="2">
+                                <span id="id_pndiag_module_diff_no_module" class="c_pndiag_module_difference_no_module" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_module_diff_wrong_module" class="c_pndiag_module_difference_wrong_module" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_module_diff_wrong_module_type" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_module_diff_proper_module" class="c_pndiag_module_difference_proper_module" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_module_diff_substituted_module" class="c_pndiag_module_difference_substituted_module" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_module_diff_default" class="c_pndiag_module_difference_default" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_module_diff_code" style="height: 30px; color:white; font-weight: bold;"></span> 
+                            </td>
+                        </tr>
+
+                        <!----------------------->
+                        <!-- Diagnosis Section -->
+                        <!----------------------->
+                        <tr id ="id_pndiag_module_diag_table_header_container">
+                            <th id="id_pndiag_module_diag_table_header" style="height: 30px;" colspan=2  class="c_pndiag_module_diagnosis"></th>
+                        </tr>
+                    </table>
+                    <table id="id_pndiag_module_no_diag_table" class="scroll">
+                        <th hidden id="id_pndiag_module_no_diag_inner_table_header" colspan="2"></th>
+                        <!-- This table has to be shown if no diagnosis is available -->
+                        <tbody id="id_pndiag_module_no_diag_table_body">
+                            <tr>
+                                <td style="vertical-align : middle;text-align:center; width:100px"><div class="tooltip"><span class="tooltip-text-right" style="white-space:nowrap;">OK</span><img src="./images/status_icon_severity_normal.svg" alt="OK" style="width:24px; height:24px"></div></td>
+                                <td style="vertical-align : middle; width:435px"><span class="c_pndiag_no_channel_diagnosis"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="id_pndiag_module_diag_table" class="scroll">
+                        <th hidden id="id_pndiag_module_diag_inner_table_header" colspan=2 ></th>
+                        <tbody id="id_pndiag_module_diag_table_body">
+                            <!-- Fill with JS -->
+                        </tbody>
+                    </table> 
+                </div> 
+                <div class="centered">
+                    <button type="button" class="pxc-btn-pa" id="id_pndiag_module_details_ok_button"><span class="c_pndiag_close_button_text">Close</span></button>
+                </div>                 
+                <br></br>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Submodule Details Modal -->
+    <div class="modal" id="id_div_pndiag_submodule_infos_modal">
+        <div class="modal-content">
+          <div class="container">
+            <h1 id="id_pndiag_form_show_submodule_infos_title">Submodule Informations</h1>
+            <div class="div-centered">
+              <form id="id_pndiag_show_submodule_infos_form">
+                <label style="width:570px; display: inline-block"></label>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <table  id="id_pndiag_submodule_Info_table" class="pxc-tbl-zebra" style="table-layout: fixed; width:100%">
+                        <colgroup>
+                            <col style="width: 40%">
+                            <col style="width: 60%">
+                        </colgroup>
+                        
+                        <!------------------------->
+                        <!-- Information Section -->
+                        <!------------------------->
+                        <th id="id_pndiag_submodule_Info_table_header" style="height: 30px;" colspan="2" class="c_pndiag_submodule_information"></th>
+                        <!-- Configured in -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_submodule_device"></span>
+                            </td>
+                            <td class="break-line">
+                                <span id="id_pndiag_submodule_device_value"></span>
+                            </td>
+                        </tr>
+                        <!-- API Number -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_submodule_api"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_submodule_api_value"></span>
+                            </td>
+                        </tr>
+                        <!-- SubSlot Number -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_submodule_subslot"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_submodule_subslot_value"></span>
+                            </td>
+                        </tr>
+                        <!-- Module Type -->
+                        <tr>
+                            <td>
+                                <span class="c_pndiag_submodule_type"></span>
+                            </td>
+                            <td>
+                                <span id="id_pndiag_submodule_type_value"></span>
+                            </td>
+                        </tr>
+
+                        <!------------------------------>
+                        <!-- SubModule Status Section -->
+                        <!------------------------------>
+                        
+                        <tr hidden id="id_pndiag_submodule_diff_table_header_container">
+                            <th id="id_pndiag_submodule_diff_table_header" style="height: 30px;" colspan=2  class="c_pndiag_submodule_difference"></th>
+                        </tr>
+                        <tr hidden id="id_pndiag_submodule_diff_table_container" style="background-color: #FFC000;">
+                            <td colspan="2">
+                                <span id="id_pndiag_submodule_diff_no_submodule" class="c_pndiag_submodule_difference_no_submodule" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_wrong_submodule" class="c_pndiag_submodule_difference_wrong_submodule" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_locked_submodule" class="c_pndiag_submodule_difference_locked_submodule" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_substituted_submodule" class="c_pndiag_submodule_difference_substituted_submodule" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_ar_pending" class="c_pndiag_submodule_difference_ar_pending" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_take_over" class="c_pndiag_submodule_difference_take_over" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_superordination_locked" class="c_pndiag_submodule_difference_superordination_locked" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_locked_by_controller" class="c_pndiag_submodule_difference_locked_by_controller" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_locked_by_supervisor" class="c_pndiag_submodule_difference_locked_by_supervisor" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_default" class="c_pndiag_submodule_difference_default" style="height: 30px; color:white; font-weight: bold;"></span> 
+                                <span id="id_pndiag_submodule_diff_code" style="height: 30px; color:white; font-weight: bold;"></span> 
+                            </td>
+                        </tr>
+
+                        <!----------------------->
+                        <!-- Diagnosis Section -->
+                        <!----------------------->
+                        <tr id ="id_pndiag_submodule_diag_table_header_container">
+                            <th id="id_pndiag_submodule_diag_table_header" style="height: 30px;" colspan=2  class="c_pndiag_submodule_diagnosis"></th>
+                        </tr>
+                    </table>
+                    <table id="id_pndiag_submodule_no_diag_table" class="scroll">
+                        <th hidden id="id_pndiag_submodule_no_diag_inner_table_header" style="height: 0px;" colspan="2"></th>
+                        <!-- This table has to be shown if no diagnosis is available -->
+                        <tbody id="id_pndiag_submodule_no_diag_table_body">
+                            <tr>
+                                <td style="vertical-align : middle;text-align:center; width:100px"><div class="tooltip"><span class="tooltip-text-right" style="white-space:nowrap;">OK</span><img src="./images/status_icon_severity_normal.svg" alt="OK" style="width:24px; height:24px"></div></td>
+                                <td style="vertical-align : middle; width:435px"><span class="c_pndiag_no_channel_diagnosis"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="id_pndiag_submodule_diag_table" class="scroll">
+                        <th hidden id="id_pndiag_submodule_diag_inner_table_header" colspan=2 ></th>
+                        <tbody id="id_pndiag_submodule_diag_table_body">
+                            <!-- Fill with JS -->
+                        </tbody>
+                    </table> 
+                </div> 
+                <div class="centered">
+                    <button type="button" class="pxc-btn-pa" id="id_pndiag_submodule_details_ok_button"><span class="c_pndiag_close_button_text">Close</span></button>
+                </div>                 
+                <br></br>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="pxc-loader-ico" id="id_div_loader"></div>
+    <div hidden>
+        <span id="id_pndiag_device_status_ar_deactivated" class="c_pndiag_device_status_ar_deactivated"></span>
+        <span id="id_pndiag_device_status_ok" class="c_pndiag_device_status_ok"></span>
+        <span id="id_pndiag_device_status_warning" class="c_pndiag_device_status_warning"></span>
+        <span id="id_pndiag_device_status_error" class="c_pndiag_device_status_error"></span>
+        <span id="id_pndiag_device_status_no_connection" class="c_pndiag_diag_status_no_connection"></span>
+        <span id="id_pndiag_device_status_undef" class="c_pndiag_device_status_undef"></span>
+        <span id="id_pndiag_device_unknown_name" class="c_pndiag_device_unknown_name"></span>
+        <span id="id_pndiag_module_unknown_name" class="c_pndiag_module_unknown_name"></span>
+        <span id="id_pndiag_submodule_unknown_name" class="c_pndiag_submodule_unknown_name"></span>
+        <span id="id_pndiag_submodule_channel_diag_source" class="c_pndiag_submodule_channel_diag_source"></span>
+        <span id="id_pndiag_submodule_difference_type" class="c_pndiag_submodule_difference_type"></span>
+    </div>
+</body>
+</html>

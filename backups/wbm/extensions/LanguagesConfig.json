@@ -1,0 +1,58 @@
+{
+    "LanguagesConfig": [
+        {
+            "LanguageCode": "en",
+            "LanguageName": "English",
+            "ModulesSupport": [
+                "AppManager",
+                "CertificateAuthentication",
+                "Di",
+                "FanControl",
+                "FirmwareUpdater",
+                "Fwm",
+                "Lm",
+                "LocalBusDiag",
+                "NetConf",
+                "NotificationLog",
+                "PLCnextStore",
+                "ProfiCloudV3",
+                "Profinet",
+                "RealTimeClock",
+                "Scm",
+                "SdCard",
+                "Spm",
+                "Syslog",
+                "SystemCockpit",
+                "Um",
+                "Wcm"
+            ]
+        },
+        {
+            "LanguageCode": "de",
+            "LanguageName": "Deutsch",
+            "ModulesSupport": [
+                "AppManager",
+                "CertificateAuthentication",
+                "Di",
+                "FanControl",
+                "FirmwareUpdater",
+                "Fwm",
+                "Lm",
+                "LocalBusDiag",
+                "NetConf",
+                "NotificationLog",
+                "PLCnextStore",
+                "ProfiCloudV3",
+                "Profinet",
+                "RealTimeClock",
+                "Scm",
+                "SdCard",
+                "Spm",
+                "Syslog",
+                "SystemCockpit",
+                "Um",
+                "Wcm"
+            ]
+        }
+    ]
+}

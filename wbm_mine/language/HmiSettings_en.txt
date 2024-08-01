@@ -1,0 +1,14 @@
+var oTxtMainContent =
+{
+	/********************* HMI Settings ***********************/
+	"id_pagetitle_HMISettings":"HMI Einstellungen",
+	"c_menu_title_hmisettings":"HMI Einstellungen",
+	"id_subpagetitle_hmisettings":"Die Konfiguration kann hier vorgenommen werden.",
+	"id_td_eins":"Erster Eintrag",
+	"id_td_zwei":"Zweiter Eintrag",
+	"id_td_drei":"Dritter Eintrag",
+	"id_td_vier":"Vierter Eintrag",
+	"id_slider_brightness":"Bildschirm Helligkeit",
+	"id_slider_brightness_text":"Stelle hier die Bildschirmhelligkeit ein.",
+	"id_slider_brightness_value":"Wert: "
+};

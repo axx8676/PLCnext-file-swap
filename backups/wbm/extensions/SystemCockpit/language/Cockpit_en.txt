@@ -1,0 +1,70 @@
+﻿var oTxt_Cockpit_Content =
+{
+    /********************* Cockpit Page ***********************/
+    "c_cockpit_subtitle_info"         :"Cockpit",
+
+    "c_cockpit_error_message"              : "Error message:",
+
+    /****** Control Section ******/
+    "c_cockpit_control_controller_stop"  : "Stop the Controller",
+    "c_cockpit_execute_hot_start"        : "Execute a hot start (During a hot start no data is initialized)",
+    "c_cockpit_execute_warm_start"       : "Execute a warm start (All data except Retain Data will be initialized)",
+    "c_cockpit_execute_cold_start"       : "Execute a cold start (During a cold start all data is initialized)",
+    "c_cockpit_save_retain_data"         : "Save the Retain Data",
+    "c_cockpit_restore_last_retain_data" : "Restore last saved Retain Data",
+    "c_cockpit_reboot_controller"        : "Reboot the Controller",
+    "c_cockpit_reset_factory_defaults"   : "Reset the Controller to factory defaults (type 1)",
+    
+    "c_cockpit_reboot_warning"           : "The Controller will be rebooted. Do you want to continue?",
+    "c_cockpit_factory_reset_warning"    : "The Controller will be reset to factory defaults (type 1). Do you want to continue?",
+    "c_cockpit_factory_reset_warning_sp" : "The Controller will be reset to factory defaults (type 1). Resetting to factory defaults will deactivate the Security Profile. Do you want to continue?",
+    
+    "c_cockpit_restart_controller_failed_error"    : "Failed to reboot the Controller",
+    "c_cockpit_reset_to_factory_defaults_restored" : "Failed to reset the Controller to factory defaults",
+    
+    /****** Status Indicators Section ******/
+    "c_cockpit_diagnoctics_status_indicators" : "Diagnostics and Status Indicators",
+    
+    /****** Health Section ******/
+    "c_cockpit_health"                : "Device Health",
+    "c_cockpit_board_temperature_val" : "Board Temperature:",
+    
+    /****** Data and Time Section ******/
+    "c_cockpit_datentime"             : "Date and Time",
+    "c_cockpit_current_timestamp_val" : "Current Timestamp (DD.MM.YYYY HH:mm:ss):",
+    "c_cockpit_system_uptime_val"     : "System Uptime ([D:][HH:]mm:ss):",
+    
+    /****** Utilization Section ******/
+    "c_cockpit_utilization"        : "Utilization",
+    "c_cockpit_memory_val"         : "Memory:",
+    "c_cockpit_user_partition_val" : "User Partition:",
+    "c_cockpit_cpu_load_total_val" : "CPU Load (total):",
+    "c_cockpit_cpu_load_core_val"  : "CPU Load (Core",
+    
+    /****** PLC Runtime ******/
+    "c_cockpit_plc_runtime"        : "PLC Runtime",
+    "c_cockpit_plc_state_val"      : "PLC State:",
+    "c_cockpit_program_memory_val" : "Program Memory:",
+    "c_cockpit_data_memory_val"    : "Data Memory:",
+    "c_cockpit_retain_memory_val"  : "Retain Memory:",
+    
+    "c_cockpit_restore_last_retain_data_error" : "Failed to restore last saved Retain Data",
+    "c_cockpit_last_retain_data_restored"      : "Last saved Retain Data was restored successfully",
+    "c_cockpit_save_retain_data_error"         : "Failed to save the Retain Data",
+    "c_cockpit_retain_data_saved"              : "The Retain Data was saved successfully",
+    "c_cockpit_plc_stop_error"                 : "Failed to stop the Controller",
+    "c_cockpit_plc_start_error"                : "Failed to start the Controller",
+    
+    /***** User Management => Changing password of current user *****/
+    "c_cockpit_change_user_password"       : "Change Password of current User",
+    "c_cockpit_current_password"           : "Current Password",
+    "p_cockpit_input_current_password"     : "Enter current Password",
+    "c_cockpit_username"                   : "Username",
+    "c_cockpit_confirm_new_password"       : "Confirm Password",
+    "c_cockpit_new_password"               : "New Password",
+    "p_cockpit_input_new_password"         : "Enter new Password",
+    "p_cockpit_input_confirm_new_password" : "Confirm new Password",
+    
+    "c_cockpit_change_user_password_error" : "Failed to change the password of current user!",
+    "c_cockpit_user_password_changed"      : "Password of current user changed"
+};

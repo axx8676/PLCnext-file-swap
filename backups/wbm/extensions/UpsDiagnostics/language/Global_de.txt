@@ -1,0 +1,4 @@
+var oTxt_Global_Content =
+{
+    "id_menu_subitem_upsdiagnostics_upsdiagnostics" : "Integrierte USV",
+};

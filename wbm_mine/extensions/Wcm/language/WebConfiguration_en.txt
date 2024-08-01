@@ -1,0 +1,67 @@
+﻿var oTxt_WebConfiguration_Content =
+{
+    /***** Web Configuration/Services ****/
+    "c_webconfig_subtitle_info" : "Web Services",
+    
+    /* NGINX Web server */
+    "c_webconfig_nginx_web_server"        : "NGINX Web Server",
+    "c_webconfig_nginx_https_certificate" : "HTTPS Certificate",
+    "c_webconfig_https_certificate"       : "Self-signed HTTPS Certificate",
+    "c_webconfig_generate_certificate"    : "Re-generate HTTPS certificate",
+    "c_webconfig_cert_identity_store"     : "Identity Store for HTTPS Certificate",
+    
+    /* System messages */
+    "c_webconfig_connection_error_h"         : "A communication error has occurred: ",
+    "c_webconfig_sm_generate_cert_conf_info" : "Attention: The current self-signed HTTPS certificate will be overwritten. Do you want to proceed with generating the HTTPS certificate?",
+    "c_webconfig_sm_opt_msg_error_code_info" : "Error Code: ",
+    "c_webconfig_sm_opt_msg_error_msg_info"  : "Error Message",
+    
+    "c_webconfig_subject_alternative_names" : "Subject Alternative Names",
+    "c_webconfig_subject_alternative_name"  : "Subject Alternative Name",
+    "c_webconfig_subject_alternative_name_type"  : "Type of Subject Alternative Name",
+    
+    "c_webconfig_remove_san" : "Remove Subject Alternative Name",
+    "c_webconfig_add_san"    : "Add Subject Alternative Name",
+    
+    "c_webconfig_common_name"              : "Common Name (CN)",
+    "c_webconfig_organization"             : "Organization (O)",
+    "c_webconfig_organizational_unit"      : "Organizational Unit (OU)",
+    "c_webconfig_location"                 : "Location (L)",
+    "c_webconfig_state_or_province_name"   : "State or Province Name (ST)",
+    "c_webconfig_country_name"             : "Country (C)",
+    "c_webconfig_valid_not_before"         : "Valid not before",
+    "c_webconfig_valid_not_after"          : "Valid not after",
+    "c_webconfig_validity"                 : "Validity",
+    
+    "c_webconfig_certificate_key_missmatch":"Attention: Key pair and key certificate of the selected Identity Store do not match. The Self-signed HTTPS certificate is used.",
+    "c_webconfig_apply_realtime_warning": "Applying the configuration can affect the real-time behavior of the system. Avoid reconfiguration during productive operation!",
+    
+    "c_webconfig_date_placeholder"     : "DD.MM.YYYY",
+    "c_webconfig_time_placeholder"     : "HH:mm:ss",
+    
+    "c_webconfig_san_ipaddress" : "IP Address",
+    "c_webconfig_san_dnsname"   : "DNS Name",
+    
+    /* Self-signed https certificate generating status */
+    "c_webconfig_generate_certificate_status_ok"    : "The self-signed HTTPS certificate was successfully regenerated!",
+    "c_webconfig_generate_certificate_status_error" : "An error occurred while generating the self-signed HTTPS certificate!",
+    "c_webconfig_generate_certificate_info"         : "If you click the \"Generate\" button, the self-signed HTTPS certificate is only regenerated. So that the certificate can be activated in the system, you must then press the \"Apply\" button when IdentityStore \"HTTPS-self-signed\" is selected.",
+
+    /* TLS Configuration */
+    "c_webconfig_tls_configuration"  : "TLS Configuration",
+    "c_webconfig_tls_config_version" : "TLS-Version(s)",
+    "c_webconfig_tls_config_ciphers" : "Cipher Suites",
+    
+    "c_webconfig_error_set_tls_configs"         : "Failed to set NGINX TLS configuration",
+    "c_webconfig_error_set_httpscert_configs"   : "Failed to set NGINX HTTPS certificate configuration",
+    "c_webconfig_error_query_https_tls_config"  : "Failed to query TLS configuration",
+    "c_webconfig_error_query_https_cert_config" : "Failed to query HTTPS certificate configuration",
+    "c_webconfig_error_list_identitystores"     : "Failed to list identity stores",
+    
+    "c_webconfig_info_successfull_apply" : "Successfully applied Web Configuration!",
+    
+    "c_webconfig_config_use": "Use ",
+
+    "c_webconfig_ciphers_set_DefaultCiphers_name": "Default HTTPS TLS Ciphers",
+    "c_webconfig_ciphers_set_SecureCiphers_name" : "Secure HTTPS TLS Ciphers"
+};

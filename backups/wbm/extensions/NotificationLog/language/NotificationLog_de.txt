@@ -1,0 +1,52 @@
+var oTxt_NotificationLog_Content =
+{
+    /********************* Notification Log ***********************/
+    "c_nflog_subtitle_info"            :"Benachrichtigungen",
+    
+    "c_nflog_notifications_filter" : "Filter",
+    "c_nflog_notifications_table"  : "Benachrichtigungen",
+    "c_nflog_severity"             : "Schweregrad",
+    "c_nflog_time_stamp"           : "Zeit",
+    "c_nflog_time_from"            : "Zeit von",
+    "c_nflog_time_to"              : "Zeit bis",
+    "c_nflog_sender_name"          : "Sender",
+    "c_nflog_notification_name"    : "Name",
+    "c_nflog_notification_payload" : "Benachrichtigung",
+    "c_nflog_notification_archive" : "Archivname",
+    
+    "c_nflog_notification_max"     : "Maximale Anzahl von Benachrichtigungen",
+    
+    "c_nflog_date_placeholder"     : "TT.MM.JJJJ",
+    "c_nflog_time_placeholder"     : "HH:mm:ss",
+    
+    "c_nflog_apply_filter"               : "Filter anwenden",
+    "c_nflog_notification_export"        : "CSV exportieren",
+    "c_nflog_notifications_all_archives" : "&lt;Alle Archive>",
+    "c_nflog_severity_internal"          : ">= Intern",
+    "c_nflog_severity_information"       : ">= Information",
+    "c_nflog_severity_warning"           : ">= Warnung",
+    "c_nflog_severity_error"             : ">= Fehler",
+    "c_nflog_severity_critical_error"    : ">= Kritischer Fehler",
+    "c_nflog_severity_fatal_error"       : "Fataler Fehler",
+    
+    "c_nflog_invalid_time_format_error"  : "Ungültiges Zeitformat verwendet. Definiertes Zeitformat ist TT.MM.JJJJ - hh:mm:ss",
+    "c_nflog_required_date_error"        : "Das Datumsfeld ist erforderlich, wenn sein Zeitfeld gesetzt ist",
+    
+    "c_nflog_max_notifications_count_1_error"  : "Anzahl der Benachrichtigungen darf ",
+    "c_nflog_max_notifications_count_2_error"  : " nicht überschreiten",
+    
+    "c_nflog_no_entries_available": "Keine Einträge vorhanden!",
+    "c_nflog_nlogger_error_occured": "Ein Fehler ist im Notification Logger aufgetreten!",
+    
+    "c_nflog_status_text_ok_h" : "Ok",
+    "c_nflog_connection" : "Verbindung:",
+
+    "c_nflog_status_text_disconnected_h"            : "Die Verbindung zum Controller ist abgebrochen!",
+    "c_nflog_status_text_updating_notifications_h"  : "Die Benachrichtigungen werden aktualisiert...",
+    "c_nflog_status_text_sorting_notifications_h"   : "Die Benachrichtigungen werden neu sortiert...",
+    
+    "c_nflog_redundancy_payload"  : "Redundanz",
+    "c_nflog_notification_rrole"  : "Rolle",
+    "c_nflog_notification_rtype"  : "Typ",
+
+};

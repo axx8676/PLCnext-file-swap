@@ -1,0 +1,170 @@
+﻿var oTxt_LocalBusDiagnostics_Content =
+{      
+    /********************* Local Bus ***********************/
+    "c_lbdiag_subtitle_info"          :"Local Bus",
+    "id_lbdiag_module_info_title"     :"Module Information",
+    "c_lbdiag_device_list"            :"Local Bus Module List",
+    "c_lbdiag_local_bus_config_status":"Configuration Status",
+    "c_lbdiag_active_local_bus":"Active local bus",
+    "c_lbdiag_module_list"            :"Local Bus Module List",
+    "c_lbdiag_details"                :"Details",
+    
+    /* Module Information */
+    "c_lbdiag_local_bus" : "Local bus",
+    "c_lbdiag_status"    : "Status",
+    "c_lbdiag_module_no" : "No.",
+    
+    /* Module General Data */
+    "c_lbdiag_general_data"       : "General Data",
+    "c_lbdiag_module_number"      : "Module Number",
+    "c_lbdiag_vendor_name"        : "Vendor Name",
+    "c_lbdiag_product_name"       : "Product Name",
+    "c_lbdiag_module_type"        : "Module type",
+    "c_lbdiag_product_text"       : "Product Text",
+    "c_lbdiag_order_number"       : "Order Number",
+    "c_lbdiag_serial_number"      : "Serial Number",
+    "c_lbdiag_hardware_version"   : "Hardware Version",
+    "c_lbdiag_firmware_version"   : "Firmware Version",
+    "c_lbdiag_module_description" : "Module Description",
+    "c_lbdiag_module_id"          : "Module ID",
+    "c_lbdiag_module_identcode"   : "INTERBUS Identcode",
+    
+    /* User Defined */
+    "c_lbdiag_user_defined"     : "User Defined",
+    "c_lbdiag_location"         : "Location",
+    "c_lbdiag_function"         : "Function",
+    "c_lbdiag_appl_device_addr" : "Application Device Address",
+    
+    /* Peripheral Errors */
+    "c_lbdiag_peripheral_errors"         : "Peripheral Error",
+    "c_lbdiag_diag_state_cons_no_text_h" : "Diagnostic State - Cons. No.",
+    "c_lbdiag_diag_state_prio"           : "Diagnostic State - Priority",
+    "c_lbdiag_diag_state_CGM"            : "Diagnostic State - Channel/Group/Module",
+    "c_lbdiag_diag_state_code"           : "Diagnostic State - Code",
+    "c_lbdiag_diag_state_text"           : "Diagnostic State - Text",
+    
+    /* Close Button */
+    "c_lbdiag_close_button_text" : "Close",
+    
+    /* Diagnostics Status */
+    "c_lbdiag_diagnostics"                       : "Diagnostics",
+    "c_lbdiag_status_text_h"                     : "Status",
+    "c_lbdiag_status_text_reloading_table_h"     : "Updating module list...",
+    "c_lbdiag_status_text_project_mod_detected_h": "New project configuration detected!",
+    "c_lbdiag_status_text_disconnected_h"        : "Lost connection to Controller!",
+    "c_lbdiag_status_text_module_error_h"        : "An error has occurred in module ",
+    "c_lbdiag_status_text_list_error_h"          : "Failed to list local bus modules",
+    "c_lbdiag_status_text_periph_error_h"        : "A peripheral error has occurred!",
+    "c_lbdiag_status_text_user_error_h"          : "A user error has occurred!",
+    "c_lbdiag_status_text_bus_error_h"           : "A bus error has occurred!",
+    "c_lbdiag_status_text_hw_error_h"            : "A hardware error has occurred!",
+    "c_lbdiag_status_text_sysfail_h"             : "The controller is in STOP state or no application program with local bus configuration has been loaded",
+    "c_lbdiag_status_text_no_bus_config_h"       : "No local bus configuration available for ",
+    "c_lbdiag_status_text_registerupdate_fail_h" : "Failed to update error message",
+    "c_lbdiag_status_text_register_updated_h"    : "Error message has been updated",
+    
+    "c_lbdiag_diag_status_register_h":"Status Register",
+    "c_lbdiag_diag_parameter_register_h":"Parameter Register",
+    
+    "c_lbdiag_diag_status_ok":"OK",
+    "c_lbdiag_diag_status_warning":"Warning",
+    "c_lbdiag_diag_status_error":"Error",
+    
+    "c_lbdiag_ib_readconfig_error":"Failed to read bus configuration with error code: ",
+    "c_lbdiag_axl_read_modul_error":"Failed to read Axioline module data with error code: ",
+    
+    "c_lbdiag_axl_empty_slot_text_h" : "(Empty Slot)",
+    
+    /* Diagnostic Registers */
+    "c_lbdiag_diag_status_registers"     : "Diagnostic Registers",
+    "c_lbdiag_diag_status_register"      : "Diagnostic Status Register",
+    "c_lbdiag_diag_param_register"       : "Diagnostic Parameter Register",
+    "c_lbdiag_update_diagnostics"        : "Update error message",
+    "c_lbdiag_update_diagnostics_button" : "Confirm",
+    
+    /* Interbus modules descriptions */
+    /* DI INTERBUS devices/modules */
+    "c_lbdiag_ib_module_di"           : "Digital Input",
+    "c_lbdiag_ib_module_di_busmaster" : "Digital Input with bus master special treatment",
+    "c_lbdiag_ib_module_di_profile"   : "Digital Input with profile",
+    "c_lbdiag_ib_module_di_loop"      : "Digital Input INTERBUS Loop",
+    "c_lbdiag_ib_module_di_safety"    : "Digital Input for Safety",
+    /* DO INTERBUS devices/modules */
+    "c_lbdiag_ib_module_do"           : "Digital Output",
+    "c_lbdiag_ib_module_do_busmaster" : "Digital Output with bus master special treatment",
+    "c_lbdiag_ib_module_do_profile"   : "Digital Output with profile",
+    "c_lbdiag_ib_module_do_loop"      : "Digital Output INTERBUS Loop",
+    "c_lbdiag_ib_module_do_safety"    : "Digital Output for Safety",
+    /* DIO INTERBUS devices/modules */
+    "c_lbdiag_ib_module_dio"             : "Digital Input/Ouput",
+    "c_lbdiag_ib_module_dio_screwdriver" : "Screw driver control",
+    "c_lbdiag_ib_module_dio_profile"     : "Digital Input/Ouput with profile",
+    "c_lbdiag_ib_module_dio_loop"        : "Digital Input/Ouput INTERBUS Loop",
+    "c_lbdiag_ib_module_dio_safety"      : "Digital Input/Ouput for Safety",
+    /* AI INTERBUS devices/modules */
+    "c_lbdiag_ib_module_ai"          : "Analog Input",
+    "c_lbdiag_ib_module_ai_encom"    : "ENCOM device",
+    "c_lbdiag_ib_module_ai_profile"  : "Analog Input with profile",
+    "c_lbdiag_ib_module_ai_loop"     : "Analog Input INTERBUS Loop",
+    "c_lbdiag_ib_module_ai_safety"   : "Analog Input for Safety",
+    /* AO INTERBUS devices/modules */
+    "c_lbdiag_ib_module_ao"          : "Analog Output",
+    "c_lbdiag_ib_module_ao_profile"  : "Analog Output with profile",
+    "c_lbdiag_ib_module_ao_loop"     : "Analog Output INTERBUS Loop",
+    "c_lbdiag_ib_module_ao_safety"   : "Analog Output for Safety",
+    /* AIO INTERBUS devices/modules */
+    "c_lbdiag_ib_module_aio"                   : "Analog Input/Output",
+    "c_lbdiag_ib_module_aio_encom"             : "ENCOM device",
+    "c_lbdiag_ib_module_aio_profile"           : "Analog Input/Output with profile",
+    "c_lbdiag_ib_module_aio_loop"              : "Loop Analog Input/Output",
+    "c_lbdiag_ib_module_aio_io_paramdata"      : "Analog Input/Output with parameter data",
+    "c_lbdiag_ib_module_aio_o_paramdata"       : "Analog Output with parameter data",
+    "c_lbdiag_ib_module_aio_i_paramdata"       : "Analog Input with parameter data",
+    "c_lbdiag_ib_module_aio_io_loop_paramdata" : "Loop Analog Input/Output with parameter data",
+    "c_lbdiag_ib_module_aio_o_loop_paramdata"  : "Loop Analog Output with parameter data",
+    "c_lbdiag_ib_module_aio_i_loop_paramdata"  : "Loop Analog Input with parameter data",
+    "c_lbdiag_ib_module_aio_safety"            : "Analog Input for Safety",
+    /* PCP/1 INTERBUS devices/modules */
+    "c_lbdiag_ib_module_pcp1_def"              : "Default participant with one PCP word",
+    "c_lbdiag_ib_module_pcp1_encom"            : "ENCOM device with one PCP word",
+    "c_lbdiag_ib_module_pcp1_drivecom"         : "DRIVECOM device with one PCP word",
+    "c_lbdiag_ib_module_pcp1_encom_profile"    : "Participant with profile and one PCP word",
+    "c_lbdiag_ib_module_pcp1_encom_loop"       : "Loop participant with one PCP word",
+    "c_lbdiag_ib_module_pcp1_encom_safety"     : "Safety participant with one PCP word",
+    "c_lbdiag_ib_module_pcp1_encom_syscoupler" : "System coupler with one PCP word",
+    /* PCP/2 INTERBUS devices/modules */
+    "c_lbdiag_ib_module_pcp2_def"               : "Standard participant with two PCP words",
+    "c_lbdiag_ib_module_pcp2_encom"             : "ENCOM device with two PCP words",
+    "c_lbdiag_ib_module_pcp2_drivecom"          : "DRIVECOM device with two PCP words",
+    "c_lbdiag_ib_module_pcp2_encom_profile"     : "Participant with profile and two PCP words",
+    "c_lbdiag_ib_module_pcp2_encom_loop"        : "Loop participant with two PCP words",
+    "c_lbdiag_ib_module_pcp2_encom_safety"      : "Safety participant with two PCP words",
+    "c_lbdiag_ib_module_pcp2_encom_syscoupler"  : "System coupler with two PCP words",
+    /* PCP/4 INTERBUS devices/modules */
+    "c_lbdiag_ib_module_pcp4_def"               : "Standard participant with four PCP words", 
+    "c_lbdiag_ib_module_pcp4_encom"             : "ENCOM device with four PCP words", 
+    "c_lbdiag_ib_module_pcp4_drivecom"          : "DRIVECOM device with four PCP words", 
+    "c_lbdiag_ib_module_pcp4_encom_profile"     : "Participant with profile and four PCP words", 
+    "c_lbdiag_ib_module_pcp4_encom_loop"        : "Loop participant with four PCP words", 
+    "c_lbdiag_ib_module_pcp4_encom_safety"      : "Safety participant with four PCP words", 
+    "c_lbdiag_ib_module_pcp4_encom_syscoupler"  : "System coupler with four PCP words", 
+    /* PCP/variable INTERBUS devices/modules */
+    "c_lbdiag_ib_module_pcp_var_def"              : "Standard participant with variable PCP word count",
+    "c_lbdiag_ib_module_pcp_var_encom"            : "ENCOM device with variable PCP word count",
+    "c_lbdiag_ib_module_pcp_var_drivecom"         : "DRIVECOM device with variable PCP word count",
+    "c_lbdiag_ib_module_pcp_var_encom_profile"    : "Participant with profile und variable PCP word count",
+    "c_lbdiag_ib_module_pcp_var_encom_loop"       : "Loop participant with variable PCP word count",
+    "c_lbdiag_ib_module_pcp_var_encom_safety"     : "Safety participant with variable PCP word count",
+    "c_lbdiag_ib_module_pcp_var_encom_syscoupler" : "System coupler with variable PCP word count",
+    /* Special INTERBUS devices/modules */
+    "c_lbdiag_ib_module_pcp_spec_up_1"      : "µP_not_Ready_ID_1 - with initialization lock",
+    "c_lbdiag_ib_module_pcp_spec_up_2"      : "µP_not_Ready_ID_2 - without initialization lock",
+    "c_lbdiag_ib_module_pcp_spec_lpc2"      : "Loop-Chip LPC2, Operating mode, setting inadmissible",
+    "c_lbdiag_ib_module_pcp_spec_loop_up_2" : "Loop participant µP_not_Ready_2",
+    "c_lbdiag_ib_module_unknown"            : "N/A",
+    "c_lbdiag_ib_module_safety_bridge"      : "Safety Bridge",
+    "c_lbdiag_ib_module_di_sbt"             : "Digital input module (Safety Bridge Technology)",
+    "c_lbdiag_ib_module_do_sbt"             : "Digital output module (Safety Bridge Technology)",
+    "c_lbdiag_ib_module_do_v2v3"            : "Digital input module (Safety Bridge Technology)",
+
+};

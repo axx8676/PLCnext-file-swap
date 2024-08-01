@@ -1,0 +1,5 @@
+var oTxt_Global_Content =
+{
+    /********************* Firmware Update *********************/
+    "id_menu_subitem_firmwareupdater_firmwareupdate":"Firmware-Update",
+};

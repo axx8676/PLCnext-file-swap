@@ -1,0 +1,5 @@
+var oTxt_Global_Content =
+{
+    /********************* Security - Security Profile ***********************/
+    "id_menu_subitem_spm_securityprofile":"Security-Profil",
+};

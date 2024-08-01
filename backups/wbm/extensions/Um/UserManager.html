@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - User Authentication</title>
+<meta charset="UTF-8">
+<script src="Session.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="Language.js"></script>
+<script src="validation_rules.js"></script>
+<script src="extensions/Um/UserManager.js"></script>
+</head>
+<body>
+  <h1 id="id_pagetitle_security" class="c_menu_title_security"></h1>
+  <div class="pxc-plt-ctrl">
+    <div class="pxc-p-plain">
+        <h3 id="id_subpagetitle_sec" class="c_usermanager_subtitle_info"></h3>
+        <hr></hr>
+        <div id="id_usermanager_global_messages_div"></div>
+        <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+            <table id="id_usermanger_general_config_table" class="pxc-tbl-zebra" style="width:100%">
+                <colgroup>
+                    <col style="width: 36%">
+                    <col style="width: 19%">
+                    <col style="width: 45%">
+                </colgroup>
+                <tr>
+                    <th colspan="3" scope="col" class="c_usermanager_general_config">General Configuration</th>
+                </tr>
+                <tr id="id_usermanager_authentication_enabled_tr" hidden>
+                    <td id="id_usermanager_authentication_enabled_lable_td">
+                        <span id="id_usermanager_change_authentication_enabled_label">User Authentication Enabled</span>
+                    </td>
+                    <td id="id_usermanager_authentication_enabled_config_td">
+                        <input type="checkbox" id="id_usermanager_user_authentication_enabled_cb" disabled>
+                    </td>
+                    <td>
+                        <div class="pxc-btm-btn-align centered">
+                            <button class="pxc-btn-pa" style="display: inline-block; width: 200px;" id="id_btn_change_authentication_enabled">
+                                <span id="id_usermanager_button_change_authentication_enabled" style="align:align-le">Change</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="id_usermanager_system_use_notification_lable_td">
+                        <span id="id_usermanager_edit_system_use_notification_span" style="display: inline-block; width: 170px;" class="c_login_system_use_notification">System Use Notification</span>
+                    </td>
+                    <td id="id_usermanager_system_use_notification_empty_td">
+                    </td>
+                    <td id="id_usermanager_system_use_notification_config_td">
+                        <div class="pxc-btm-btn-align centered">
+                            <button class="pxc-btn-pa" id="id_usermanager_system_use_notification_edit_btn" style="width: 200px;">
+                                <span class="c_usermanager_system_use_notification_content_edit">Edit Notification</span>
+                            </button>
+                            <span id="id_usermanager_edit_system_use_notification_status_ok"    class="c_usermanager_edit_system_use_notification_status_ok"    hidden style="color:green; position: relative;top: 5px; font-weight: bold;"></span>
+                            <span id="id_usermanager_edit_system_use_notification_status_error" class="c_usermanager_edit_system_use_notification_status_error" hidden style="color:red; position: relative;top: 5px; font-weight: bold;"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br></br>
+
+        <!-- Main Tab -->
+        <div id="id_usermanager_main_tab_div" style="width: 100%;">
+            <div class="pxc-cnt pxc-az" >
+                <div class="pxc-pd-tabs pxc-tabs" data-dojo-type="pxc.layout.SimpleTabController" style="float: left;" id="pxc_layout_SimpleTabController_0" widgetid="pxc_layout_SimpleTabController_0" style="visibility: visible;">
+                    <div class="cf pxc-pd-tabsrow" style="float: left;" >
+                        <h2>
+                        <a class="pxc-tab-usermanager-UserManagement pxc-tab-on" id="id_usermanager_usermanagement_tab"    href="#pxc-jump-usermanager-usermanagement"    data-tab-id="pxc-tab-UserManagement">&nbsp    <span class="c_usermanager_usermanagement_span">User Management</span> &nbsp</a>
+                        </h2>
+                        <h2>
+                        <a class="pxc-tab-usermanager-SessionManagement"         id="id_usermanager_sessionmanagement_tab" href="#pxc-jump-usermanager-sessionconfig" data-tab-id="pxc-tab-SessionConfig">&nbsp <span class="c_usermanager_sessionconfig_span">Session Configuration</span> &nbsp</a>
+                        </h2>
+                        <h2>
+                        <a class="pxc-tab-usermanager-PasswordComplexity"        id="id_usermanager_complexityrules_tab"   href="#pxc-jump-usermanager-complexityrules"   data-tab-id="pxc-tab-ComplexityRules">&nbsp   <span class="c_usermanager_complexityrules_span">Password Rules</span> &nbsp</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- User Management -->
+        <div id="pxc-tab-UserManagement"         class="pxc-tabouterpane pxc-stab-root" style="width: 97.2%;">
+            <a id="pxc-jump-usermanager-usermanagement" ></a>
+            <div class="cd pxc-pd-tab" id="pxc-tab-UserManagement">
+                <div id="id_usermanager_usermanagement_messages_div"><span hidden id="id_usermanager_usermanagement_messages_div_span" class="c_usermanager_usermanagement_span"></span></div>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <table class="pxc-tbl-zebra" style="width:100%" id="id_usermanager_users_table">
+                        <thead>
+                            <colgroup>
+                            <col style="width:20%">
+                            <col style="width:11%">
+                            <col style="width:15%">
+                            <col style="width:54%">
+                            </colgroup>
+                            <tr>
+                            <th id="id_usermanager_table_header_user">User</th>
+                            <th id="id_usermanager_table_header_roles">Roles</th>
+                            <th id="id_usermanager_table_header_passwd_ruleset">Password Ruleset</th>
+                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button class="pxc-btn-pa" id="id_btn_add_user" onclick="UserManagement.ShowModalAddUser()"><span class="c_usermanager_button_add_user">Add User</span></button>
+                </div>  
+            </div>
+        </div>
+        
+        <!-- Session Configuration (SC)-->
+        <div id="pxc-tab-SessionConfig"   hidden class="pxc-tabouterpane pxc-stab-root" style="width: 97.2%;">
+            <a id="#pxc-jump-usermanager-sessionconfig" ></a>
+            <div class="cd pxc-pd-tab" id="pxc-tab-SessionConfig">  
+                <div id="id_usermanager_sessionconfig_messages_div"><span hidden id="id_usermanager_sessionconfig_messages_div_span" class="c_usermanager_usermanagement_span"></span></div>
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <form id="id_usermanager_sc_config_table_form">
+                        <table class="pxc-tbl-zebra" style="width:100%" id="id_usermanager_sc_table">
+                            <colgroup>
+                              <col style="width:25%">
+                              <col style="width:15%">
+                              <col style="width:60%">
+                            </colgroup>
+                            <tr id="id_usermanager_sm_table_header_tr">
+                              <th scope="col" class="c_glb_parameter">Parameter</th>
+                              <th scope="col" class="c_glb_config_value">Configuration</th>
+                              <th scope="col" class="c_glb_description">Description</th>
+                            </tr>
+                            <tr id="id_usermanager_sm_table_max_sessiontime_tr">
+                                <td id="id_usermanager_sm_table_max_sessiontime_param_td">
+                                    <span id="id_usermanager_sm_table_max_sessiontime_param_span" class="c_usermanager_sc_max_sessiontime">Maximum Session Time</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_max_sessiontime_val_td">
+                                    <input type="number" id="id_usermanager_sm_table_max_sessiontime_val_input" name="session_max_sessiontime" min="0" max="4294967295" class="positive-numeric-input" style="display:inline-block; width: 140px;"/>
+                                    <span id="id_usermanager_sm_table_max_sessiontime_unit_input" style="display:inline-block; margin-left:5px;"> min</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_max_sessiontime_td">
+                                    <span id="id_usermanager_sm_table_max_sessiontime_desc_span" class="c_usermanager_sm_table_max_sessiontime_desc">Maximum session lifetime in minutes</span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_sm_table_failed_logins_tr">
+                                <th colspan="3" scope="col" class="c_usermanager_sm_table_failed_logins">Failed Logins</th>
+                            </tr>
+                            <tr id="id_usermanager_sm_table_issue_timeout_tr">
+                                <td id="id_usermanager_sm_table_issue_timeout_param_td">
+                                    <span id="id_usermanager_sm_table_issue_timeout_param_span" class="c_usermanager_sc_issue_timeout">Issue Timeout to Admin Users</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_issue_timeout_val_td">
+                                    <input type="checkbox" id="id_usermanager_sm_table_issue_timeout_val_input" name="session_issue_timeout" style="display:inline-block; width: 165px;"/>
+                        
+                                </td>
+                                <td id="id_usermanager_sm_table_issue_timeout_td">
+                                    <span id="id_usermanager_sm_table_issue_timeout_desc_span" class="c_usermanager_sm_table_issue_timeout_desc">Are users with elevated permissions excluded from timeout?</span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_sm_table_init_timeout_tr">
+                                <td id="id_usermanager_sm_table_init_timeout_param_td">
+                                    <span id="id_usermanager_sm_table_init_timeout_param_span" class="c_usermanager_sc_init_timeout">Initial Timeout</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_init_timeout_val_td">
+                                    <input type="number" id="id_usermanager_sm_table_init_timeout_val_input" class="positive-numeric-input" name="session_init_timeout" min="0" max="4294967295" style="display:inline-block; width: 140px;"/>
+                                    <span id="id_usermanager_sm_table_init_timeout_unit_input" style="display:inline-block; margin-left:5px;"> s</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_init_timeout_desc_td">
+                                    <span id="id_usermanager_sm_table_init_timeout_desc_span" class="c_usermanager_sm_table_init_timeout_desc">Initial timeout-penalty on the forth consecutive failed password attempt in seconds</span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_sm_table_timeout_inc_tr">
+                                <td id="id_usermanager_sm_table_timeout_inc_param_td">
+                                    <span id="id_usermanager_sm_table_timeout_inc_param_span" class="c_usermanager_sc_timeout_increment">Timeout Increment</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_timeout_inc_val_td">
+                                    <input type="number" id="id_usermanager_sm_table_timeout_inc_val_input" class="positive-numeric-input" name="session_increment_timeout" min="0" max="4294967295" style="display:inline-block; width: 140px;"/>
+                                    <span id="id_usermanager_sm_table_timeout_inc_unit_input" style="display:inline-block; margin-left:5px;"> s</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_timeout_inc_desc_td">
+                                    <span id="id_usermanager_sm_table_timeout_inc_desc_span" class="c_usermanager_sm_table_timeout_inc_desc">Additional timeout-penalty on every successive failed passwort attempt while in timeout, in seconds</span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_sm_table_max_timeout_tr">
+                                <td id="id_usermanager_sm_table_max_timeout_param_td">
+                                    <span id="id_usermanager_sm_table_max_timeout_param_span" class="c_usermanager_sc_max_timeout">Maximum Timeout</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_max_timeout_val_td">
+                                    <input type="number" id="id_usermanager_sm_table_max_timeout_val_input" name="session_max_timeout" class="positive-numeric-input" min="0" max="4294967295" style="display:inline-block; width: 140px;"/>
+                                    <span id="id_usermanager_sm_table_max_timeout_unit_input" style="display:inline-block; margin-left:5px;"> s</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_max_timeout_desc_td">
+                                    <span id="id_usermanager_sm_table_max_timeout_desc_span" class="c_usermanager_sm_table_max_timeout_desc">Maximum timeout-penalty in seconds possible (further increments will be ignored)</span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_sm_table_max_concsessions_tr">
+                                <td id="id_usermanager_sm_table_max_concsessions_param_td">
+                                    <span id="id_usermanager_sm_table_max_concsessions_param_span" class="c_usermanager_sc_max_concsessions">Maximum Concurrent Sessions</span>
+                                </td>
+                                <td id="id_usermanager_sm_table_max_concsessions_val_td">
+                                    <input type="number" id="id_usermanager_sm_table_max_concsessions_val_input" name="session_max_concsessions" class="numeric-input" min="2" max="4294967295" style="display:inline-block; width: 140px;"/>
+                                </td>
+                                <td id="id_usermanager_sm_table_max_concsessions_td">
+                                    <span id="id_usermanager_sm_table_max_concsessions_desc_span" class="c_usermanager_sm_table_max_concsessions_desc">Maximum amount of user sessions active at the same time</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>  
+                <button class="pxc-btn-pa sticky-button-bottom" id="id_usermanager_sc_apply_config_button" style="float: right; margin: -10px 0px;"><span class="c_glb_th_config_apply_and_reboot">Apply and reboot</span></button>
+                <button class="pxc-btn sticky-button-bottom"    id="id_usermanager_sc_discard_config_button" style="float: right; margin: -10px 5px;"><span class="c_glb_th_config_discard">Discard</span></button>
+            </div>
+        </div>
+        
+        <!-- Password Complexity Rules -->
+        <div id="pxc-tab-ComplexityRules" hidden class="pxc-tabouterpane pxc-stab-root" style="width: 97.2%;">
+            <a id="#pxc-jump-usermanager-complexityrules" ></a>
+            <div class="cd pxc-pd-tab" id="pxc-tab-ComplexityRules"> 
+                <div id="id_usermanager_rulesconfig_messages_div"><span hidden id="id_usermanager_rulesconfig_messages_div_span" class="c_usermanager_complexityrules_span"></span></div>            
+                <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                    <form id="id_usermanager_pcr_config_table_form">
+                        <table class="pxc-tbl-zebra" style="width:100%" id="id_usermanager_pcr_admin_ruleset_table">
+                            <colgroup>
+                            <col style="width:25%">
+                            <col style="width:20%">
+                            <col style="width:65%">
+                            </colgroup>
+                            <tr id="id_usermanager_pcr_policy_config_header_tr">
+                                <th colspan="3" scope="col" class="c_usermanager_policy_config_th">Policy Configuration</th>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_tr">
+                                <td id="id_usermanager_pcr_roleruleset_td">
+                                    <span id="id_usermanager_pcr_roleruleset_span" class="c_usermanager_pcr_roleruleset">Role Ruleset</span>
+                                </td>
+                                <td colspan="2" id="id_usermanager_pcr_roleruleset_val_td">
+                                    <select id="id_usermanager_pcr_roleruleset_val_select" name="roleruleset" style="height:20px; width:273px;">
+                                    <option value="admin"   class="c_usermanager_admin_ruleset_h">Admin Ruleset</option>
+                                    <option value="default" class="c_usermanager_default_ruleset_h">Default Ruleset</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_passwd_policy_params_header_tr">
+                            <th colspan="3" scope="col" class="c_usermanager_passwd_policy_param">Password Policy Parameters</th>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_min_ascii_count_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_min_ascii_count_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_ascii_count" class="c_usermanager_pcr_min_ascii_count">Minimum ASCII Count</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_ascii_count_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_min_ascii_count_val_input" name="admin_min_ascii_count" class="summed-numeric-input" min="0" max="127"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_ascii_count_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_ascii_count_desc" class="c_usermanager_pcr_min_ascii_count_desc">
+                                        Defines how many ASCII characters a new password must at least contain.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_min_mixed_char_tr" class="even">
+                                <td id="id_usermanager_pcr_roleruleset_min_mixed_char_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_mixed_char_count" class="c_usermanager_pcr_min_mixed_char">Minimum mixed Characters Count</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_mixed_char_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_min_mixed_char_val_input" name="admin_min_mixed_char" class="summed-numeric-input" min="0" max="127"/>
+                                </td>
+                                <td>
+                                    <span id="id_usermanager_pcr_roleruleset_min_mixed_char_desc" class="c_usermanager_pcr_min_mixed_char_desc">
+                                        Defines how many MixedCase characters a new password must at least contain.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_min_num_count_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_min_num_count_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_num_count" class="c_usermanager_pcr_min_num_count">Minimum Numbers Count</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_num_count_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_min_num_count_val_input" name="admin_min_num_count" class="summed-numeric-input" min="0" max="127"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_num_count_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_num_count_desc" class="c_usermanager_pcr_min_num_count_desc">
+                                        Defines now many numbers a new password must at least contain.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_min_symbols_count_tr" class="even">
+                                <td id="id_usermanager_pcr_roleruleset_min_symbols_count_td">
+                                    <span id="id_usermanager_pcr_rolemin_symbols_count" class="c_usermanager_pcr_min_symbols_count">Minimum Symbols Count</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_symbols_count_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_min_symbols_count_val_input" name="admin_min_symbols_count" class="summed-numeric-input" min="0" max="127"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_symbols_count_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_symbols_count_desc" class="c_usermanager_pcr_min_symbols_count_desc">
+                                        Defines now many symbols a new password must at least contain.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_allowed_ascii_tr" class="even">
+                                <td id="id_usermanager_pcr_roleruleset_allowed_ascii_td">
+                                    <span id="id_usermanager_pcr_roleruleset_allowed_ascii" class="c_usermanager_pcr_allowed_symbols">Allowed Symbols</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_allowed_symbols_val_td">
+                                    <input type="text" id="id_usermanager_pcr_roleruleset_allowed_symbols_val_input" name="allowed_symbols"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_allowed_symbols_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_allowed_symbols_desc" class="c_usermanager_pcr_allowed_symbols_desc">
+                                        Defines which ASCII Symbols are allowed for Symbol Count rule.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_block_username_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_block_username_td">
+                                    <span id="id_usermanager_pcr_roleruleset_block_username" class="c_usermanager_pcr_block_username">Block Username</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_block_username_val_td">
+                                    <input type="checkbox" id="id_usermanager_pcr_roleruleset_block_username_val_input" name="block_username"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_block_username_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_block_username_desc" class="c_usermanager_pcr_block_username_desc">
+                                        Defines if a new password may not contain the username.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_block_reused_passwd_tr" class="even">
+                                <td id="id_usermanager_pcr_roleruleset_block_reused_passwd_td">
+                                    <span id="id_usermanager_pcr_roleruleset_block_reused_passwd" class="c_usermanager_pcr_block_reused_passwd">Block reused Passwords</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_block_reused_passwd_val_td">
+                                    <input type="checkbox" id="id_usermanager_pcr_roleruleset_block_reused_passwd_val_input" name="admin_block_reused_passwd"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_block_reused_passwd_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_block_reused_passwd_desc" class="c_usermanager_pcr_block_reused_passwd_desc">
+                                        Defines if a repeated password will be blocked on next set attempt.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_reused_gen_count_tr" class="even">
+                                <td id="id_usermanager_pcr_roleruleset_reused_gen_count_td">
+                                    <span id="id_usermanager_pcr_roleruleset_reused_gen_count" class="c_usermanager_pcr_reused_gen_count">Reused Generation Count</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_reused_gen_count_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_reused_gen_count_val_input" name="reused_gen_count" class="positive-numeric-input"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_reused_gen_count_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_reused_gen_count_desc" class="c_usermanager_pcr_reused_gen_count_desc">
+                                        Defines how many times a password may be reused.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_check_block_list_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_check_block_list_td">
+                                    <span id="id_usermanager_pcr_roleruleset_check_block_list" class="c_usermanager_pcr_check_block_list">Check Block List</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_check_block_list_val_td">
+                                    <input type="checkbox" id="id_usermanager_pcr_roleruleset_check_block_list_val_input" name="check_block_list"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_check_block_list_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_check_block_list_desc" class="c_usermanager_pcr_check_block_list_desc">
+                                        Defines if a new password may not contain a phrase from the blocklist.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_min_char_count_tr" class="even">
+                                <td id="id_usermanager_pcr_roleruleset_min_char_count_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_char_count" class="c_usermanager_pcr_min_char_count">Minimum Characters Count</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_char_count_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_min_char_count_val_input" name="min_char_count" class="positive-numeric-input"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_min_char_count_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_char_count_desc" class="c_usermanager_pcr_min_char_count_desc">
+                                        Defines now many characters in general a new password must at least contain.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_check_passwd_ch_interval_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_check_passwd_ch_interval_td">
+                                    <span id="id_usermanager_pcr_roleruleset_check_passwd_ch_interval" class="c_usermanager_pcr_check_passwd_ch_interval">Check Password changable Interval</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_check_passwd_ch_interval_val_td">
+                                    <input type="checkbox" id="id_usermanager_pcr_roleruleset_check_passwd_ch_interval_val_input" name="check_passwd_ch_interval"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_check_passwd_ch_interval_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_check_passwd_ch_interval_desc" class="c_usermanager_pcr_check_passwd_ch_interval_desc">
+                                        Defines if a new password may only be changed a limited amount of times in an interval.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_allowed_pass_changes_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_allowed_pass_changes_td" class="odd">
+                                    <span id="id_usermanager_pcr_roleallowed_pass_changes_ascii" class="c_usermanager_pcr_allowed_pass_changes">Allowed Password Changes</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_allowed_pass_changes_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_allowed_pass_changes_val_input" name="allowed_pass_changes" class="positive-numeric-input"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_allowed_pass_changes_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_allowed_pass_changes_desc" class="c_usermanager_pcr_allowed_pass_changes_desc">
+                                        Defines how often a password may be changed per interval.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_interval_count_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_interval_count_td">
+                                    <span id="id_usermanager_pcr_admin_interval_count" class="c_usermanager_pcr_interval_count">Interval Count</span>
+                                </td>
+                                <td id="id_usermanager_pcr_admin_ruleset_interval_count_val_td">
+                                    <input type="number" id="id_usermanager_pcr_admin_ruleset_interval_count_val_input" name="admin_interval_count" class="positive-numeric-input" style="display: inline-block; width: 145px;"/>
+                                    <select id="id_usermanager_pcr_admin_ruleset_interval_type_val_select" name="admin_interval_type" style="height:20px; width:66px; display: inline-block;">
+                                    <option value="Days" class="c_usermanager_days_h">Days</option>
+                                    <option value="Weeks" class="c_usermanager_weeks_h">Weeks</option>
+                                    <option value="Years" class="c_usermanager_years_h" selected="">Years</option>
+                                    </select>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_interval_count_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_interval_count_desc" class="c_usermanager_pcr_interval_count_desc">
+                                        Defines how many intervals of Type IntervalType for Allowed Password Changes.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_admin_ruleset_table_header_tr">
+                            <th colspan="3" scope="col" class="c_usermanager_expiration_policy_param">Expiration Policy Parameters</th>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_policy_active_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_policy_active_td">
+                                    <span id="id_usermanager_pcr_rolepolicy_active" class="c_usermanager_pcr_policy_active">Policy Active</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_policy_active_val_td">
+                                    <input type="checkbox" id="id_usermanager_pcr_admin_ruleset_policy_active_val_input" name="admin_policy_active"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_policy_active_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_policy_active_desc" class="c_usermanager_pcr_policy_active_desc">
+                                        Decides if the policy is currently active.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_lock_user_active_tr" class="even">
+                                <td id="id_usermanager_pcr_roleruleset_lock_user_active_td">
+                                    <span id="id_usermanager_pcr_roleruleset_lock_user_active" class="c_usermanager_pcr_lock_user_active">Lock User Active</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_lock_user_active_val_td">
+                                    <input type="checkbox" id="id_usermanager_pcr_roleruleset_lock_user_active_val_input" name="lock_user_active"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_lock_user_active_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_lock_user_active_desc" class="c_usermanager_pcr_lock_user_active_desc">
+                                        Decides if a user will be locked after the password has expired.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_days_to_expiration_tr" class="odd">
+                                <td id="id_usermanager_pcr_roleruleset_days_to_expiration_td">
+                                    <span id="id_usermanager_pcr_role_days_to_expiration" class="c_usermanager_pcr_days_to_expiration">Days To Expiration</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_days_to_expiration_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_days_to_expiration_val_input" name="days_to_expiration" class="positive-numeric-input" min="1" max="4294967295"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_days_to_expiration_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_days_to_expiration_desc" class="c_usermanager_pcr_days_to_expiration_desc">
+                                        Decides from how many days may pass before the current password will expire.
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr id="id_usermanager_pcr_roleruleset_days_to_warning_tr" class="even">
+                                <td id="id_usermanager_pcr_roleruleset_days_to_warning_td">
+                                    <span id="id_usermanager_pcr_roleruleset_min_unicode_count" class="c_usermanager_pcr_days_to_warning">Days To Warning</span>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_days_to_warning_val_td">
+                                    <input type="number" id="id_usermanager_pcr_roleruleset_days_to_warning_val_input" name="days_to_warning" class="positive-numeric-input" min="1" max="4294967295"/>
+                                </td>
+                                <td id="id_usermanager_pcr_roleruleset_days_to_warning_desc_td">
+                                    <span id="id_usermanager_pcr_roleruleset_days_to_warning_desc" class="c_usermanager_pcr_days_to_warning_desc">
+                                        Decides from how many days before the password's expiration a warning will be shown to the user to change the current password.
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                        <br></br>
+                        <table class="pxc-tbl-zebra" id="id_usermanager_pcr_blocklist_table" style="width:100%" style="float: left">
+                            <thead>
+                                <colgroup>
+                                    <col style="width: 90%">
+                                    <col style="width: 10%">
+                                </colgroup>
+                                <tr colspan="2" class="exclude" id="id_usermanager_pcr_blocklist_opt">
+                                    <th scope="col"  id="id_usermanager_pcr_blocklist_table_th" class="c_usermanager_pcr_blocklist">Blocked Passwords List</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="id_usermanager_pcr_blocklist_tbody">
+                                <tr class="exclude" id="id_usermanager_pcr_blocklist_add_tr">
+                                    <td id="id_usermanager_pcr_blocklist_add_td">
+                                        <button class="pxc-btn-plus tooltip centered" id="id_usermanager_pcr_blocklist_add_btn">
+                                            <span class="tooltip-text-top c_usermanager_add_block_list_entry">Add block list entry</span>
+                                        </button>
+                                    </td>  
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <button class="pxc-btn-pa sticky-button-bottom" id="id_usermanager_pcr_apply_config_button" style="float: right; margin: -10px 0px;"><span class="c_glb_th_config_apply_and_reboot">Apply and reboot</span></button>
+                <button class="pxc-btn sticky-button-bottom"    id="id_usermanager_pcr_discard_config_button" style="float: right; margin: -10px 5px;"><span class="c_glb_th_config_discard">Discard</span></button>
+            </div>
+        </div>
+
+    </div>
+  </div>
+  <div class="modal" id="id_div_modal_change_authentication_enabled">
+    <div class="modal-content">
+      <div class="container">
+        <h1 id="id_usermanager_form_change_authentication_enabled_title">Change User Authentication</h1>
+        <div class="div-centered">
+          <form id="id_form_change_authentication_enabled">
+            <label id="id_usermanager_form_change_authentication_enabled_label" style="width:180px; display: inline-block; padding-bottom:10px;">User Authentication Enabled</label>
+            <input type="checkbox" id="id_usermanager_form_change_authentication_enabled_cb" name="userAthenticationEnabled" value="true" defaultValue="false">
+            <div class="centered">
+              <button type="submit" class="pxc-btn-pa"><span class="c_usermanager_button_save">Save<span></button>
+              <button type="button" class="pxc-btn" id="id_usermanager_form_change_authentication_enabled_btn_cancel"><span class="c_usermanager_button_cancel">Cancel</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="id_div_modal_edit_system_use_notification">
+    <div class="modal-content" style="width:480px;">
+      <div class="container">
+        <h1 class="c_usermanager_system_use_notification_edit">Edit System Use Notification</h1>
+          <form id="id_form_edit_system_use_notification">
+            <label class="c_login_system_use_notification">System Use Notification</label>
+            <textarea id="id_usermanager_system_use_notification_textarea" name="systemUseNotificationContent" style="width:440px; height:230px; resize:vertical;"></textarea>
+            <span hidden id="id_usermanager_system_use_notification_span"></span>
+            <div class="centered">
+              <button type="burron" class="pxc-btn-pa" id="id_usermanager_edit_system_use_notification_save_btn"><span class="c_usermanager_button_save">Save<span></button>
+              <button type="button" class="pxc-btn"    id="id_usermanager_edit_system_use_notification_cancel_btn"><span class="c_usermanager_button_cancel">Cancel</span></button>
+            </div>
+          </form>
+          <span hidden id="id_usermanager_system_use_notification_query_error" class="c_usermanager_system_use_notification_request_error"></span>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="id_div_modal_add_user">
+    <div class="modal-content">
+      <div class="container">
+        <h1 id="id_usermanager_form_add_user_title">Add User</h1>
+        <div class="div-centered">
+          <form id="id_form_add_user">
+            <div>
+                <label class="c_usermanager_username" style="width:150px; display: inline-block; padding-bottom:10px;">Username</label>
+                <input type="text" id="id_usermanager_add_user_input_username" class="p_usermanager_input_username um-username" name="username" placeholder="Enter Username" required></br>
+            </div>
+            <div>
+                <label class="c_usermanager_password" style="width:150px; display: inline-block; padding-bottom:10px;">Password</label>
+                <input type="password" autocomplete="on" class="p_usermanager_input_new_password um-userpass" id="id_usermanager_input_new_password" confirmpasswd="id_usermanager_input_new_password_confirm" name="password" placeholder="Enter Password" required></br>
+            </div>
+            <div>
+                <label class="c_usermanager_confirm_new_password" style="width:150px; display: inline-block; padding-bottom:10px;">Confirm Password</label>
+                <input type="password" autocomplete="on" class="p_usermanager_input_confirm_new_password um-userpass-confirm"  id="id_usermanager_input_new_password_confirm" mainpasswd="id_usermanager_input_new_password" name="confirmPassword" placeholder="Enter Password" required></br>
+            </div>
+            <div class="centered">
+              <button type="submit" class="pxc-btn-pa"><span class="c_usermanager_button_add">Add<span></button>
+              <button type="button" class="pxc-btn" id="id_usermanager_form_add_user_btn_cancel"><span class="c_usermanager_button_cancel">Cancel</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="id_div_modal_remove_user">
+    <div class="modal-content">
+      <div class="container">
+        <h1 id="id_usermanager_form_remove_user_title">Remove User</h1>
+        <div class="div-centered">
+          <form id="id_form_remove_user">
+            <label class="c_usermanager_username" style="width:150px; display: inline-block; padding-bottom:10px;">Username</label>
+            <input type="text" class="p_usermanager_input_username" id="id_remove_user_username" name="username" readonly></br>
+            <div class="centered">
+              <button type="submit" class="pxc-btn-pa"><span class="c_usermanager_button_remove">Remove</span></button>
+              <button type="button" class="pxc-btn" id="id_usermanager_form_remove_user_btn_cancel"><span class="c_usermanager_button_cancel">Cancel</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="id_div_modal_set_user_password">
+    <div class="modal-content">
+      <div class="container">
+        <h1 id="id_usermanager_form_set_user_password_title">Set User Password</h1>
+        <div class="div-centered">
+          <form id="id_form_set_user_password">
+            <label class="c_usermanager_username" style="width:150px; display: inline-block; padding-bottom:10px;">Username</label>
+            <input type="text" class="p_usermanager_input_username" id="id_set_password_username" name="username" readonly></br>
+            <div >
+                <label class="c_usermanager_new_password" style="width:150px; display: inline-block; padding-bottom:10px;">New Password</label>
+                <input type="password" autocomplete="on" id="id_usermanager_set_user_password_input_new_password" class="p_usermanager_input_new_password um-userpass" confirmpasswd="id_usermanager_set_user_password_input_new_password_confirm" name="newPassword" placeholder="Enter Password" maxlength="127" required></br>
+            </div>
+            <div>
+                <label class="c_usermanager_confirm_new_password" style="width:150px; display: inline-block; padding-bottom:10px;">Confirm New Password</label>
+                <input type="password" autocomplete="on" id="id_usermanager_set_user_password_input_new_password_confirm" class="p_usermanager_input_confirm_new_password um-userpass-confirm" mainpasswd="id_usermanager_set_user_password_input_new_password" name="confirmNewPassword" placeholder="Enter Password" maxlength="127" required></br>
+            </div>
+            <div class="centered">
+              <button type="submit" class="pxc-btn-pa"><span class="c_usermanager_button_save">Save</span></button>
+              <button type="button" class="pxc-btn" id="id_form_set_user_password_btn_cancel"><span class="c_usermanager_button_cancel">Cancel</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="id_div_modal_modify_user_roles">
+    <div class="modal-content">
+      <div class="container">
+        <h1 id="id_usermanager_form_edit_user_title">Edit User Configuration</h1>
+        <div class="div-centered">
+          <form id="id_form_modify_user_config">
+          <label style="width:570px; display: inline-block"></label>
+            <div class="cf pxc-cnt pxc-mod-main-table-alt-rows">
+                <table class="pxc-tbl-zebra" style="min-width:100%;" id="id_usermanager_edit_user_table">
+                    <thead>
+                        <colgroup>
+                        <col style="width:40%">
+                        <col style="width:40%">
+                        <col style="width:20%">
+                        </colgroup>
+                        <tr id="id_usermanager_edit_user_table_header_tr">
+                        <th colspan="3" scope="col" class="c_usermanager_user_config">User Configuration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="id_usermanager_edit_user_table_username_tr">
+                            <td id="id_usermanager_edit_user_table_username_td">
+                                <span id="id_usermanager_edit_user_table_username_span" class="c_usermanager_username">Username<span>
+                            </td>
+                            <td colspan="2" id="id_usermanager_edit_user_table_username_val_td">
+                                <input type="text" id="id_usermanager_edit_user_table_username_input" name="username" disabled></input>
+                            </td>
+                        </tr>
+                        <tr id="id_usermanager_edit_user_table_passwd_ruleset_tr">
+                            <td id="id_usermanager_edit_user_table_passwd_ruleset_td">
+                                <span id="id_usermanager_edit_user_table_passwd_ruleset_span" class="c_usermanager_passwd_ruleset">Password Complexity Ruleset</span>
+                            </td>
+                            <td colspan="2" id="id_usermanager_edit_user_table_passwd_ruleset_val_td">
+                                <select id="id_usermanager_edit_user_table_passwd_ruleset_val_select" name="passwd_ruleset" style="height:20px; width:100%; display: inline-block;">
+                                    <option value="admin" class="c_usermanager_admin_ruleset_h">Admin Ruleset</option>
+                                    <option value="default" class="c_usermanager_default_ruleset_h" selected="selected">Default Ruleset</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="id_usermanager_edit_user_table_passwd_userroles_tr">
+                            <td rowspan="4" id="id_usermanager_edit_user_table_userroles_td">
+                                <span class="c_usermanager_userroles">User Roles</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            <div class="div-centered">
+              <button type="submit" class="pxc-btn-pa"><span class="c_usermanager_button_save">Save</span></button>
+              <button type="button" class="pxc-btn" id="id_usermanager_form_modify_user_roles_btn_cancel" style="margin: 0px 4px;"><span class="c_usermanager_button_cancel">Cancel</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="id_usermanager_save_restart_modal">
+      <div class="modal-content">
+          <div class="container">
+              <div id="id_usermanager_save_restart_warning_div" class="pxc-f-gradbox">
+                  <span id="id_usermanager_restart_config_info"   class="c_usermanager_save_restart_info"   style="color:red;font-weight: bold;"></span>
+              </div>
+              <br>
+              <div style="display: flex;justify-content: center;">
+                  <button class="pxc-btn-pa" id="id_usermanager_restart_conf_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                  <span>&nbsp; </span>
+                  <button class="pxc-btn" id="id_usermanager_restart_conf_cancle_btn"><span class="c_glb_btn_cancel"></span></button>   
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="modal" id="id_usermanager_discard_modal" ifacenumber="0">
+      <div class="modal-content">
+          <div class="container">
+              <div id="id_ldapconfig_discard_warning_div" class="pxc-f-gradbox">
+                  <span id="id_usermanager_discard_config_info"   class="c_glb_discard_config_warning"   style="color:red;font-weight: bold;"></span>
+              </div>
+              <br>
+              <div style="display: flex;justify-content: center;">
+                  <button class="pxc-btn-pa" id="id_usermanager_discard_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                  <span>&nbsp; </span>
+                  <button class="pxc-btn" id="id_usermanager_discard_cancle_btn"><span class="c_glb_th_config_cancel"></span></button>   
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="pxc-loader-ico modal" id="id_usermanager_div_loader" style="display:inline-block;"></div>
+</body>
+</html>

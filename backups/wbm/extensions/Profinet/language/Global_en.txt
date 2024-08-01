@@ -1,0 +1,6 @@
+﻿var oTxt_Global_Content =
+{
+ 
+    /********************* Profinet - Diagnostics *********************/
+    "id_menu_subitem_profinet_profinetdiagnostics":"Profinet",
+};

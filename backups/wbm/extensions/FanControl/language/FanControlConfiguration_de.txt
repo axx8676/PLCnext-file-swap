@@ -1,0 +1,18 @@
+var oTxt_FanControlConfiguration_Content =
+{
+	/********************* Configuration - Fan Control ***********************/
+    "c_fancontrol_subtitle_info":"Lüftersteuerung",
+	"c_fancontrol_fan_defect":"Lüfterfehler vorhanden",
+	"c_fancontrol_connection":"Verbindung:",
+	"c_fancontrol_fan_maintenance":"Lüfterwartung erforderlich",
+	"c_fancontrol_fan_calibration":"Lüfterkalibrierung",
+	"c_fancontrol_fan_lastcalibration":"Letze Kalibrierung",
+	"c_fancalibration_start_question_info":"Möchten Sie mit dem Starten der Kalibrierung fortfahren?",
+	"c_fancalibration_start_ok":"Starten",
+	"c_fancalibration_start_cancel":"Abbrechen",
+	"c_fancontrol_start_fan_calibration":"Start Kalibrierung",
+	"c_fancontrol_status_text_ok_h":"Ok",
+	"c_fancontrol_status_text_na_h":"Lüfter-Modul ist nicht gesteckt",
+    "c_fancontrol_status_text_disconnected_h":"Verbindung zum Controller ist abgebrochen!",
+    "c_fancontrol_status_text_data_error_h":"Ein interner Fehler ist beim Laden der Lüfter-Konfiguration aufgetreten: ",
+};

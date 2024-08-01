@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<title><!--#include virtual="InfoValues.cgi?artname"--> - Web Services</title>
+<meta charset="UTF-8">
+<script src="Session.js"></script>
+<script src="HelpFunctions.js"></script>
+<script src="Utilities.js"></script>
+<script src="Language.js"></script>
+<script src="validation_rules.js"></script>
+<script src="moment.js/moment.js"></script>
+<script src="extensions/Wcm/WebConfiguration.js"></script>
+<style>
+
+::placeholder {
+  color: #b2b4b6;
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* IE 10-11 */
+  color: #b2b4b6;
+}
+
+::-ms-input-placeholder { /* MS Edge */
+  color: #b2b4b6;
+}
+
+</style>
+</head>
+<body>
+    <div id="id_webconfig_page_global_div" hidden>
+        <h1 id="id_pagetitle_config"><span class="c_menu_title_config"></span></h1>
+        <div hidden>
+            <span id="id_webconfig_date_placeholder_span" class="c_webconfig_date_placeholder"></span>
+            <span id="id_webconfig_time_placeholder_span" class="c_webconfig_time_placeholder"></span>
+        </div>
+        <div hidden id="id_webconfig_main_div" class="pxc-p-plain">
+            <h3 id="id_subpagetitle_webconfig" class="c_webconfig_subtitle_info">Web Services</h3>
+            <hr></hr>
+            <div id="id_webconfig_global_messages_div"></div>
+            <div class="cf pxc-cnt pxc-mod-main-table-alt-rows" >
+                <form id="id_webconfig_nginx_config_table_form">
+                    <h3 class="c_webconfig_nginx_web_server">NGINX Web Server</h3>
+                    <table id="id_webconfig_nginx_config_table" class="pxc-tbl-zebra">
+                        <thead>
+                            <colgroup>
+                                <col style="width: 30%">
+                                <col style="width: 70%">
+                            </colgroup>
+                        </thead>
+                        <tbody>
+                            <tr class="even"    id="id_webconfig_tls_configuration_h_tr">
+                                <td colspan="2" id="id_webconfig_tls_configuration_h_td">
+                                    <span       id="id_webconfig_tls_configuration_h_span" class="c_webconfig_tls_configuration" style="font-weight: bold;" value="TLS Configuration"></span>
+                                </td>
+                            </tr>
+                            <tr id="id_webconfig_tls_config_version_tr">
+                                <td id="id_webconfig_tls_versions_config_td">
+                                    <span class="c_webconfig_tls_config_version" value="TLS Version"></span>
+                                    <input type="hidden" class="min-checkbox-checked" elements-group="tls-version-cb" id="id_webconfig_tlsversions_help_input" name="webconfig_tlsversions_input">
+                                </td>
+                            </tr>
+                            <tr id="id_webconfig_tls_config_ciphers_tr">
+                                <td>
+                                    <span class="c_webconfig_tls_config_ciphers">Cipher Suites</span>
+                                </td>
+                                <td style="text-align:left;">
+                                    <select id="id_webconfig_cipher_suite_select" name="cipher_suite" style="max-width:100%; min-width: 245px;">
+                                    </select>
+                                    <hr style="margin: 5px -2px; width: 100%;"></hr>
+                                    <textarea disabled id="id_webconfig_cipher_suites_textarea" style="resize:vertical; width: 99%; height: 28px; cursor:default; text-indent: 10px; color: black; display: inline-block;" readonly="readonly" value="">
+                                    </textarea>
+                                </td>
+                            </tr>
+                            <tr class="even">
+                                <td colspan="2" >
+                                    <span class="c_webconfig_nginx_https_certificate" style="font-weight: bold;" value="HTTPS Certificate"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="c_webconfig_cert_identity_store">Identity Store for HTTPS Certificate</span>
+                                </td>
+                                <td>
+                                    <select id="id_webconfig_identity_store_select" name="IdentityStore" style="max-width:100%; min-width: 245px;">
+                                    </select>
+                                    <div hidden id="id_webconfig_certificate_key_missmatch_div"> 
+                                        <hr></hr>
+                                        <span id="id_webconfig_certificate_key_missmatch" class="c_webconfig_certificate_key_missmatch" style="color:red;">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr hidden id="id_webconfig_https_certificate_tr">
+                                <td>
+                                    <span class="c_webconfig_https_certificate">HTTPS Certificate</span>
+                                </td>
+                                <td>
+                                    <table id="id_webconfig_nginx_dn_config_table" class="pxc-tbl-zebra">
+                                        <colgroup>
+                                            <col style="width: 30%">
+                                            <col style="width: 70%">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2">Distinguished Name (DN)</th>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td>
+                                                    <span class="c_webconfig_common_name">Common Name (CN)</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="id_webconfig_cert_info_cn_input"  name="CommonName">
+                                                </td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td>
+                                                    <span class="c_webconfig_organization">Organization (O)</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="id_webconfig_cert_info_o_input"  name="Organization">
+                                                </td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td>
+                                                    <span class="c_webconfig_organizational_unit">Organisational Unit (OU)</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="id_webconfig_cert_info_ou_input" name="OrganizationUnit">
+                                                </td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td>
+                                                    <span class="c_webconfig_location">Location (L)</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="id_webconfig_cert_info_l_input" name="Location">
+                                                </td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td>
+                                                    <span class="c_webconfig_state_or_province_name">State or Province Name (ST)</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="id_webconfig_cert_info_st_input" placeholder="" name="NewIpAddress5">
+                                                </td>
+                                            </tr>
+                                            <tr class="odd" sa-number="5">
+                                                <td>
+                                                    <span class="c_webconfig_country_name">Country (C)</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="id_webconfig_cert_info_c_input" placeholder="" class="country-code" name="NewIpAddress5">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </br>
+                                    <table id="id_webconfig_nginx_validity_config_table" class="pxc-tbl-zebra">
+                                        <colgroup>
+                                            <col style="width: 30%">
+                                            <col style="width: 70%">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2" class="c_webconfig_validity">Validity</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="c_webconfig_valid_not_before">Valid not before</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="id_webconfig_cert_validity_notbefore_date_input" name="webconfig_valid_not_before_date" class="cert-validity-date" style="display:inline-block; width: 30%;" placeholder="">
+                                                    <span style="display:inline-block;"> - </span>
+                                                    <input type="text" id="id_webconfig_cert_validity_notbefore_time_input" name="webconfig_valid_not_before_time" class="cert-validity-time" style="display:inline-block; width: 30%;" placeholder="">
+                                                    <span> UTC</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="c_webconfig_valid_not_after">Valid not after</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="id_webconfig_cert_validity_notafter_date_input" name="webconfig_valid_not_after_date" class="cert-validity-date" style="display:inline-block; width: 30%;" placeholder="">
+                                                    <span style="display:inline-block;"> - </span>
+                                                    <input type="text" id="id_webconfig_cert_validity_notafter_time_input" name="webconfig_valid_not_after_time" class="cert-validity-time" style="display:inline-block; width: 30%;" placeholder="">
+                                                    <span> UTC</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h3 class="c_webconfig_subject_alternative_names">Subject Alternative Names</h3>
+                                    <table id="id_webconfig_nginx_san_config_table" class="pxc-tbl-zebra">
+                                        <colgroup>
+                                            <col style="width: 60%">
+                                            <col style="width: 28%">
+                                            <col style="width: 7%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr class="even">
+                                                <th class="c_webconfig_subject_alternative_name">Subject Alternative Name</th>
+                                                <th class="c_webconfig_subject_alternative_name_type">Type of Subject Alternative Name</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="exclude" id="id_webconfig_add_san_tr">
+                                                <td id="id_webconfig_add_san_td">
+                                                    <button class="pxc-btn-plus tooltip centered" id="id_webconfig_add_san_btn">
+                                                        <span class="tooltip-text-top c_webconfig_add_san">Subjekt-Alternativname hinzufügen</span>
+                                                    </button>
+                                                </td>  
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </br>
+                                    <div>
+                                        <button class="pxc-btn-pa" id="id_webconfig_generate_certificate_button" style="float: left;"><span class="c_webconfig_generate_certificate"></span></button>
+                                        &nbsp;
+                                        <span id="id_webconfig_generate_certificate_status_ok"    class="c_webconfig_generate_certificate_status_ok"    hidden style="color:green; position: relative;top: 5px; font-weight: bold;"></span>
+                                        <span id="id_webconfig_generate_certificate_status_error" class="c_webconfig_generate_certificate_status_error" hidden style="color:red; position: relative;top: 5px; font-weight: bold;"></span>
+                                        </br>
+                                        <hr>
+                                        <span class="c_webconfig_generate_certificate_info"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="c_glb_warning">Warning</span>
+                                </td>
+                                <td>
+                                    <span class="c_webconfig_apply_realtime_warning" style="color:red;">Applying the configuration can affect the real-time behavior of the system. Avoid reconfiguration during productive operation!</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <button class="pxc-btn-pa sticky-button-bottom" id="id_webconfig_apply_config_button" style="float: right;"><span class="c_glb_th_config_apply">Apply</span></button>
+            <button class="pxc-btn sticky-button-bottom"    id="id_webconfig_discard_config_button" style="float: right; margin: 0px 5px;"><span class="c_glb_th_config_discard">Discard</span></button>
+        </div>
+        <div hidden id="id_webconfig_sm_messages_div">
+            <span id="id_webconfig_sm_connection_error_span"   class="c_webconfig_connection_error_h" ></span>
+            <span id="id_webconfig_sm_opt_msg_error_code_info" class="c_webconfig_sm_opt_msg_error_code_info"       style="color:red">Error code: </span>
+            <span id="id_webconfig_sm_opt_msg_error_msg_info"  class="c_webconfig_sm_opt_msg_error_msg_info"        style="color:red">Error message: </span>
+        </div>
+        <!-- Generate HTTPS Certificate Form -->
+        <div class="modal" id="id_webconfig_div_modal_generate_cert_confirm">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_webconfig_server_generate_cert_warning_div" class="pxc-f-gradbox">
+                        <span id="id_webconfig_sm_generate_cert_conf_info"   class="c_webconfig_sm_generate_cert_conf_info"   style="color:red;font-weight: bold;"></span>
+                    </div>
+                    </br>
+                    <div class="centered">
+                        <button type="button" class="pxc-btn-pa" id="id_webconfig_generate_cert_ok_btn"><span class="c_glb_th_config_generate">Generieren</span></button>
+                        <button type="button" class="pxc-btn" id="id_webconfig_generate_cert_cancellation_btn"><span class="c_glb_btn_cancel">Cancel</span></button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="modal" id="id_webconfig_discard_modal" ifacenumber="0">
+            <div class="modal-content">
+                <div class="container">
+                    <div id="id_webconfig_discard_warning_div" class="pxc-f-gradbox">
+                        <span id="id_webconfig_discard_config_info"   class="c_glb_discard_config_warning"   style="color:red;font-weight: bold;"></span>
+                    </div>
+                    <br>
+                    <div style="display: flex;justify-content: center;">
+                        <button class="pxc-btn-pa" id="id_webconfig_discard_ok_btn"><span class="c_glb_btn_ok"></span></button>
+                        <span>&nbsp; </span>
+                        <button class="pxc-btn" id="id_webconfig_discard_cancle_btn"><span class="c_glb_th_config_cancel"></span></button>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pxc-loader-ico modal" id="id_div_loader" style="display:inline-block;"></div>   
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+﻿var oTxt_Global_Content =
+{
+    /*** PLCnext Apps ***/
+    "id_menu_subitem_appmanager_plcnextapps"      : "PLCnext Apps",
+};

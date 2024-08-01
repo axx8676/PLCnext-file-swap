@@ -1,0 +1,67 @@
+var oTxt_WebConfiguration_Content =
+{    
+    /***** Web Configuration/Services ****/
+    "c_webconfig_subtitle_info" : "Webdienste",
+    
+    /* NGINX Web server */
+    "c_webconfig_nginx_web_server"        : "NGINX-Webserver",
+    "c_webconfig_nginx_https_certificate" : "HTTPS-Zertifikat",
+    "c_webconfig_https_certificate"       : "Selbstsigniertes HTTPS-Zertifikat",
+    "c_webconfig_generate_certificate"    : "HTTPS-Zertifikat neu generieren",
+    "c_webconfig_cert_identity_store"     : "Identity Store für das HTTPS-Zertifikat",
+    
+    /* System Messages */
+    "c_webconfig_connection_error_h"         : "Ein Verbindungsfehler ist aufgetreten: ",
+    "c_webconfig_sm_generate_cert_conf_info" : "Achtung: Das aktuelle selbstsignierte HTTPS-Zertifikat wird überschrieben. Möchten Sie mit dem Generieren des HTTPS-Zertifikats fortfahren?",
+    "c_webconfig_sm_opt_msg_error_code_info" : "Fehlercode: ",
+    "c_webconfig_sm_opt_msg_error_msg_info"  : "Fehlernachricht",
+    
+    "c_webconfig_subject_alternative_names"      : "Subjektalternativnamen",
+    "c_webconfig_subject_alternative_name"       : "Subjektalternativname",
+    "c_webconfig_subject_alternative_name_type"  : "Type des Subjektalternativnamen",
+    
+    "c_webconfig_remove_san": "Subjektalternativnamen entfernen",
+    "c_webconfig_add_san"   : "Subjektalternativnamen hinzufügen",
+    
+    "c_webconfig_common_name"            : "Allgemeiner Name (CN)",
+    "c_webconfig_organization"           : "Organisation (O)",
+    "c_webconfig_organizational_unit"    : "Organizationseinheit (OU)",
+    "c_webconfig_location"               : "Standort (L)",
+    "c_webconfig_state_or_province_name" : "Bundesstaat oder Kanton (ST)",
+    "c_webconfig_country_name"           : "Land (C)",
+    "c_webconfig_valid_not_before"       : "Gültig von",
+    "c_webconfig_valid_not_after"        : "Gültig bis",
+    "c_webconfig_validity"               : "Gültigkeit",
+    
+    "c_webconfig_certificate_key_missmatch": "Achtung: Das Schlüsselpaar und das Zertifikat des ausgewählten IdentityStore stimmen nicht überein. Das selbstsignierte Zertifikat wird verwendet",
+    "c_webconfig_apply_realtime_warning": "Das Anwenden der Konfiguration kann das Echtzeitverhalten des Systems beeinträchtigen. Vermeiden Sie daher die Rekonfiguration der Webdienste im laufenden Produktivbetrieb!",
+    
+    "c_webconfig_date_placeholder" : "TT.MM.JJJJ",
+    "c_webconfig_time_placeholder" : "HH:mm:ss",
+    
+    "c_webconfig_san_ipaddress" : "IP-Adresse",
+    "c_webconfig_san_dnsname"   : "DNS-Name",
+    
+    /* Self-signed https certificate generating status */
+    "c_webconfig_generate_certificate_status_ok"    : "Das selbstsignierte HTTPS-Zertifikat wurde erfolgreich neu generiert!",
+    "c_webconfig_generate_certificate_status_error" : "Beim Generieren des selbstsignierten HTTPS-Zertifikats ist ein Fehler aufgetreten!",
+    "c_webconfig_generate_certificate_info"         : "Wenn Sie die \"Generieren\"-Schaltfläche betätigen, wird das selbstsignierte HTTPS-Zertifikat nur neu generiert. Damit das Zertifikat im System aktiviert werden kann, müssen Sie anschließend die Schaltfläche \"Anwenden\" bei ausgegewähltem IdentityStore \"HTTPS-self-signed\" betätigen.",   
+
+    /* TLS Configuration */
+    "c_webconfig_tls_configuration"  : "TLS-Konfiguration",
+    "c_webconfig_tls_config_version" : "TLS-Version(en)",
+    "c_webconfig_tls_config_ciphers" : "Cipher-Suites",
+    
+    "c_webconfig_error_set_tls_configs"         : "Setzen der NGINX-TLS-Konfiguration fehlgeschlagen",
+    "c_webconfig_error_set_httpscert_configs"   : "Setzen des NGINX-HTTPS-Zertifikats fehlgeschlagen",
+    "c_webconfig_error_query_https_tls_config"  : "Abfragen der TLS-Konfiguration fehlgeschlagen",
+    "c_webconfig_error_query_https_cert_config" : "Abfragen der Konfiguration für das HTTPS-Zertifikat fehlgeschlagen",
+    "c_webconfig_error_list_identitystores"     : "Auflisten der Identity-Stores fehlgeschlagen",
+    
+    "c_webconfig_info_successfull_apply" : "Anwenden der Web-Konfiguration erfolgreich!",
+    
+    "c_webconfig_config_use": "Verwende ",
+
+    "c_webconfig_ciphers_set_DefaultCiphers_name": "Standard-HTTPS-TLS-Ciphers",
+    "c_webconfig_ciphers_set_SecureCiphers_name" : "Sichere HTTPS-TLS-Ciphers"
+};
