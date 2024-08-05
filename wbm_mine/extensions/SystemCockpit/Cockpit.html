@@ -91,7 +91,7 @@
           <div class="cockpit-line-box"><div class="cockpit-vertical-line" id="id_cockpit_control_up_content_preline"></div></div>
           <!-- Upload Project -->
           <div class="cockpit-control-container tooltip">
-            <input hidden type="file" name="project_file" id="id_project_file_input" onchange="fileSelected();" ></input>
+            <input hidden type="file" name="project_file" id="id_project_file_input" onchange="fileSelected();"  accept=".zip" required ></input>
             <span class="cockpit-tooltip-text c_cockpit_upload_project">Upload Project</span>
             <button id="id_cockpit_upload_project_btn" class="pxc-btn-upload-project cockpit-control-btn"  onclick="handleFileInputClick('id_project_file_input')" ></button>
           </div>
