@@ -32,7 +32,9 @@ After SD card support is deactivated, login to a new session in your SFTP client
 
 ![image](https://github.com/user-attachments/assets/d2109d19-b523-492a-afb6-c2f1072121fc)
 
-After connecting, navigate to /opt/plcnext and transfer install_swap.sh, uninstall.sh, and SDcardSwap to this directory. All files needed can be found in this repo.
+![image](https://github.com/user-attachments/assets/90c56709-81d4-4c67-b9a7-bd9273a15745)
+
+After connecting, navigate to /opt/plcnext and transfer install.sh, uninstall.sh, and SDcardSwap to this directory. All files needed can be found in this repo.
 
 ![image](https://github.com/user-attachments/assets/286c876f-643f-478e-b7d9-0d7ed2e03d84)
 
@@ -63,15 +65,15 @@ root@axcf2152:/opt/plcnext/#
 
 You should be in the /opt/plcnext/ directory. If you are not, navigate there by using `cd /opt/plcnext`. Enter the following command, which will give the installation file the necessary read/write permissions:
 ```
-chmod 777 install_swap.sh
+chmod 777 install.sh
 ```
 
 Finally, run the installation file using:
 ```
-./install_swap.sh
+./install.sh
 ```
 
-You will see an output asking you to wait, then all the necessary files should be installed.
+You will see an output asking if you would like to install Swap. Enter `y` and press enter, then the files will be installed. If you transferred the Upload file as well, you may see a prompt asking if you would like to install Upload. You can install this as well if you'd like, it will not interfere with Swap's operation. If you would only like to utilize swap, enter `n` and continue.
 
 <h2> Uploading the project </h2>
 
@@ -89,7 +91,7 @@ Navigate to the folder labeled `Binaries` in your file explorer. Then, navigate 
 
 `\Binaries\your_project@binary\RES_XXXXXX\Configuration\Projects` 
 
-In this file, there will be a folder labeled `PCWE`. This will be the folder and filepath this document refers to when it says `PCWE`.
+In this file, there will be a folder labeled `PCWE`. This document will refer to this filepath as `PCWE`.
 
 <h3> Uploading via SCP </h3>
 

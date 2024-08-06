@@ -31,7 +31,9 @@ After SD card support is deactivated, login to a new session in your SFTP client
 
 ![image](https://github.com/user-attachments/assets/d2109d19-b523-492a-afb6-c2f1072121fc)
 
-After connecting, navigate to /opt/plcnext and transfer install_upload.sh, uninstall.sh, and Upload to this directory. All files needed can be found in this repo.
+![image](https://github.com/user-attachments/assets/25aa88f3-8b14-4333-8c3a-f1f08025e2d7)
+
+After connecting, navigate to /opt/plcnext and transfer install.sh, uninstall.sh, and Upload to this directory. All files needed can be found in this repo.
 
 ![image](https://github.com/user-attachments/assets/7660eced-0a5a-45cb-80a6-6d734006b2ed)
 
@@ -62,15 +64,15 @@ root@axcf2152:/opt/plcnext/#
 
 You should be in the /opt/plcnext/ directory. If you are not, navigate there by using `cd /opt/plcnext`. Enter the following command, which will give the installation file the necessary read/write permissions:
 ```
-chmod 777 install_upload.sh
+chmod 777 install.sh
 ```
 
 Finally, run the installation file using:
 ```
-./install_upload.sh
+./install.sh
 ```
 
-You will see an output asking you to wait, then all the necessary files should be installed.
+You will see an output asking if you would like to install Upload. Enter `y` and press enter, then the files will be installed. If you transferred the Swap file as well, you may see a prompt asking if you would like to install Swap. You can install this as well if you'd like, it will not interfere with Upload's operation. If you would only like to utilize Upload, enter `n` and continue. After the installation is complete, the PLC will reboot to apply the changes.
 
 <h2> Performing the Upload </h2>
 
