@@ -1,4 +1,3 @@
-# mmcblk0p1 is the one with the latest change (and only changes after mmcblk1p1 is added)
-# so it sets a flag file when it is inserted so that swap only runs when the PLC is already started and the SD card is inserted
+# This udev rule runs the Swap script when the SD card is inserted and the PLC startup process is finished, (when mmcblk0p1 is 'inserted')
 ACTION=="change", KERNEL=="mmcblk0p1", RUN+="/bin/touch /var/volatile/tmp/change_flag_set"
 ACTION=="add", KERNEL=="mmcblk1p1", PROGRAM=="/bin/sh -c 'test -f /var/volatile/tmp/change_flag_set && echo 1'", RESULT=="1", RUN+="/opt/plcnext/Swap.sh"

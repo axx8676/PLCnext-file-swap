@@ -1,19 +1,25 @@
 #!/bin/bash
+
+# Uploads project in /opt/plcnext to /opt/plcnext/projects
+# and archives PLC project on SD card
 {
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/plcnext/appshome/bin
 
+# output to both terminal and log
 exec > >(tee -i -a /opt/plcnext/logs/Upload.log)
 exec 2>&1
 
 # parse json to retrieve project name
-function get_project_name() {
+function get_project_name() 
+{
   local json_file=$1
   python3 -c "import sys, json; print(json.load(open('${json_file}'))['identification']['name'])"
 }
 
 # initialize variables
-function init() {
-  # time for archive file
+function init() 
+{
+  # time for archive name
   current_time=$(date "+%m-%d-%Y_%T")
 
   # filepaths
@@ -32,8 +38,10 @@ function init() {
 }
 
 # archive PLC project on SD, then upload new project to PLC
-function fileTransfer() {
-  # ensure sd card deactivated (probably unnecessary)
+function fileTransfer() 
+{
+  # ensure sd card deactivated 
+  # (probably unnecessary, won't get this far if it isn't already deactivated)
   sudo /usr/sbin/sdcard_state.sh request_deactivation
   echo "$(date "+%d.%m.%y %T") SD card deactivated"
 
@@ -45,7 +53,6 @@ function fileTransfer() {
     echo "$(date "+%d.%m.%y %T") Archiving $old_project_name as $archive_filename"
     mkdir -p $archive_dir
     cp -a $active_dir/projects $archive_dir/$archive_filename
-    sleep 1
   
     # continue uploading only if project was successfully archived
     if [ -d $archive_dir/$archive_filename ]; then
@@ -66,6 +73,7 @@ function fileTransfer() {
   rm -r $active_dir/PCWE
   rm -r $active_dir/PCWE.zip
 
+  # new project names
   new_uploaded_project=$(get_project_name "$active_dir/projects/PCWE/PCWE.software-package-manifest.json")
   echo "$(date "+%d.%m.%y %T") Project on PLC: $new_uploaded_project"
   
@@ -76,6 +84,7 @@ function fileTransfer() {
     echo "$(date "+%d.%m.%y %T") Project was empty, nothing to archive"
   fi
 
+  # reboot necessary for new project to start correctly
   echo "$(date "+%d.%m.%y %T") Rebooting..."
   sudo reboot
 }
@@ -88,29 +97,30 @@ sleep 45
 if [ -d /media/rfs/externalsd/upperdir/opt/plcnext ]; then
   unzip -o /media/rfs/internalsd/upperdir/opt/plcnext/PCWE.zip
   sleep 5
-  # check that the file that triggered inotify is a project
   if [ -d /media/rfs/internalsd/upperdir/opt/plcnext/PCWE ]; then
+  # uploaded file is a project
     echo "$(date "+%d.%m.%y %T") SD card inserted, performing upload"
     sudo /etc/init.d/plcnext stop
     init
     fileTransfer
     exit 0
   else
-    # uploaded file is not a project, don't try to upload
+  # uploaded file is not a project, don't try to upload
     echo "Project not uploaded, exiting"
     exit 0
   fi
 else
   if [ -d /media/rfs/externalsd/upperdir ]; then
+  # SD card present, but not formatted
     echo "$(date "+%d.%m.%y %T") SD Card not properly formatted"
     echo "$(date "+%d.%m.%y %T") Ensure SD card contains /upperdir/opt/plcnext/"
     exit 0
   else
+  # SD card not present or not mounted
     echo "$(date "+%d.%m.%y %T") SD Card not inserted"
     echo "$(date "+%d.%m.%y %T") Insert SD card to archive projects."
     exit 0
   fi
 fi
 } & disown
-
-
+# disowning probably unnecessary?
