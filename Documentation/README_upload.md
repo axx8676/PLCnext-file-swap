@@ -28,6 +28,7 @@ Uploads the given project to the PLC and archives the old project in `/upperdir/
 * PuTTY release 0.79
 * Linux File Systems for Windows by Paragon Software version 6.1.5
 * GNU bash version 5.1.16(1)
+* dpkg version 1.21.9
 * udev version 243
 * crontab version cronie 1.6.1
 * Packages installed with Upload (all armel)
