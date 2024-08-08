@@ -9,7 +9,7 @@ if [ -d /opt/plcnext/SDCardSwap ]; then
 	read -p "SDCardSwap folder detected, would you like to install Swap? {y|n} " yn
 	case $yn in
 		# install swap
-		y) echo "Running script to install SDCardSwap. Please wait."
+		y) 	echo "Running script to install SDCardSwap. Please wait."
 			
 			# copy Swap script to more accessible folder
 			echo "Installing Swap and setting permissions"
@@ -18,8 +18,8 @@ if [ -d /opt/plcnext/SDCardSwap ]; then
 
 			# copy cron job to cron folder, and add it to crontab
 			echo "Setting up DetectReboot cronjob"
-			cp -a -n /opt/plcnext/SDCardSwap/DetectReboot_Swap /var/spool/cron/
-			sudo crontab /var/spool/cron/DetectReboot_Swap
+			cp -a -n /opt/plcnext/SDCardSwap/DetectReboot /var/spool/cron/
+			sudo crontab /var/spool/cron/DetectReboot
 
 			# copy udev rules to rules folder, and reload rules to apply changes
 			echo "Setting up udev rules"
@@ -27,6 +27,10 @@ if [ -d /opt/plcnext/SDCardSwap ]; then
 			cp -a /opt/plcnext/SDCardSwap/99-swap.rules /etc/udev/rules.d/
 			sudo udevadm control --reload-rules
 
+			# create startup flag file, so reboot is not required before swapping
+			touch /var/volatile/tmp/change_flag_set
+
+			echo "Installation complete"
 			break
 			;;
 		# don't install swap
@@ -47,7 +51,7 @@ if [ -d /opt/plcnext/Upload ]; then
 	read -p "Upload folder detected, would you like to install Upload? {y|n} " yn
 	case $yn in
 		# install upload
-		y) echo "Running script to install Upload. Please wait."
+		y) 	echo "Running script to install Upload. Please wait."
 
 			# copy Upload script to more accessible folder
 			echo "Installing Upload and setting permissions"
@@ -61,8 +65,8 @@ if [ -d /opt/plcnext/Upload ]; then
 
 			# copy cron job to cron folder, and add it to crontab
 			echo "Setting up DetectReboot cronjob"
-			cp -a /opt/plcnext/Upload/DetectReboot_Upload /var/spool/cron/
-			sudo crontab /var/spool/cron/DetectReboot_Upload
+			cp -a /opt/plcnext/Upload/DetectReboot /var/spool/cron/
+			sudo crontab /var/spool/cron/DetectReboot
 
 			# copy udev rule to rules folder, and reload rules to apply changes
 			echo "Setting up udev rules"
@@ -77,15 +81,14 @@ if [ -d /opt/plcnext/Upload ]; then
 			# start inotify script, so upload can be used immediately
 			echo "Installation complete, starting inotify watch"
 			/opt/plcnext/inotify.sh
-
 			break
 			;;
 		# don't install upload
-		n) echo "Not installing Upload"
+		n) 	echo "Not installing Upload"
 			break
 			;;
 		# prompt user again
-		*) echo "Invalid response, please enter y or n"
+		*) 	echo "Invalid response, please enter y or n"
 			;;
 	esac
 	done

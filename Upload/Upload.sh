@@ -95,7 +95,7 @@ sleep 45
 
 # check that a properly formatted SD card is inserted
 if [ -d /media/rfs/externalsd/upperdir/opt/plcnext ]; then
-  unzip -o /media/rfs/internalsd/upperdir/opt/plcnext/PCWE.zip
+  unzip -o /opt/plcnext/PCWE -d /opt/plcnext/
   sleep 5
   if [ -d /media/rfs/internalsd/upperdir/opt/plcnext/PCWE ]; then
   # uploaded file is a project

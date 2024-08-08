@@ -1,2 +1,0 @@
-# This cron job adds a flag file when the PLC reboots, to prevent the swap loop
-@reboot /bin/touch /opt/plcnext/just_rebooted
