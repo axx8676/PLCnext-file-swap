@@ -17,8 +17,6 @@ Uploads the given project to the PLC and archives the old project in `/upperdir/
 
 <h3> Version Info </h3>
 
-<h3> Version Info </h3>
-
 * PLCnext Control AXC F 2152
    * Hardware version: 06
    * Firmware version: 2024.0.5 LTS
