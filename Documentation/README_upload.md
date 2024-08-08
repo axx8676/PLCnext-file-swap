@@ -14,7 +14,8 @@ Uploads the given project to the PLC and archives the old project in `/upperdir/
 * PLCnext Engineer
 * Ext4 File System Driver for Windows
   * Only needed if a non-Phoenix Contact SD card is used
- 
+
+<h3> Version Info </h3>
 * PLCnext Control AXC F 2152
    * Hardware version: 06
    * Firmware version: 2024.0.5 LTS
