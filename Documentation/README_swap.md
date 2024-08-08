@@ -14,6 +14,8 @@ Loads the project from the SD card onto the PLC and archives the project from th
 * PLCnext Engineer
 * Ext4 File System Driver for Windows (with write capability)
 
+<h3> Version Info </h3>
+
 * PLCnext Control AXC F 2152
    * Hardware version: 06
    * Firmware version: 2024.0.5 LTS
