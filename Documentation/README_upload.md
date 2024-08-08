@@ -35,7 +35,7 @@ After SD card support is deactivated, login to a new session in your SFTP client
 
 After connecting, navigate to /opt/plcnext and transfer install.sh, uninstall.sh, and Upload to this directory. All files needed can be found in this repo.
 
-![image](https://github.com/user-attachments/assets/7660eced-0a5a-45cb-80a6-6d734006b2ed)
+![image](https://github.com/user-attachments/assets/0c862abe-34c4-4d1e-bf9d-a08a38ad0cd4)
 
 <h2> Installing Upload </h2>
 
@@ -72,7 +72,7 @@ Finally, run the installation file using:
 ./install.sh
 ```
 
-You will see an output asking if you would like to install Upload. Enter `y` and press enter, then the files will be installed. If you transferred the Swap file as well, you may see a prompt asking if you would like to install Swap. You can install this as well if you'd like, it will not interfere with Upload's operation. If you would only like to utilize Upload, enter `n` and continue. After the installation is complete, the PLC will reboot to apply the changes.
+You will see an output asking if you would like to install Upload. Enter `y` and press enter, then the files will be installed.
 
 <h2> Performing the Upload </h2>
 
@@ -82,11 +82,11 @@ There are multiple ways to do this, including using SCP to transfer the files an
 
 If you are using a normal SD card, you will need to create some of the file structure that exists on the Phoenix Contact SD cards in order to archive the projects from the PLC. First, you will need to format the SD card as Ext4. I used a trial for this driver: https://www.paragon-software.com/home/linuxfs-windows/. In Linux File Systems for Windows, click the three dots icon, then click `Format new volume`. Select your SD card, the Ext4 format, and then click Format. 
 
-After you have formatted the SD card, create the folders upperdir and work. Then, create the folders in this filepath: `upperdir/opt/plcnext`. After uploading the PCWE folder, you will need to create a symlink called current that links to the PCWE folder. Please note that while this SD card can be used for storage and uploading projects to the PLC, it cannot be used to run the PLC itself like a Phoenix Contact SD card.
+After you have formatted the SD card, create the folders upperdir and work. Then, create the folders in this filepath: `upperdir/opt/plcnext`. After uploading the PCWE folder, you will need to create a symlink called current that links to the PCWE folder. Please note that while this SD card can be used for storage and uploading projects to the PLC, it cannot be mounted as the primary filesystem to run the PLC.
 
 Ensure the SD card is properly formatted by checking that the following filepath exists: `/upperdir/opt/plcnext`.
 
-To upload the project to the PLC, you will first need to find the project on your computer. Depending on where/how you installed PLCnext Engineer, this could vary slightly. To find where the project is stored, in PLCnext Engineer go to Extras, then open the Options. Open the `Directories` tab under `Tools`.
+To upload the project to the PLC, you will first need to find the project on your computer. Depending on where you installed PLCnext Engineer, this could vary slightly. To find where the project is stored, in PLCnext Engineer go to Extras, then open the Options. Open the `Directories` tab under `Tools`.
 
 ![image](https://github.com/user-attachments/assets/ebe768cd-325e-459f-b820-05362b65a704)
 
@@ -134,5 +134,7 @@ Finally, run the script using:
 ```
 ./uninstall.sh
 ```
+
+Similar to installation, you will see an output asking if you would like to uninstall Upload. Enter `y` to uninstall. 
 
 You can now safely reactivate SD card support. The same data concerns still apply, so be aware of what projects are present on the PLC and SD card before using this functionality.
