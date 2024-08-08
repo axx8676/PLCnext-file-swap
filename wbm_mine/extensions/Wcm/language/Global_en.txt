@@ -1,5 +1,0 @@
-﻿var oTxt_Global_Content =
-{
-    /***** Web Configuration/Services ****/
-    "id_menu_subitem_wcm_webconfiguration" : "Web Services",
-};

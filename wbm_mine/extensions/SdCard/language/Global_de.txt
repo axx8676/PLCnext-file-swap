@@ -1,5 +1,0 @@
-var oTxt_Global_Content =
-{
-    /********************* Security - SD Card ***********************/
-    "id_menu_subitem_sdcard_sdcardconfiguration":"SD-Karte",
-};

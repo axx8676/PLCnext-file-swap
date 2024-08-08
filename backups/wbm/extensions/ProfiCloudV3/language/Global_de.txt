@@ -1,5 +1,0 @@
-var oTxt_Global_Content =
-{
-    /********************* Date Time Menu *********************/
-    "id_menu_subitem_proficloudv3_proficloudservices"        :   "Proficloud-Dienste"
-};

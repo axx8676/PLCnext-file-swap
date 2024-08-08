@@ -1,3 +1,4 @@
 # This udev rule mounts the externalsd filesystem when the SD card is inserted, and unmounts when the SD card is removed
+# and removes the flag file when SD card is inserted or removed
 ACTION=="add", KERNEL=="mmcblk1p1", RUN+="/bin/mount -t ext4 -o rw,relatime /dev/mmcblk1p1 /media/rfs/externalsd", RUN+="/bin/rm -f /opt/plcnext/just_rebooted"
 ACTION=="remove", KERNEL=="mmcblk1p1", RUN+="/bin/umount /media/rfs/externalsd", RUN+="/bin/rm -f /opt/plcnext/just_rebooted"

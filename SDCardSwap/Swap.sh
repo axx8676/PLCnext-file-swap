@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # archives PLC project on SD card
-# then swaps the projects in /opt/plcnext/projects
-# on SD card and PLC
+# then swaps the projects on SD card and PLC
 {
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/plcnext/appshome/bin
 

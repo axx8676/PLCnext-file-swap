@@ -1,5 +1,0 @@
-﻿var oTxt_Global_Content =
-{
-    /********************* General Data ***********************/
-    "id_menu_subitem_di_generaldata":"General Data",
-};

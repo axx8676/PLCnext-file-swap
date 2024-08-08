@@ -1,5 +1,0 @@
-var oTxt_Global_Content =
-{
-    /********************* PLCnext System Services *********************/
-    "id_menu_subitem_scm_systemservices": "Systemdienste",
-};

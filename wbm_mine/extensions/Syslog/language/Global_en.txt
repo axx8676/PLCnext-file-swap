@@ -1,4 +1,0 @@
-﻿var oTxt_Global_Content =
-{
-    "id_menu_subitem_syslog_syslogconfiguration" : "Syslog Configuration",
-};

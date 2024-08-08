@@ -1,8 +1,0 @@
-﻿var oTxt_Global_Content =
-{
-    /********************* User Manager Menu *********************/
-    "id_menu_subitem_um_usermanager" : "User Authentication",
-
-    /********************* LDAP Configurations **********************/
-    "id_menu_subitem_um_ldapconfiguration":"LDAP Configuration"
-};
