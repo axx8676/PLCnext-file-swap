@@ -1,1 +1,0 @@
-@reboot /bin/touch /opt/plcnext/just_rebooted
