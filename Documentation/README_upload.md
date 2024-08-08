@@ -30,13 +30,6 @@ Uploads the given project to the PLC and archives the old project in `/upperdir/
 * GNU bash version 5.1.16(1)
 * udev version 243
 * crontab version cronie 1.6.1
-* Packages installed with Upload (all armel)
-  * gcc-10-base 10.2.1-6
-  * inotify-tools 3.14-8.1
-  * libc6 2.31-13
-  * libcrypt1 4.4.18-4
-  * libgcc-s1 10.2.1-6
-  * libinotifytools0 3.14-8.1
 
 <h2> Ensure SD card support is deactivated </h2>
 
