@@ -15,6 +15,30 @@ Uploads the given project to the PLC and archives the old project in `/upperdir/
 * Ext4 File System Driver for Windows
   * Only needed if a non-Phoenix Contact SD card is used
 
+<h3> Version Info </h3>
+
+* PLCnext Control AXC F 2152
+   * Hardware version: 06
+   * Firmware version: 2024.0.5 LTS
+   * Linux kernel version: #1 SMP PREEMPT_RT Thu Nov 16 06:49:45 UTC 2023
+   * Linux kernel release: 5.4.257-rt87-pxc
+   * Hardware platform: armv71
+* PLCnext Engineer version 2024.0.3
+* WinSCP version 6.3.4
+* PuTTY release 0.79
+* Linux File Systems for Windows by Paragon Software version 6.1.5
+* GNU bash version 5.1.16(1)
+* dpkg version 1.21.9
+* udev version 243
+* crontab version cronie 1.6.1
+* Packages installed with Upload (all armel)
+  * gcc-10-base 10.2.1-6
+  * inotify-tools 3.14-8.1
+  * libc6 2.31-13
+  * libcrypt1 4.4.18-4
+  * libgcc-s1 10.2.1-6
+  * libinotifytools0 3.14-8.1
+
 <h2> Ensure SD card support is deactivated </h2>
 
 SD card Support must be deactivated to use the SD card as storage. If it is left activated, and the SD card has a project on it when inserted, the project on the PLC will be lost. 
