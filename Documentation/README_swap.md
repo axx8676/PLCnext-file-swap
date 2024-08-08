@@ -19,7 +19,9 @@ Loads the project from the SD card onto the PLC and archives the project from th
 * PLCnext Control AXC F 2152
    * Hardware version: 06
    * Firmware version: 2024.0.5 LTS
-   * Linux #1 SMP PREEMPT_RT Thu Nov 16 06:49:45 UTC 2023 armv71
+   * Linux kernel version: #1 SMP PREEMPT_RT Thu Nov 16 06:49:45 UTC 2023
+   * Linux kernel release: 5.4.257-rt87-pxc
+   * Hardware platform: armv71
 * PLCnext Engineer version 2024.0.3
 * WinSCP version 6.3.4
 * PuTTY release 0.79
